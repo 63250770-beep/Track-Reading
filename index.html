@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ Wonyoung's Reading Diary ✨</title>
-    <!-- Google Fonts: Playfair Display & Quicksand -->
+    <title>✨ Wonyoung's Aesthetic Reading Diary ✨</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fff4f8;
+            --bg-gradient: linear-gradient(135deg, #fff0f5 0%, #ffe4ec 100%);
             --card-bg: #ffffff;
-            --primary-color: #d47a96;
-            --primary-hover: #c26783;
-            --accent-book: #f8b1c1;
+            --primary: #d47a96;
+            --primary-hover: #b55d7c;
+            --accent-pink: #f8b1c1;
             --accent-journal: #a3c1ad;
-            --text-color: #4a3b32;
-            --light-text: #8c7365;
-            --border-color: #fce4ec;
+            --text-main: #4a3b32;
+            --text-muted: #8c7365;
+            --border-soft: #f3d1dc;
             --input-bg: #fffbfd;
-            --shadow: 0 10px 30px rgba(212, 122, 150, 0.08);
-            --radius: 16px;
+            --shadow-card: 0 10px 30px rgba(212, 122, 150, 0.08);
+            --radius: 20px;
         }
 
         * {
@@ -30,59 +30,62 @@
 
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
             padding: 40px 20px;
-            background-image: radial-gradient(#fcd5e3 0.8px, transparent 0.8px);
-            background-size: 28px 28px;
+            background-image: radial-gradient(#f9c5d5 0.9px, transparent 0.9px);
+            background-size: 32px 32px;
         }
 
-        .container {
-            max-width: 850px;
+        .app-container {
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        header {
+        /* Header Styling */
+        .app-header {
             text-align: center;
             margin-bottom: 40px;
         }
 
-        header h1 {
+        .app-header h1 {
             font-family: 'Playfair Display', serif;
             color: #b55d7c;
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             margin-bottom: 8px;
-            letter-spacing: -0.5px;
+            font-weight: 700;
         }
 
-        header p {
-            color: var(--light-text);
-            font-size: 1rem;
+        .app-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
             font-style: italic;
         }
 
-        .card {
+        /* Card Container */
+        .glass-card {
             background: var(--card-bg);
             border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
+            padding: 35px;
+            box-shadow: var(--shadow-card);
             margin-bottom: 30px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-soft);
         }
 
-        h2 {
+        .section-title {
             font-family: 'Playfair Display', serif;
             color: #b55d7c;
-            font-size: 1.4rem;
-            margin-bottom: 24px;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            border-bottom: 2px dashed var(--border-color);
+            gap: 12px;
+            border-bottom: 2px dashed var(--border-soft);
             padding-bottom: 12px;
         }
 
-        /* Form Styling yang Rapi */
+        /* Form Layout */
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -95,31 +98,31 @@
             gap: 8px;
         }
 
-        .form-group.full-width {
+        .form-group.full {
             grid-column: 1 / -1;
         }
 
         label {
             font-weight: 600;
-            font-size: 0.88rem;
-            color: var(--light-text);
+            font-size: 0.9rem;
+            color: var(--text-muted);
             letter-spacing: 0.3px;
         }
 
         input, select, textarea {
-            padding: 12px 16px;
-            border: 1.5px solid var(--border-color);
-            border-radius: 12px;
+            padding: 13px 18px;
+            border: 1.5px solid var(--border-soft);
+            border-radius: 14px;
             font-family: 'Quicksand', sans-serif;
             font-size: 0.95rem;
             background-color: var(--input-bg);
-            color: var(--text-color);
+            color: var(--text-main);
             transition: all 0.25s ease;
         }
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--primary-color);
+            border-color: var(--primary);
             box-shadow: 0 0 0 4px rgba(212, 122, 150, 0.12);
             background-color: #fff;
         }
@@ -130,51 +133,51 @@
             line-height: 1.5;
         }
 
-        .btn-primary {
+        .btn-submit {
             background: linear-gradient(135deg, #e89cb5, #d47a96);
             color: white;
             border: none;
-            padding: 14px 28px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 14px;
             font-weight: 700;
             font-family: 'Quicksand', sans-serif;
             cursor: pointer;
             transition: all 0.25s ease;
-            box-shadow: 0 4px 15px rgba(212, 122, 150, 0.25);
+            box-shadow: 0 4px 15px rgba(212, 122, 150, 0.3);
             width: 100%;
-            margin-top: 10px;
+            margin-top: 12px;
             font-size: 1rem;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
         }
 
-        .btn-primary:hover {
+        .btn-submit:hover {
             transform: translateY(-2px);
             background: linear-gradient(135deg, #df8ca8, #c26783);
-            box-shadow: 0 6px 20px rgba(212, 122, 150, 0.35);
+            box-shadow: 0 6px 20px rgba(212, 122, 150, 0.4);
         }
 
-        /* Daftar Bacaan Container */
-        .reading-list {
+        /* Reading List Cards */
+        .list-container {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        .reading-item {
+        .reading-card {
             background: #ffffff;
-            border: 1.5px solid var(--border-color);
+            border: 1.5px solid var(--border-soft);
             border-radius: var(--radius);
             padding: 24px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
             transition: all 0.2s ease;
         }
 
-        .reading-item:hover {
+        .reading-card:hover {
             border-color: #f5b8cc;
             box-shadow: 0 6px 20px rgba(212, 122, 150, 0.08);
         }
 
-        .item-top-row {
+        .card-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
@@ -182,17 +185,17 @@
             gap: 15px;
         }
 
-        .item-title {
+        .book-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             color: #b55d7c;
             line-height: 1.3;
         }
 
-        .badge {
-            background-color: var(--accent-book);
+        .tag {
+            background-color: var(--accent-pink);
             color: #fff;
-            padding: 5px 14px;
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 700;
@@ -201,15 +204,15 @@
             white-space: nowrap;
         }
 
-        .badge.journal {
+        .tag.journal {
             background-color: var(--accent-journal);
         }
 
-        /* Progress Bar Section */
-        .progress-container {
+        /* Progress Bar & Tracker Row */
+        .progress-box {
             background: #fff8fb;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border: 1px solid var(--border-soft);
+            border-radius: 14px;
             padding: 16px;
             margin-bottom: 16px;
             display: flex;
@@ -218,32 +221,32 @@
             gap: 15px;
         }
 
-        .progress-text {
+        .progress-info {
             font-weight: 600;
             font-size: 0.95rem;
-            color: var(--text-color);
+            color: var(--text-main);
         }
 
-        .progress-text span {
-            color: var(--primary-color);
+        .progress-info span {
+            color: var(--primary);
             font-weight: 700;
         }
 
-        .update-box {
+        .update-wrapper {
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .update-box input {
-            width: 80px;
-            padding: 8px;
+        .update-wrapper input {
+            width: 85px;
+            padding: 8px 12px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .btn-update {
-            background: #b55d7c;
+            background: var(--primary);
             color: white;
             border: none;
             padding: 9px 16px;
@@ -258,23 +261,23 @@
             background: var(--primary-hover);
         }
 
-        /* Detail Catatan & Quote Box */
-        .details-grid {
-            display: grid;
-            grid-template-columns: 1fr;
+        /* Notes & Quote Section */
+        .meta-content {
+            display: flex;
+            flex-direction: column;
             gap: 12px;
             margin-bottom: 16px;
         }
 
         .note-box, .quote-box {
             background: #fffbfd;
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--primary-color);
-            padding: 12px 16px;
-            border-radius: 0 10px 10px 0;
-            font-size: 0.92rem;
-            color: var(--light-text);
-            line-height: 1.5;
+            border: 1px solid var(--border-soft);
+            border-left: 4px solid var(--primary);
+            padding: 14px 18px;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.93rem;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .quote-box {
@@ -282,18 +285,18 @@
             font-style: italic;
         }
 
-        .note-box strong, .quote-box strong {
-            color: var(--text-color);
+        .note-box b, .quote-box b {
+            color: var(--text-main);
             font-style: normal;
             display: inline-block;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
-        .item-footer {
+        .card-footer {
             display: flex;
             justify-content: flex-end;
-            padding-top: 10px;
-            border-top: 1px dashed var(--border-color);
+            padding-top: 12px;
+            border-top: 1px dashed var(--border-soft);
         }
 
         .btn-delete {
@@ -301,7 +304,7 @@
             color: #d9534f;
             border: 1px solid #f5c6cb;
             padding: 6px 14px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
@@ -315,28 +318,28 @@
 
         .empty-state {
             text-align: center;
-            color: var(--light-text);
-            padding: 40px;
+            color: var(--text-muted);
+            padding: 45px;
             font-style: italic;
-            background: #fff;
+            background: var(--card-bg);
             border-radius: var(--radius);
-            border: 1px dashed var(--border-color);
+            border: 1.5px dashed var(--border-soft);
         }
 
-        /* Responsif untuk HP */
-        @media (max-width: 600px) {
+        /* Responsiveness */
+        @media (max-width: 650px) {
             .form-grid {
                 grid-template-columns: 1fr;
             }
-            .progress-container {
+            .progress-box {
                 flex-direction: column;
                 align-items: stretch;
                 gap: 12px;
             }
-            .update-box {
+            .update-wrapper {
                 justify-content: space-between;
             }
-            .update-box input {
+            .update-wrapper input {
                 flex-grow: 1;
             }
         }
@@ -344,20 +347,157 @@
 </head>
 <body>
 
-    <div class="container">
-        <header>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
             <h1>✨ Wonyoung's Reading Diary ✨</h1>
-            <p>"Semua hal yang aku baca hari ini membawa aku pada versi diri yang lebih luar biasa." 🌸</p>
+            <p>"Setiap halaman yang kuingat membawa aku pada versi diri yang lebih luar biasa." 🌸</p>
         </header>
 
-        <!-- Form Tambah Bacaan -->
-        <div class="card">
-            <h2>🎀 Tambah Bacaan Baru</h2>
+        <!-- Form Tambah Data -->
+        <div class="glass-card">
+            <h2 class="section-title">🎀 Tambah Bacaan Baru</h2>
             <form id="readingForm">
                 <div class="form-grid">
-                    <div class="form-group full-width">
+                    <div class="form-group full">
                         <label for="title">Judul Buku / Jurnal Ilmiah</label>
-                        <input type="text" id="title" required placeholder="Contoh: The Psychology of Money atau Jurnal Akuntansi Keuangan...">
+                        <input type="text" id="title" required placeholder="Contoh: The Psychology of Money atau Jurnal Akuntansi...">
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Kategori</label>
+                        <select id="type">
+                            <option value="Buku">📖 Buku</option>
+                            <option value="Jurnal">🔬 Jurnal Ilmiah</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPages">Total Halaman</label>
+                        <input type="number" id="totalPages" required min="1" placeholder="Contoh: 300">
+                    </div>
+                    <div class="form-group full">
+                        <label for="currentPage">Halaman Saat Ini (Posisi Terakhir Dibaca)</label>
+                        <input type="number" id="currentPage" value="0" required min="0" placeholder="Contoh: 45">
+                    </div>
+                    <div class="form-group full">
+                        <label for="notes">Catatan / Refleksi Materi</label>
+                        <textarea id="notes" placeholder="Tulis rangkuman, poin penting, atau pemikiranmu di sini..."></textarea>
+                    </div>
+                    <div class="form-group full">
+                        <label for="quote">Favorite Quote 💖</label>
+                        <textarea id="quote" placeholder="Tulis kalimat/kutipan berkesan dari bacaan ini..."></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">✨ Simpan ke Daftar Bacaan</button>
+            </form>
+        </div>
+
+        <!-- Daftar Bacaan -->
+        <div class="glass-card" style="background: transparent; border: none; box-shadow: none; padding: 0;">
+            <h2 class="section-title" style="background: var(--card-bg); padding: 22px 30px; border-radius: var(--radius); border-bottom: none; box-shadow: var(--shadow-card);">📚 Daftar Bacaan & Progress</h2>
+            <div id="readingList" class="list-container" style="margin-top: 20px;">
+                <!-- Dinamis via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let readings = JSON.parse(localStorage.getItem('wonyoung_readings_v2')) || [];
+
+        const form = document.getElementById('readingForm');
+        const container = document.getElementById('readingList');
+
+        function saveAndRender() {
+            localStorage.setItem('wonyoung_readings_v2', JSON.stringify(readings));
+            renderReadings();
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const total = parseInt(document.getElementById('totalPages').value);
+            const current = parseInt(document.getElementById('currentPage').value);
+
+            const newItem = {
+                id: Date.now(),
+                title: document.getElementById('title').value,
+                type: document.getElementById('type').value,
+                totalPages: total,
+                currentPage: Math.min(current, total),
+                notes: document.getElementById('notes').value,
+                quote: document.getElementById('quote').value
+            };
+
+            readings.unshift(newItem);
+            saveAndRender();
+            form.reset();
+            document.getElementById('currentPage').value = 0;
+        });
+
+        function updateProgress(id) {
+            const inputVal = document.getElementById(`input-page-${id}`).value;
+            const item = readings.find(r => r.id === id);
+            if (item && inputVal !== "") {
+                const val = parseInt(inputVal);
+                item.currentPage = Math.min(Math.max(0, val), item.totalPages);
+                saveAndRender();
+            }
+        }
+
+        function deleteItem(id) {
+            if(confirm("Yakin ingin menghapus bacaan ini dari daftar?")) {
+                readings = readings.filter(r => r.id !== id);
+                saveAndRender();
+            }
+        }
+
+        function renderReadings() {
+            if (readings.length === 0) {
+                container.innerHTML = `<div class="empty-state">Belum ada bacaan yang tercatat. Yuk, mulai isi harimu dengan produktif! 🤍</div>`;
+                return;
+            }
+
+            container.innerHTML = '';
+            readings.forEach(item => {
+                const percentage = Math.min(Math.round((item.currentPage / item.totalPages) * 100), 100) || 0;
+                const isJournal = item.type === 'Jurnal';
+                
+                const card = document.createElement('div');
+                card.className = 'reading-card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="book-title">${item.title}</div>
+                        <span class="tag ${isJournal ? 'journal' : ''}">${item.type}</span>
+                    </div>
+
+                    <div class="progress-box">
+                        <div class="progress-info">
+                            Posisi Baca: <span>Hal. ${item.currentPage}</span> dari ${item.totalPages} 
+                            <span style="color: var(--text-muted); font-weight: 500;">(${percentage}%)</span>
+                        </div>
+                        <div class="update-wrapper">
+                            <input type="number" id="input-page-${item.id}" value="${item.currentPage}" min="0" max="${item.totalPages}">
+                            <button type="button" class="btn-update" onclick="updateProgress(${item.id})">Update</button>
+                        </div>
+                    </div>
+
+                    <div class="meta-content">
+                        ${item.notes ? `<div class="note-box"><b>📝 Catatan / Refleksi:</b><br>${item.notes}</div>` : ''}
+                        ${item.quote ? `<div class="quote-box"><b>✨ Favorite Quote:</b><br>"${item.quote}"</div>` : ''}
+                    </div>
+
+                    <div class="card-footer">
+                        <button class="btn-delete" onclick="deleteItem(${item.id})">Hapus Bacaan</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        renderReadings();
+    </script>
+</body>
+</html>
+holder="Contoh: The Psychology of Money atau Jurnal Akuntansi Keuangan...">
                     </div>
                     <div class="form-group">
                         <label for="type">Kategori</label>
