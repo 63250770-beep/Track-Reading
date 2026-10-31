@@ -41,7 +41,7 @@
       padding-bottom: 60px;
     }
 
-    /* AUTH SCREEN */
+    /* AUTH SCREEN (PILIH AKUN) */
     #auth-screen {
       display: flex;
       justify-content: center;
@@ -156,7 +156,7 @@
       font-size: 1.2rem;
     }
 
-    .profile-info h4 { font-size: 0.95rem; color: var(--text-main); font-weight: 700; word-break: break-all; }
+    .profile-info h4 { font-size: 0.95rem; color: var(--text-main); font-weight: 700; }
     .profile-info p { font-size: 0.75rem; color: var(--primary-pink); font-weight: 600; }
 
     .nav-menu { display: flex; flex-direction: column; gap: 8px; }
@@ -180,6 +180,13 @@
       padding: 12px; border-radius: 20px; font-weight: 700; font-size: 0.95rem;
       cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
       box-shadow: 0 4px 12px rgba(233, 59, 103, 0.25);
+    }
+
+    .sidebar-actions { display: flex; justify-content: space-between; padding: 0 4px; margin-top: 4px; }
+    .btn-link-action {
+      background: none; border: none; color: var(--primary-pink);
+      font-size: 0.8rem; font-weight: 700; cursor: pointer;
+      display: flex; align-items: center; gap: 4px;
     }
 
     .btn-logout {
@@ -308,12 +315,12 @@
   <div id="auth-screen">
     <div class="auth-card">
       <h2 class="auth-title">🎀 Lucky Vicky Journal</h2>
-      <p class="auth-subtitle">Masukkan nama atau email akun kamu (misal: <b>fitria@gmail.com</b>) agar progres bacaanmu tersimpan sendiri & berbeda dari pengguna lain! ✨</p>
+      <p class="auth-subtitle">Masukkan nama profil atau ID akun kamu (contoh: <b>Fitria</b>) agar progres bacaan kamu tersimpan sendiri dan terpisah dari pengguna lain! ✨</p>
       
       <form onsubmit="loginUser(event)">
         <div class="form-group">
-          <label>Email atau Nama Akun 🌸</label>
-          <input type="text" id="input-username" class="form-control" required placeholder="Contoh: fitria@gmail.com">
+          <label>Nama Akun / Profil 🌸</label>
+          <input type="text" id="input-username" class="form-control" required placeholder="Contoh: Fitria Wulan">
         </div>
         <button type="submit" class="btn-primary-full">Masuk ke Journal 💖</button>
       </form>
@@ -350,6 +357,11 @@
 
       <div class="sidebar-footer">
         <button class="btn-add-sidebar" onclick="toggleSidebar(); openModal('modal-add-book')">🎀 Tambah Buku</button>
+        <div class="sidebar-actions">
+          <button class="btn-link-action" onclick="exportData()"><i class="fa-solid fa-cloud-arrow-down"></i> Ekspor</button>
+          <button class="btn-link-action" onclick="document.getElementById('import-file').click()"><i class="fa-solid fa-cloud-arrow-up"></i> Impor</button>
+          <input type="file" id="import-file" style="display:none" onchange="importData(event)">
+        </div>
         <button class="btn-logout" onclick="logoutUser()"><i class="fa-solid fa-right-from-bracket"></i> Ganti Akun</button>
       </div>
     </aside>
@@ -732,6 +744,29 @@
             </div>`;
         });
       }
+    }
+
+    // Export & Import Backup Data
+    function exportData() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appData));
+      const a = document.createElement('a');
+      a.href = dataStr;
+      a.download = `lucky_vicky_${currentUsername}_backup_${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
+    }
+
+    function importData(e) {
+      const file = e.target.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        try {
+          appData = JSON.parse(evt.target.result);
+          saveToLocalStorage();
+          alert('Data akun berhasil diimpor! 🎉');
+        } catch(err) { alert('Format file JSON tidak sesuai! 🥺'); }
+      };
+      reader.readAsText(file);
     }
 
     function escapeHtml(str) {
