@@ -41,43 +41,6 @@
       padding-bottom: 60px;
     }
 
-    /* AUTH SCREEN (USERNAME & PASSWORD) */
-    #auth-screen {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .auth-card {
-      background: #FFF;
-      border: 2px solid var(--border-pink);
-      border-radius: 28px;
-      padding: 30px;
-      width: 100%;
-      max-width: 400px;
-      box-shadow: 0 15px 35px rgba(233, 59, 103, 0.12);
-      text-align: center;
-    }
-
-    .auth-title {
-      font-family: 'Fredoka', cursive;
-      font-size: 1.8rem;
-      color: var(--primary-pink);
-      margin-bottom: 6px;
-    }
-
-    .auth-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-sub);
-      margin-bottom: 24px;
-      line-height: 1.5;
-    }
-
-    /* APP SCREEN */
-    #app-screen { display: none; }
-
     /* TOP NAVBAR */
     .navbar {
       background: #FFF;
@@ -189,12 +152,6 @@
       display: flex; align-items: center; gap: 4px;
     }
 
-    .btn-logout {
-      background: #FFEAEA; color: #E55039; border: 1.5px solid #FAD2D2;
-      border-radius: 14px; padding: 10px; font-weight: 700; font-size: 0.85rem;
-      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
-    }
-
     /* CONTAINER & PAGES */
     .container { max-width: 600px; margin: 0 auto; padding: 16px; }
     .page-section { display: none; }
@@ -270,16 +227,233 @@
     .book-details h4 { font-size: 0.98rem; font-weight: 800; color: var(--text-main); }
     .book-details p { font-size: 0.78rem; color: var(--text-sub); margin-bottom: 8px; }
 
-    /* BAD / GOOD / AMAZING VIBE CHIP */
+    /* 5 TINGKATAN VIBE TAG */
     .vibe-tag {
       display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.68rem; font-weight: 700; margin-bottom: 6px;
     }
-    .vibe-bad { background: #FFEAEA; color: #E55039; }
-    .vibe-good { background: #FFF4D9; color: #D4AC0D; }
+    .vibe-masterpiece { background: #FFD1DC; color: #880E4F; }
     .vibe-amazing { background: #E2F8EE; color: #20C997; }
+    .vibe-good { background: #FFF4D9; color: #D4AC0D; }
+    .vibe-boring { background: #F1F2F6; color: #57606F; }
+    .vibe-bad { background: #FFEAEA; color: #E55039; }
 
     .book-meta-info {
       font-size: 0.75rem; color: var(--text-sub); margin-top: 6px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .star-rating { color: #FFC107; font-size: 0.8rem; }
+    .book-review {
+      font-size: 0.8rem; font-style: italic; color: var(--text-main); background: var(--bg-pink);
+      padding: 6px 10px; border-radius: 10px; margin-top: 6px; border-left: 3px solid var(--primary-pink);
+    }
+
+    .progress-bar { height: 8px; background: var(--light-pink); border-radius: 4px; overflow: hidden; margin: 8px 0; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #FF7597, var(--primary-pink)); border-radius: 4px; }
+    .progress-meta { display: flex; justify-content: space-between; align-items: center; }
+    .progress-text { font-size: 0.75rem; font-weight: 700; color: var(--text-sub); }
+
+    .btn-action-chip {
+      background: #FFF0F4; border: 1px solid var(--border-pink); color: var(--primary-pink);
+      border-radius: 12px; padding: 4px 10px; font-size: 0.72rem; font-weight: 700; cursor: pointer;
+    }
+    .btn-delete-chip { color: #E55039; background: #FFEAEA; border-color: #FAD2D2; margin-left: 4px; }
+
+    .note-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-sub); margin-bottom: 6px; }
+    .note-book-tag { color: var(--primary-pink); font-weight: 700; }
+    .note-title { font-weight: 800; font-size: 0.98rem; color: var(--text-main); margin-bottom: 6px; }
+    .note-content { font-size: 0.86rem; color: var(--text-sub); line-height: 1.5; }
+
+    .quote-text { font-style: italic; font-size: 1rem; color: var(--text-main); margin-bottom: 8px; line-height: 1.5; }
+    .quote-source { font-size: 0.85rem; font-weight: 700; color: var(--primary-pink); text-align: right; }
+
+    .btn-primary-full {
+      width: 100%; background: var(--primary-pink); color: #FFF; border: none;
+      padding: 12px; border-radius: 16px; font-weight: 700; cursor: pointer; margin-top: 10px;
+      box-shadow: 0 4px 12px rgba(233,59,103,0.2);
+    }
+
+    /* MODAL POPUP */
+    .modal {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.3); z-index: 200; justify-content: center; align-items: center; padding: 16px; overflow-y: auto;
+    }
+    .modal.active { display: flex; }
+    .modal-content {
+      background: #FFF; border-radius: 24px; padding: 24px; width: 100%; max-width: 420px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 2px solid var(--border-pink); max-height: 90vh; overflow-y: auto;
+    }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .modal-header h3 { font-family: 'Fredoka', sans-serif; color: var(--primary-pink); }
+    .close-modal { background: none; border: none; font-size: 1.2rem; color: var(--text-sub); cursor: pointer; }
+
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
+    .form-control {
+      width: 100%; padding: 10px 14px; border: 1.5px solid var(--border-pink); border-radius: 12px; outline: none; font-size: 0.9rem; background: #FFF; color: var(--text-main);
+    }
+    .form-control:focus { border-color: var(--primary-pink); }
+  </style>
+</head>
+<body>
+
+  <!-- MAIN APP SCREEN -->
+  <div id="app-screen">
+    <!-- TOP NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-brand">🎀 Lucky Vicky Journal</div>
+      <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+    </nav>
+
+    <!-- SIDEBAR DRAWER -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <div class="profile-card">
+          <div class="profile-avatar">🐰</div>
+          <div class="profile-info">
+            <h4>Princess Fitria 🌸</h4>
+            <p>Lucky Vicky Mindset ✨</p>
+          </div>
+        </div>
+
+        <div class="nav-menu">
+          <div class="nav-item active" id="nav-dashboard" onclick="switchPage('dashboard')">💖 Dashboard & Progress</div>
+          <div class="nav-item" id="nav-library" onclick="switchPage('library')">📚 Perpustakaan Pink</div>
+          <div class="nav-item" id="nav-notes" onclick="switchPage('notes')">💌 Jurnal & Catatan</div>
+          <div class="nav-item" id="nav-quotes" onclick="switchPage('quotes')">✨ Kutipan Impian</div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="btn-add-sidebar" onclick="toggleSidebar(); openModal('modal-add-book')">🎀 Tambah Buku</button>
+        <div class="sidebar-actions">
+          <button class="btn-link-action" onclick="exportData()"><i class="fa-solid fa-cloud-arrow-down"></i> Ekspor</button>
+          <button class="btn-link-action" onclick="document.getElementById('import-file').click()"><i class="fa-solid fa-cloud-arrow-up"></i> Impor</button>
+          <input type="file" id="import-file" style="display:none" onchange="importData(event)">
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTAINER -->
+    <main class="container">
+      <!-- DASHBOARD VIEW -->
+      <section id="page-dashboard" class="page-section active">
+        <div class="hero-banner">
+          <span class="hero-badge">✨ Lucky Vicky Reading Space ✨</span>
+          <h2 class="hero-title">"Setiap lembar buku membuatku makin bersinar!" 🍓</h2>
+          <p class="hero-desc">Progres aman tersimpan otomatis di perangkatmu!</p>
+          <div class="hero-bunny">🐰</div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon pink"><i class="fa-solid fa-book-open"></i></div>
+            <div class="stat-info"><div class="label">TOTAL KOLEKSI</div><div class="value" id="stat-total">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fa-solid fa-sparkles"></i></div>
+            <div class="stat-info"><div class="label">SELESAI DIBACA</div><div class="value" id="stat-completed">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon yellow"><i class="fa-solid fa-file-lines"></i></div>
+            <div class="stat-info"><div class="label">HALAMAN DIBACA</div><div class="value" id="stat-pages">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon rose"><i class="fa-solid fa-envelope-heart"></i></div>
+            <div class="stat-info"><div class="label">FAVORIT & QUOTE</div><div class="value" id="stat-quotes">0</div></div>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <div class="section-title">🍓 Sedang Dibaca & Daftar Buku</div>
+          <a class="section-link" onclick="switchPage('library')">Lihat Semua →</a>
+        </div>
+        <div id="reading-now-list"></div>
+
+        <div class="section-header" style="margin-top:20px;">
+          <div class="section-title">💌 Catatan Terbaru</div>
+          <a class="section-link" onclick="openModal('modal-add-note')">+ Tulis Catatan Baru</a>
+        </div>
+        <div id="recent-notes-list"></div>
+      </section>
+
+      <!-- PERPUSTAKAAN VIEW -->
+      <section id="page-library" class="page-section">
+        <div class="section-header">
+          <div class="section-title">📚 Perpustakaan Pink</div>
+          <button class="btn-action-chip" onclick="openModal('modal-add-book')">+ Tambah Buku</button>
+        </div>
+        <div id="full-book-list"></div>
+      </section>
+
+      <!-- JURNAL VIEW -->
+      <section id="page-notes" class="page-section">
+        <div class="section-header">
+          <div class="section-title">💌 Jurnal & Catatan Baca</div>
+          <button class="btn-action-chip" onclick="openModal('modal-add-note')">+ Tulis Catatan</button>
+        </div>
+        <div id="full-notes-list"></div>
+      </section>
+
+      <!-- QUOTES VIEW -->
+      <section id="page-quotes" class="page-section">
+        <div class="section-header">
+          <div class="section-title">✨ Kutipan Impian & Inspirasi</div>
+          <button class="btn-action-chip" onclick="openModal('modal-add-quote')">+ Tambah Quote</button>
+        </div>
+        <div id="full-quotes-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL: TAMBAH / EDIT BUKU -->
+  <div class="modal" id="modal-add-book">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="book-modal-title">🎀 Tambah Buku Baru</h3>
+        <button class="close-modal" onclick="closeModal('modal-add-book')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form onsubmit="saveBook(event)">
+        <input type="hidden" id="ib-id">
+        <div class="form-group"><label>Judul Buku 📖</label><input type="text" id="ib-title" class="form-control" required placeholder="Judul buku"></div>
+        <div class="form-group"><label>Penulis ✍️</label><input type="text" id="ib-author" class="form-control" required placeholder="Nama penulis"></div>
+        <div style="display:flex; gap:10px;">
+          <div class="form-group" style="flex:1;"><label>Hal. Saat Ini 📍</label><input type="number" id="ib-current" class="form-control" value="0" min="0"></div>
+          <div class="form-group" style="flex:1;"><label>Total Hal. 📚</label><input type="number" id="ib-total" class="form-control" required placeholder="300"></div>
+        </div>
+        <div class="form-group">
+          <label>Status Membaca 📌</label>
+          <select id="ib-status" class="form-control">
+            <option value="belum">Belum Baca (0 / 0%) 💤</option>
+            <option value="sedang">Sedang Baca 📖</option>
+            <option value="selesai">Selesai Dibaca 💖</option>
+          </select>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <div class="form-group" style="flex:1;">
+            <label>Rating Bintang ⭐</label>
+            <select id="ib-rating" class="form-control">
+              <option value="0">Pilih Rating</option>
+              <option value="1">⭐ 1</option>
+              <option value="2">⭐⭐ 2</option>
+              <option value="3">⭐⭐⭐ 3</option>
+              <option value="4">⭐⭐⭐⭐ 4</option>
+              <option value="5">⭐⭐⭐⭐⭐ 5</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label>Level Vibe (5 Tingkatan) 🍓</label>
+            <select id="ib-vibe" class="form-control">
+              <option value="masterpiece">🌟 Masterpiece</option>
+              <option value="amazing">✨ Amazing</option>
+              <option value="good">💖 Good</option>
+              <option value="boring">💤 Boring</option>
+              <option value="bad">🥀 Bad</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Komentar / Review 💬</label>
+          <textarea id="ib-review" class="form-control" style="min-height:70px;" placeholder="Tulis komentarlign-items: center;
     }
     .star-rating { color: #FFC107; font-size: 0.8rem; }
     .book-review {
