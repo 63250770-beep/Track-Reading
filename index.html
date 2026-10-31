@@ -1,446 +1,464 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lucky Vicky Journal 🎀</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎀 Lucky Vicky Reading Journal ✨</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-:root {
-  --pink:#e93b67;
-  --dark:#6b1d38;
-  --sub:#a36579;
-  --bg:#fff0f4;
-  --light:#ffe5ec;
-  --border:#ffd0dc;
-  --white:#fff;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  background-color:var(--bg);
-  background-image:radial-gradient(#f7b2c4 1px,transparent 1px);
-  background-size:18px 18px;
-  color:var(--dark);
-  font-family:'Plus Jakarta Sans',sans-serif;
-  padding-bottom:40px;
-}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-.navbar{
-  position:sticky;top:0;z-index:20;
-  background:white;padding:15px 18px;
-  display:flex;justify-content:space-between;
-  align-items:center;box-shadow:0 2px 10px #00000009;
-}
-.brand{font:700 21px Fredoka;color:var(--pink)}
-.menu{border:0;background:none;color:var(--pink);font-size:25px}
-.container{max-width:650px;margin:auto;padding:17px}
-.sidebar{
-  position:fixed;z-index:40;top:0;left:-300px;
-  width:280px;height:100dvh;background:white;
-  padding:20px;transition:.3s;
-  display:flex;flex-direction:column;justify-content:space-between;
-  box-shadow:5px 0 25px #0002;overflow-y:auto;
-}
-.sidebar.open{left:0}
-.overlay{
-  position:fixed;inset:0;background:#0005;
-  z-index:30;display:none;
-}
-.overlay.show{display:block}
-.profile{
-  padding:15px;background:var(--bg);border:1px solid var(--border);
-  border-radius:18px;margin:15px 0 20px;
-}
-.profile h3{font-size:15px}
-.profile p{font-size:12px;color:var(--pink);margin-top:4px}
-.nav-item{
-  padding:12px;border-radius:13px;margin:4px 0;
-  font-weight:700;font-size:13px;cursor:pointer;
-}
-.nav-item.active,.nav-item:hover{background:var(--light);color:var(--pink)}
-.sidebar-buttons{display:grid;gap:8px;margin-top:20px}
-.btn{
-  border:0;border-radius:12px;padding:11px 14px;
-  background:var(--pink);color:white;font-weight:700;
-}
-.btn.green{background:#20b989}
-.btn.light{background:var(--light);color:var(--pink)}
-.btn.danger{background:#ffeaea;color:#e55039}
-.btn.small{padding:7px 10px;font-size:11px}
-.hero{
-  text-align:center;background:linear-gradient(135deg,#fff,#ffe5ec);
-  border:2px solid var(--border);border-radius:23px;
-  padding:25px 15px;margin-bottom:18px;
-}
-.hero .tag{
-  display:inline-block;background:white;border:1px solid var(--border);
-  border-radius:20px;padding:5px 13px;font-size:11px;font-weight:700;
-}
-.hero h1{font:italic 600 25px 'Playfair Display';margin:15px 0 10px}
-.hero p{font-size:12px;color:var(--sub);line-height:1.7}
-.stats{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:25px;
-}
-.stat{
-  background:white;border:1px solid var(--border);
-  border-radius:17px;padding:14px;
-}
-.stat .emoji{font-size:21px}
-.stat p{font-size:10px;color:var(--sub);font-weight:700;margin-top:8px}
-.stat strong{font-size:24px}
-.heading{
-  display:flex;justify-content:space-between;
-  align-items:center;margin:22px 0 12px;gap:8px;
-}
-.heading h2{font:600 18px 'Playfair Display'}
-.page{display:none}
-.page.active{display:block;animation:fade .25s}
-@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1}}
-.card{
-  background:white;border:1px solid var(--border);
-  padding:15px;border-radius:18px;margin-bottom:12px;
-  box-shadow:0 5px 15px #e93b670b;
-}
-.book{display:flex;gap:13px}
-.cover{
-  width:65px;height:85px;flex-shrink:0;
-  background:var(--light);border-radius:10px;
-  display:grid;place-items:center;font-size:28px;
-}
-.details{flex:1;min-width:0}
-.details h3{font-size:14px;overflow-wrap:anywhere}
-.details p{font-size:11px;color:var(--sub);margin-top:5px}
-.progress{
-  height:7px;background:var(--light);
-  border-radius:10px;margin:10px 0;overflow:hidden;
-}
-.progress div{height:100%;background:var(--pink);border-radius:10px}
-.meta{font-size:11px;color:var(--sub);display:flex;justify-content:space-between}
-.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.chip{
-  background:var(--light);border:0;border-radius:9px;
-  color:var(--pink);padding:6px 9px;font-size:11px;font-weight:700;
-}
-.chip.delete{background:#ffeaea;color:#e55039}
-.badge{
-  display:inline-block;padding:4px 8px;border-radius:8px;
-  background:#e2f8ee;color:#20a77d;font-size:10px;margin-top:7px;
-}
-.note-title{font-weight:700;font-size:14px;margin-bottom:8px}
-.note-body{font-size:12px;line-height:1.7;color:var(--sub);white-space:pre-wrap;overflow-wrap:anywhere}
-.quote{font:italic 17px 'Playfair Display';line-height:1.6}
-.quote-author{text-align:right;color:var(--pink);font-size:12px;margin-top:12px}
-.toolbar{display:flex;gap:8px;margin-bottom:14px}
-.toolbar input,.toolbar select{min-width:0}
-input,textarea,select{
-  width:100%;padding:11px;border:1px solid var(--border);
-  border-radius:11px;background:white;color:var(--dark);
-  outline:none;font-size:13px;
-}
-input:focus,textarea:focus,select:focus{border-color:var(--pink)}
-textarea{resize:vertical;min-height:110px}
-.modal{
-  display:none;position:fixed;inset:0;z-index:60;
-  background:#0005;align-items:center;justify-content:center;padding:15px;
-}
-.modal.show{display:flex}
-.modal-box{
-  background:white;border-radius:22px;padding:20px;
-  width:100%;max-width:440px;max-height:90dvh;overflow-y:auto;
-}
-.modal-head{display:flex;justify-content:space-between;margin-bottom:17px}
-.modal-head h2{font:600 20px Fredoka;color:var(--pink)}
-.close{border:0;background:none;font-size:22px;color:var(--sub)}
-.field{margin-bottom:13px}
-.field label{display:block;font-size:12px;font-weight:700;margin-bottom:6px}
-.empty{text-align:center;padding:30px 15px;color:var(--sub);font-size:13px}
-.footer{text-align:center;color:var(--sub);font-size:11px;margin-top:35px}
-.hidden{display:none}
-@media(max-width:380px){
- .brand{font-size:18px}
- .container{padding:12px}
- .hero h1{font-size:21px}
-}
-</style>
+  <style>
+    :root {
+      --bg-pink: #FFF0F4;
+      --card-white: #FFFFFF;
+      --primary-pink: #E93B67;
+      --primary-hover: #D02B55;
+      --light-pink: #FFE5EC;
+      --border-pink: #FFD0DC;
+      --text-main: #6B1D38;
+      --text-sub: #A36579;
+      --shadow-card: 0 8px 24px rgba(233, 59, 103, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-pink);
+      background-image: radial-gradient(#F7B2C4 1px, transparent 1px);
+      background-size: 18px 18px;
+      color: var(--text-main);
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    /* TOP NAVBAR */
+    .navbar {
+      background: #FFF;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Fredoka', cursive;
+      font-size: 1.35rem;
+      color: var(--primary-pink);
+      font-weight: 700;
+    }
+
+    .menu-toggle {
+      font-size: 1.4rem;
+      color: var(--primary-pink);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    /* SIDEBAR DRAWER */
+    .sidebar-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .sidebar-overlay.active { opacity: 1; pointer-events: auto; }
+
+    .sidebar {
+      position: fixed;
+      top: 0; left: -300px;
+      width: 280px; height: 100%;
+      background: #FFF;
+      z-index: 100;
+      transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 18px;
+      box-shadow: 5px 0 25px rgba(0,0,0,0.1);
+    }
+    .sidebar.active { left: 0; }
+
+    .profile-card {
+      background: var(--bg-pink);
+      border: 1.5px solid var(--border-pink);
+      border-radius: 18px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .profile-avatar {
+      width: 42px; height: 42px;
+      background: #FFE0E9;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .profile-info h4 { font-size: 0.95rem; color: var(--text-main); font-weight: 700; }
+    .profile-info p { font-size: 0.75rem; color: var(--primary-pink); font-weight: 600; }
+
+    .nav-menu { display: flex; flex-direction: column; gap: 8px; }
+
+    .nav-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px; border-radius: 14px;
+      font-size: 0.92rem; font-weight: 700;
+      color: var(--text-main); cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .nav-item.active, .nav-item:hover {
+      background: var(--light-pink);
+      color: var(--primary-pink);
+    }
+
+    .sidebar-footer { display: flex; flex-direction: column; gap: 10px; }
+
+    .btn-add-sidebar {
+      background: var(--primary-pink); color: #FFF; border: none;
+      padding: 12px; border-radius: 20px; font-weight: 700; font-size: 0.95rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 4px 12px rgba(233, 59, 103, 0.25);
+    }
+
+    .sidebar-actions { display: flex; justify-content: space-between; padding: 0 4px; margin-top: 4px; }
+    .btn-link-action {
+      background: none; border: none; color: var(--primary-pink);
+      font-size: 0.8rem; font-weight: 700; cursor: pointer;
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    /* CONTAINER & PAGES */
+    .container { max-width: 600px; margin: 0 auto; padding: 16px; }
+    .page-section { display: none; }
+    .page-section.active { display: block; animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* HERO BANNER */
+    .hero-banner {
+      background: linear-gradient(135deg, #FFF5F7, #FFE5EC);
+      border: 2px solid #FFD0DC;
+      border-radius: 24px; padding: 24px 20px; text-align: center;
+      position: relative; overflow: hidden; margin-bottom: 20px; box-shadow: var(--shadow-card);
+    }
+    .hero-badge {
+      display: inline-block; background: #FFF; border: 1px solid var(--border-pink);
+      border-radius: 16px; padding: 4px 14px; font-size: 0.78rem; font-weight: 700; margin-bottom: 14px;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--text-main);
+      font-weight: 700; line-height: 1.35; margin-bottom: 12px;
+    }
+    .hero-desc { font-size: 0.82rem; color: var(--text-sub); line-height: 1.5; }
+    .hero-bunny { position: absolute; right: 15px; bottom: -15px; font-size: 5rem; opacity: 0.15; pointer-events: none; }
+
+    /* STATS GRID */
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+    .stat-card {
+      background: #FFF; border: 1.5px solid var(--border-pink); border-radius: 20px;
+      padding: 14px 16px; display: flex; align-items: center; gap: 14px; box-shadow: var(--shadow-card);
+    }
+    .stat-icon {
+      width: 44px; height: 44px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+    }
+    .stat-icon.pink { background: #FFE0E9; color: var(--primary-pink); }
+    .stat-icon.green { background: #E2F8EE; color: #20C997; }
+    .stat-icon.yellow { background: #FFF4D9; color: #FFC107; }
+    .stat-icon.rose { background: #FFE8EC; color: #E93B67; }
+    .stat-info .label { font-size: 0.68rem; font-weight: 800; color: var(--text-sub); margin-bottom: 2px; }
+    .stat-info .value { font-size: 1.35rem; font-weight: 800; color: var(--text-main); }
+
+    /* SECTION HEADER */
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .section-title {
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--text-main);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .section-link { font-size: 0.8rem; font-weight: 700; color: var(--primary-pink); cursor: pointer; }
+
+    /* CARDS */
+    .card-item {
+      background: #FFF; border: 1.5px solid var(--border-pink); border-radius: 20px;
+      padding: 16px; box-shadow: var(--shadow-card); margin-bottom: 16px; position: relative;
+    }
+    .book-item-layout { display: flex; gap: 16px; align-items: flex-start; }
+    .book-cover-placeholder {
+      width: 55px; height: 70px; background: var(--bg-pink); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--primary-pink); flex-shrink: 0;
+      position: relative;
+    }
+    .favorite-badge {
+      position: absolute; top: -6px; right: -6px; background: #FFF; border-radius: 50%;
+      width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; border: 1px solid var(--border-pink); cursor: pointer;
+    }
+
+    .book-details { flex: 1; }
+    .book-top-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px; }
+    .book-details h4 { font-size: 0.98rem; font-weight: 800; color: var(--text-main); }
+    .book-details p { font-size: 0.78rem; color: var(--text-sub); margin-bottom: 8px; }
+
+    /* VIBE TAG */
+    .vibe-tag {
+      display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.68rem; font-weight: 700; margin-bottom: 6px;
+    }
+    .vibe-bad { background: #FFEAEA; color: #E55039; }
+    .vibe-good { background: #FFF4D9; color: #D4AC0D; }
+    .vibe-amazing { background: #E2F8EE; color: #20C997; }
+
+    .book-meta-info {
+      font-size: 0.75rem; color: var(--text-sub); margin-top: 6px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .star-rating { color: #FFC107; font-size: 0.8rem; }
+    .book-review {
+      font-size: 0.8rem; font-style: italic; color: var(--text-main); background: var(--bg-pink);
+      padding: 6px 10px; border-radius: 10px; margin-top: 6px; border-left: 3px solid var(--primary-pink);
+    }
+
+    .progress-bar { height: 8px; background: var(--light-pink); border-radius: 4px; overflow: hidden; margin: 8px 0; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #FF7597, var(--primary-pink)); border-radius: 4px; }
+    .progress-meta { display: flex; justify-content: space-between; align-items: center; }
+    .progress-text { font-size: 0.75rem; font-weight: 700; color: var(--text-sub); }
+
+    .btn-action-chip {
+      background: #FFF0F4; border: 1px solid var(--border-pink); color: var(--primary-pink);
+      border-radius: 12px; padding: 4px 10px; font-size: 0.72rem; font-weight: 700; cursor: pointer;
+    }
+    .btn-delete-chip { color: #E55039; background: #FFEAEA; border-color: #FAD2D2; margin-left: 4px; }
+
+    .note-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-sub); margin-bottom: 6px; }
+    .note-book-tag { color: var(--primary-pink); font-weight: 700; }
+    .note-title { font-weight: 800; font-size: 0.98rem; color: var(--text-main); margin-bottom: 6px; }
+    .note-content { font-size: 0.86rem; color: var(--text-sub); line-height: 1.5; }
+
+    .quote-text { font-style: italic; font-size: 1rem; color: var(--text-main); margin-bottom: 8px; line-height: 1.5; }
+    .quote-source { font-size: 0.85rem; font-weight: 700; color: var(--primary-pink); text-align: right; }
+
+    .btn-primary-full {
+      width: 100%; background: var(--primary-pink); color: #FFF; border: none;
+      padding: 12px; border-radius: 16px; font-weight: 700; cursor: pointer; margin-top: 10px;
+      box-shadow: 0 4px 12px rgba(233,59,103,0.2);
+    }
+
+    /* MODAL POPUP */
+    .modal {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.3); z-index: 200; justify-content: center; align-items: center; padding: 16px; overflow-y: auto;
+    }
+    .modal.active { display: flex; }
+    .modal-content {
+      background: #FFF; border-radius: 24px; padding: 24px; width: 100%; max-width: 420px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 2px solid var(--border-pink); max-height: 90vh; overflow-y: auto;
+    }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .modal-header h3 { font-family: 'Fredoka', sans-serif; color: var(--primary-pink); }
+    .close-modal { background: none; border: none; font-size: 1.2rem; color: var(--text-sub); cursor: pointer; }
+
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
+    .form-control {
+      width: 100%; padding: 10px 14px; border: 1.5px solid var(--border-pink); border-radius: 12px; outline: none; font-size: 0.9rem; background: #FFF; color: var(--text-main);
+    }
+    .form-control:focus { border-color: var(--primary-pink); }
+  </style>
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="brand">🎀 Lucky Vicky Journal</div>
-  <button class="menu" onclick="toggleMenu()">☰</button>
-</nav>
+  <!-- MAIN APP SCREEN (LANGSUNG TERBUKA TANPA LOGIN) -->
+  <div id="app-screen">
+    <!-- TOP NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-brand">🎀 Lucky Vicky Journal</div>
+      <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+    </nav>
 
-<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <!-- SIDEBAR DRAWER -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <div class="profile-card">
+          <div class="profile-avatar">🐰</div>
+          <div class="profile-info">
+            <h4>Princess Fitria 🌸</h4>
+            <p>Lucky Vicky Mindset ✨</p>
+          </div>
+        </div>
 
-<aside class="sidebar" id="sidebar">
-  <div>
-    <div class="profile">
-      <div style="font-size:30px">🐰</div>
-      <h3>Princess F 🌸</h3>
-      <p>Lucky Vicky Mindset ✨</p>
+        <div class="nav-menu">
+          <div class="nav-item active" id="nav-dashboard" onclick="switchPage('dashboard')">💖 Dashboard & Progress</div>
+          <div class="nav-item" id="nav-library" onclick="switchPage('library')">📚 Perpustakaan Pink</div>
+          <div class="nav-item" id="nav-notes" onclick="switchPage('notes')">💌 Jurnal & Catatan</div>
+          <div class="nav-item" id="nav-quotes" onclick="switchPage('quotes')">✨ Kutipan Impian</div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="btn-add-sidebar" onclick="toggleSidebar(); openModal('modal-add-book')">🎀 Tambah Buku</button>
+        <div class="sidebar-actions">
+          <button class="btn-link-action" onclick="exportData()"><i class="fa-solid fa-cloud-arrow-down"></i> Ekspor</button>
+          <button class="btn-link-action" onclick="document.getElementById('import-file').click()"><i class="fa-solid fa-cloud-arrow-up"></i> Impor</button>
+          <input type="file" id="import-file" style="display:none" onchange="importData(event)">
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTAINER -->
+    <main class="container">
+      <!-- DASHBOARD VIEW -->
+      <section id="page-dashboard" class="page-section active">
+        <div class="hero-banner">
+          <span class="hero-badge">✨ Lucky Vicky Reading Space ✨</span>
+          <h2 class="hero-title">"Setiap lembar buku membuatku makin bersinar!" 🍓</h2>
+          <p class="hero-desc">Progres aman tersimpan otomatis di perangkatmu!</p>
+          <div class="hero-bunny">🐰</div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon pink"><i class="fa-solid fa-book-open"></i></div>
+            <div class="stat-info"><div class="label">TOTAL KOLEKSI</div><div class="value" id="stat-total">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fa-solid fa-sparkles"></i></div>
+            <div class="stat-info"><div class="label">SELESAI DIBACA</div><div class="value" id="stat-completed">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon yellow"><i class="fa-solid fa-file-lines"></i></div>
+            <div class="stat-info"><div class="label">HALAMAN DIBACA</div><div class="value" id="stat-pages">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon rose"><i class="fa-solid fa-envelope-heart"></i></div>
+            <div class="stat-info"><div class="label">FAVORIT & QUOTE</div><div class="value" id="stat-quotes">0</div></div>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <div class="section-title">🍓 Sedang Dibaca & Daftar Buku</div>
+          <a class="section-link" onclick="switchPage('library')">Lihat Semua →</a>
+        </div>
+        <div id="reading-now-list"></div>
+
+        <div class="section-header" style="margin-top:20px;">
+          <div class="section-title">💌 Catatan Terbaru</div>
+          <a class="section-link" onclick="openModal('modal-add-note')">+ Tulis Catatan Baru</a>
+        </div>
+        <div id="recent-notes-list"></div>
+      </section>
+
+      <!-- PERPUSTAKAAN VIEW -->
+      <section id="page-library" class="page-section">
+        <div class="section-header">
+          <div class="section-title">📚 Perpustakaan Pink</div>
+          <button class="btn-action-chip" onclick="openModal('modal-add-book')">+ Tambah Buku</button>
+        </div>
+        <div id="full-book-list"></div>
+      </section>
+
+      <!-- JURNAL VIEW -->
+      <section id="page-notes" class="page-section">
+        <div class="section-header">
+          <div class="section-title">💌 Jurnal & Catatan Baca</div>
+          <button class="btn-action-chip" onclick="openModal('modal-add-note')">+ Tulis Catatan</button>
+        </div>
+        <div id="full-notes-list"></div>
+      </section>
+
+      <!-- QUOTES VIEW -->
+      <section id="page-quotes" class="page-section">
+        <div class="section-header">
+          <div class="section-title">✨ Kutipan Impian & Inspirasi</div>
+          <button class="btn-action-chip" onclick="openModal('modal-add-quote')">+ Tambah Quote</button>
+        </div>
+        <div id="full-quotes-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL: TAMBAH / EDIT BUKU -->
+  <div class="modal" id="modal-add-book">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="book-modal-title">🎀 Tambah Buku Baru</h3>
+        <button class="close-modal" onclick="closeModal('modal-add-book')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form onsubmit="saveBook(event)">
+        <input type="hidden" id="ib-id">
+        <div class="form-group"><label>Judul Buku 📖</label><input type="text" id="ib-title" class="form-control" required placeholder="Judul buku"></div>
+        <div class="form-group"><label>Penulis ✍️</label><input type="text" id="ib-author" class="form-control" required placeholder="Nama penulis"></div>
+        <div style="display:flex; gap:10px;">
+          <div class="form-group" style="flex:1;"><label>Hal. Saat Ini 📍</label><input type="number" id="ib-current" class="form-control" value="0" min="0"></div>
+          <div class="form-group" style="flex:1;"><label>Total Hal. 📚</label><input type="number" id="ib-total" class="form-control" required placeholder="300"></div>
+        </div>
+        <div class="form-group">
+          <label>Status Membaca 📌</label>
+          <select id="ib-status" class="form-control">
+            <option value="belum">Belum Baca (0 / 0%) 💤</option>
+            <option value="sedang">Sedang Baca 📖</option>
+            <option value="selesai">Selesai Dibaca 💖</option>
+          </select>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <div class="form-group" style="flex:1;">
+            <label>Rating Bintang ⭐</label>
+            <select id="ib-rating" class="form-control">
+              <option value="0">Pilih Rating</option>
+              <option value="1">⭐ 1</option>
+              <option value="2">⭐⭐ 2</option>
+              <option value="3">⭐⭐⭐ 3</option>
+              <option value="4">⭐⭐⭐⭐ 4</option>
+              <option value="5">⭐⭐⭐⭐⭐ 5</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label>Vibe / Kesan 🍓</label>
+            <select id="ib-vibe" class="form-control">
+              <option value="amazing">Amazing 🌟</option>
+              <option value="good">Good 💖</option>
+              <option value="bad">Bad 🥀</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Komentar / Review 💬</label>
+          <textarea id="ib-review" class="form-control" style="min-height:70px;" placeholder="Tulis komentar atau ulasan singkat..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary-full">Simpan Buku 💖</button>
+      </form>
     </div>
-    <div class="nav-item active" data-page="dashboard" onclick="go('dashboard')">💖 Dashboard & Progress</div>
-    <div class="nav-item" data-page="library" onclick="go('library')">📚 Perpustakaan Buku</div>
-    <div class="nav-item" data-page="journals" onclick="go('journals')">📰 Jurnal Buku</div>
-    <div class="nav-item" data-page="notes" onclick="go('notes')">💌 Catatan & Jurnal Teks</div>
-    <div class="nav-item" data-page="quotes" onclick="go('quotes')">✨ Kutipan Impian</div>
   </div>
-  <div class="sidebar-buttons">
-    <button class="btn" onclick="openForm('book')">🎀 Tambah Buku</button>
-    <button class="btn green" onclick="openForm('journal')">📰 Tambah Jurnal</button>
-    <button class="btn" onclick="openForm('note')">💌 Tambah Catatan</button>
-    <button class="btn" onclick="openForm('quote')">✨ Tambah Quote</button>
-    <button class="btn light" onclick="exportData()">⬇ Ekspor Data</button>
-    <button class="btn light" onclick="document.getElementById('importFile').click()">⬆ Impor Data</button>
-    <input type="file" id="importFile" accept=".json" hidden onchange="importData(event)">
-  </div>
-</aside>
 
-<main class="container">
-
-<section class="page active" id="dashboard">
-  <div class="hero">
-    <span class="tag">✨ YOUR LITTLE READING SPACE ✨</span>
-    <h1>Every page makes you shine! 🍓</h1>
-    <p>One book, one chapter, one beautiful memory at a time.</p>
-    <div style="font-size:38px;margin-top:12px">🐰 🎀 🌷</div>
-  </div>
-  <div class="stats">
-    <div class="stat"><span class="emoji">📚</span><p>TOTAL KOLEKSI</p><strong id="total">0</strong></div>
-    <div class="stat"><span class="emoji">💖</span><p>BUKU SELESAI</p><strong id="completed">0</strong></div>
-    <div class="stat"><span class="emoji">📖</span><p>HALAMAN DIBACA</p><strong id="pages">0</strong></div>
-    <div class="stat"><span class="emoji">✨</span><p>QUOTE FAVORIT</p><strong id="favorites">0</strong></div>
-  </div>
-  <div class="heading"><h2>🍓 Sedang Dibaca</h2><button class="chip" onclick="go('library')">Lihat semua →</button></div>
-  <div id="dashboardBooks"></div>
-  <div class="heading"><h2>💌 Catatan Terbaru</h2><button class="chip" onclick="openForm('note')">+ Tulis</button></div>
-  <div id="dashboardNotes"></div>
-</section>
-
-<section class="page" id="library">
-  <div class="heading"><h2>📚 Perpustakaan Buku</h2><button class="btn small" onclick="openForm('book')">+ Buku</button></div>
-  <div class="toolbar">
-    <input id="bookSearch" placeholder="Cari judul atau penulis..." oninput="render()">
-    <select id="bookFilter" onchange="render()">
-      <option value="all">Semua</option>
-      <option value="belum">Belum baca</option>
-      <option value="sedang">Sedang baca</option>
-      <option value="selesai">Selesai</option>
-    </select>
-  </div>
-  <div id="bookList"></div>
-</section>
-
-<section class="page" id="journals">
-  <div class="heading"><h2>📰 Jurnal Buku</h2><button class="btn small" onclick="openForm('journal')">+ Jurnal</button></div>
-  <div id="journalList"></div>
-</section>
-
-<section class="page" id="notes">
-  <div class="heading"><h2>💌 Catatan Pribadi</h2><button class="btn small" onclick="openForm('note')">+ Catatan</button></div>
-  <div id="noteList"></div>
-</section>
-
-<section class="page" id="quotes">
-  <div class="heading"><h2>✨ Kutipan Impian</h2><button class="btn small" onclick="openForm('quote')">+ Quote</button></div>
-  <div id="quoteList"></div>
-</section>
-
-<div class="footer">Made with love ♡ Lucky Vicky Journal 🎀</div>
-</main>
-
-<div class="modal" id="modal">
- <div class="modal-box">
-  <div class="modal-head">
-   <h2 id="modalTitle">Tambah Data</h2>
-   <button class="close" onclick="closeForm()">×</button>
-  </div>
-  <form id="dataForm" onsubmit="saveForm(event)">
-   <div id="formFields"></div>
-   <button class="btn" style="width:100%;margin-top:8px" type="submit">💗 Simpan</button>
-  </form>
- </div>
-</div>
-
-<script>
-const KEY='luckyVickyJournalV2';
-let data=JSON.parse(localStorage.getItem(KEY)||'{"books":[],"journals":[],"notes":[],"quotes":[]}');
-let currentType='';
-let editingId=null;
-
-function persist(){
- localStorage.setItem(KEY,JSON.stringify(data));
- render();
-}
-function id(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
-function esc(s){
- return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-function toggleMenu(){
- document.getElementById('sidebar').classList.toggle('open');
- document.getElementById('overlay').classList.toggle('show');
-}
-function go(page){
- document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
- document.getElementById(page).classList.add('active');
- document.querySelectorAll('.nav-item').forEach(x=>x.classList.toggle('active',x.dataset.page===page));
- document.getElementById('sidebar').classList.remove('open');
- document.getElementById('overlay').classList.remove('show');
- render();
- window.scrollTo(0,0);
-}
-function openForm(type,item=null){
- currentType=type;
- editingId=item?.id||null;
- const fields=document.getElementById('formFields');
- const titles={book:'🎀 Buku Baru',journal:'📰 Jurnal Buku',note:'💌 Catatan Baru',quote:'✨ Quote Baru'};
- document.getElementById('modalTitle').textContent=titles[type];
- let f='';
- const val=(key)=>esc(item?.[key]??'');
- if(type==='book'){
- f=`
- <div class="field"><label>Judul Buku</label><input name="title" required value="${val('title')}"></div>
- <div class="field"><label>Penulis</label><input name="author" required value="${val('author')}"></div>
- <div class="field"><label>Genre</label><input name="genre" placeholder="Romance, Fiction, Self-help..." value="${val('genre')}"></div>
- <div class="field"><label>Total Halaman</label><input type="number" name="total" min="1" required value="${val('total')||''}"></div>
- <div class="field"><label>Halaman Saat Ini</label><input type="number" name="current" min="0" value="${val('current')||0}"></div>
- <div class="field"><label>Status</label><select name="status">
- ${['belum','sedang','selesai'].map(s=>`<option value="${s}" ${item?.status===s?'selected':''}>${{belum:'Belum baca',sedang:'Sedang baca',selesai:'Selesai dibaca'}[s]}</option>`).join('')}
- </select></div>
- <div class="field"><label>Rating (0–5)</label><input type="number" name="rating" min="0" max="5" step=".5" value="${val('rating')||0}"></div>
- <div class="field"><label>Tanggal mulai</label><input type="date" name="start" value="${val('start')}"></div>
- <div class="field"><label>Tanggal selesai</label><input type="date" name="finish" value="${val('finish')}"></div>`;
- }
- if(type==='journal'){
- f=`<div class="field"><label>Judul review</label><input name="title" required value="${val('title')}"></div>
- <div class="field"><label>Buku / Artikel</label><input name="book" value="${val('book')}"></div>
- <div class="field"><label>Tanggal</label><input type="date" name="date" value="${val('date')||new Date().toISOString().slice(0,10)}"></div>
- <div class="field"><label>Rating</label><input type="number" name="rating" min="0" max="5" step=".5" value="${val('rating')||0}"></div>
- <div class="field"><label>Review / Pendapat</label><textarea name="content" required>${val('content')}</textarea></div>`;
- }
- if(type==='note'){
- f=`<div class="field"><label>Judul catatan</label><input name="title" required value="${val('title')}"></div>
- <div class="field"><label>Kategori</label><select name="category">
- ${['Jurnal harian','Refleksi','Ide','Target','Catatan buku','Lainnya'].map(x=>`<option ${item?.category===x?'selected':''}>${x}</option>`).join('')}
- </select></div>
- <div class="field"><label>Tanggal</label><input type="date" name="date" value="${val('date')||new Date().toISOString().slice(0,10)}"></div>
- <div class="field"><label>Isi catatan</label><textarea name="content" required>${val('content')}</textarea></div>`;
- }
- if(type==='quote'){
- f=`<div class="field"><label>Kutipan</label><textarea name="content" required>${val('content')}</textarea></div>
- <div class="field"><label>Sumber / Penulis</label><input name="author" value="${val('author')}"></div>
- <div class="field"><label>Kategori</label><input name="category" placeholder="Motivasi, kehidupan..." value="${val('category')}"></div>`;
- }
- fields.innerHTML=f;
- document.getElementById('modal').classList.add('show');
-}
-function closeForm(){document.getElementById('modal').classList.remove('show')}
-function saveForm(e){
- e.preventDefault();
- const obj=Object.fromEntries(new FormData(e.target).entries());
- if(currentType==='book'){
- obj.total=Math.max(1,Number(obj.total));
- obj.current=Math.min(obj.total,Math.max(0,Number(obj.current)));
- obj.rating=Math.min(5,Math.max(0,Number(obj.rating)));
- if(obj.current>=obj.total)obj.status='selesai';
- if(obj.status==='selesai')obj.current=obj.total;
- }
- if(obj.rating!==undefined)obj.rating=Number(obj.rating);
- const arr=data[currentType+'s'];
- if(editingId){
- const i=arr.findIndex(x=>x.id===editingId);
- if(i>=0)arr[i]={...arr[i],...obj};
- }else{
- arr.unshift({id:id(),...obj,created:new Date().toISOString()});
- }
- closeForm();persist();
-}
-function removeItem(type,itemId){
- if(!confirm('Yakin ingin menghapus data ini?'))return;
- data[type+'s']=data[type+'s'].filter(x=>x.id!==itemId);
- persist();
-}
-function editItem(type,itemId){
- const item=data[type+'s'].find(x=>x.id===itemId);
- if(item)openForm(type,item);
-}
-function progress(b){
- return Math.min(100,Math.round((Number(b.current)/Math.max(1,Number(b.total)))*100));
-}
-function empty(msg){return `<div class="card empty">${msg}</div>`}
-function bookCard(b){
- const p=progress(b);
- return `<div class="card">
- <div class="book">
-  <div class="cover">📖</div>
-  <div class="details">
-   <h3>${esc(b.title)}</h3>
-   <p>${esc(b.author)} · ${esc(b.genre||'Tanpa genre')}</p>
-   <span class="badge">${{belum:'💤 Belum baca',sedang:'📖 Sedang baca',selesai:'💖 Selesai'}[b.status]}</span>
-   <div class="progress"><div style="width:${p}%"></div></div>
-   <div class="meta"><span>${b.current} / ${b.total} halaman</span><strong>${p}%</strong></div>
-   <p>⭐ ${b.rating||0}/5</p>
-  </div>
- </div>
- <div class="actions">
-  <button class="chip" onclick="updateProgress('${b.id}')">+ Update halaman</button>
-  <button class="chip" onclick="editItem('book','${b.id}')">✏️ Edit</button>
-  <button class="chip delete" onclick="removeItem('book','${b.id}')">Hapus</button>
- </div></div>`;
-}
-function updateProgress(bookId){
- const b=data.books.find(x=>x.id===bookId);
- if(!b)return;
- const answer=prompt(`Halaman terakhir dibaca (total ${b.total} halaman):`,b.current);
- if(answer===null)return;
- if(answer.trim()===''||!Number.isFinite(Number(answer))||Number(answer)<0||Number(answer)>b.total){
- alert('Masukkan nomor halaman yang valid.');return;
- }
- b.current=Number(answer);
- b.status=b.current===b.total?'selesai':b.current>0?'sedang':'belum';
- persist();
-}
-function journalCard(x){
- return `<div class="card"><div class="note-meta"></div>
- <div class="note-title">${esc(x.title)}</div>
- <p style="font-size:11px;color:var(--pink);margin-bottom:9px">${esc(x.book||'Tanpa judul buku')} · ${esc(x.date||'')} · ⭐ ${x.rating||0}/5</p>
- <div class="note-body">${esc(x.content)}</div>
- <div class="actions"><button class="chip" onclick="editItem('journal','${x.id}')">✏️ Edit</button><button class="chip delete" onclick="removeItem('journal','${x.id}')">Hapus</button></div></div>`;
-}
-function noteCard(x){
- return `<div class="card"><div class="meta"><span>${esc(x.category)}</span><span>${esc(x.date)}</span></div>
- <div class="note-title" style="margin-top:9px">${esc(x.title)}</div>
- <div class="note-body">${esc(x.content)}</div>
- <div class="actions"><button class="chip" onclick="editItem('note','${x.id}')">✏️ Edit</button><button class="chip delete" onclick="removeItem('note','${x.id}')">Hapus</button></div></div>`;
-}
-function quoteCard(x){
- return `<div class="card"><div class="quote">“${esc(x.content)}”</div>
- <div class="quote-author">— ${esc(x.author||'Unknown')}</div>
- <div class="meta" style="margin-top:10px"><span>${esc(x.category||'Inspirasi')}</span><span></span></div>
- <div class="actions"><button class="chip" onclick="toggleFavorite('${x.id}')">${x.favorite?'💗 Favorit':'♡ Favoritkan'}</button>
- <button class="chip" onclick="editItem('quote','${x.id}')">✏️ Edit</button>
- <button class="chip delete" onclick="removeItem('quote','${x.id}')">Hapus</button></div></div>`;
-}
-function toggleFavorite(qid){
- const q=data.quotes.find(x=>x.id===qid);
- if(q){q.favorite=!q.favorite;persist()}
-}
-function render(){
- const b=data.books;
- document.getElementById('total').textContent=b.length;
- document.getElementById('completed').textContent=b.filter(x=>x.status==='selesai').length;
- document.getElementById('pages').textContent=b.reduce((s,x)=>s+Number(x.current||0),0);
- document.getElementById('favorites').textContent=data.quotes.filter(x=>x.favorite).length;
- const search=(document.getElementById('bookSearch')?.value||'').toLowerCase();
- const filter=document.getElementById('bookFilter')?.value||'all';
- const filtered=b.filter(x=>(x.title+' '+x.author).toLowerCase().includes(search)&&(filter==='all'||x.status===filter));
- document.getElementById('bookList').innerHTML=filtered.map(bookCard).join('')||empty('Belum ada buku. Yuk tambahkan buku pertamamu! 📚');
- document.getElementById('dashboardBooks').innerHTML=b.slice(0,3).map(bookCard).join('')||empty('Belum ada buku yang ditambahkan.');
- document.getElementById('journalList').innerHTML=data.journals.map(journalCard).join('')||empty('Belum ada jurnal buku. 📰');
- document.getElementById('noteList').innerHTML=data.np full">
+  <!-- MODAL: CATATAN -->
+  <div class="modal" id="modal-add-note">
+ p full">
                         <label for="title">Judul Buku / Jurnal Ilmiah</label>
                         <input type="text" id="title" required placeholder="Contoh: The Psychology of Money atau Jurnal Akuntansi...">
                     </div>
