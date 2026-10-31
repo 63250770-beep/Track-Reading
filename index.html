@@ -156,7 +156,7 @@
       font-size: 1.2rem;
     }
 
-    .profile-info h4 { font-size: 0.95rem; color: var(--text-main); font-weight: 700; }
+    .profile-info h4 { font-size: 0.95rem; color: var(--text-main); font-weight: 700; word-break: break-all; }
     .profile-info p { font-size: 0.75rem; color: var(--primary-pink); font-weight: 600; }
 
     .nav-menu { display: flex; flex-direction: column; gap: 8px; }
@@ -308,12 +308,12 @@
   <div id="auth-screen">
     <div class="auth-card">
       <h2 class="auth-title">🎀 Lucky Vicky Journal</h2>
-      <p class="auth-subtitle">Masukkan nama atau ID akun kamu (misal: <b>Fitria</b> atau <b>Teman</b>) biar progres bacaan kalian terpisah sendiri-sendiri! ✨</p>
+      <p class="auth-subtitle">Masukkan nama atau email akun kamu (misal: <b>fitria@gmail.com</b>) agar progres bacaanmu tersimpan sendiri & berbeda dari pengguna lain! ✨</p>
       
       <form onsubmit="loginUser(event)">
         <div class="form-group">
-          <label>Nama Pengguna / Akun 🌸</label>
-          <input type="text" id="input-username" class="form-control" required placeholder="Contoh: Fitria Wulan">
+          <label>Email atau Nama Akun 🌸</label>
+          <input type="text" id="input-username" class="form-control" required placeholder="Contoh: fitria@gmail.com">
         </div>
         <button type="submit" class="btn-primary-full">Masuk ke Journal 💖</button>
       </form>
@@ -509,7 +509,6 @@
           appData = { books: [], notes: [], quotes: [] };
         }
       } else {
-        // Data default kalau akun baru pertama kali dibuat
         appData = {
           books: [{ id: 1, title: 'The Power of Positive Thinking', author: 'Norman Vincent Peale', current: 150, total: 280 }],
           notes: [{ id: 1, book: 'The Power of Positive Thinking', title: 'Lucky Vicky Mindset 🎀', content: 'Semua hal terjadi untuk kebaikan kita!', date: '31 Okt' }],
