@@ -21,7 +21,6 @@
       --border-pink: #FFD0DC;
       --text-main: #6B1D38;
       --text-sub: #A36579;
-      --shadow-pink: rgba(233, 59, 103, 0.08);
       --shadow-card: 0 8px 24px rgba(233, 59, 103, 0.08);
     }
 
@@ -39,7 +38,7 @@
       background-size: 18px 18px;
       color: var(--text-main);
       min-height: 100vh;
-      padding-bottom: 50px;
+      padding-bottom: 60px;
     }
 
     /* TOP NAVBAR */
@@ -77,10 +76,7 @@
     /* SIDEBAR DRAWER */
     .sidebar-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0, 0, 0, 0.25);
       z-index: 99;
       opacity: 0;
@@ -95,10 +91,8 @@
 
     .sidebar {
       position: fixed;
-      top: 0;
-      left: -300px;
-      width: 280px;
-      height: 100%;
+      top: 0; left: -300px;
+      width: 280px; height: 100%;
       background: #FFF;
       z-index: 100;
       transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -109,9 +103,7 @@
       box-shadow: 5px 0 25px rgba(0,0,0,0.1);
     }
 
-    .sidebar.active {
-      left: 0;
-    }
+    .sidebar.active { left: 0; }
 
     .profile-card {
       background: var(--bg-pink);
@@ -125,8 +117,7 @@
     }
 
     .profile-avatar {
-      width: 42px;
-      height: 42px;
+      width: 42px; height: 42px;
       background: #FFE0E9;
       border-radius: 50%;
       display: flex;
@@ -135,23 +126,10 @@
       font-size: 1.2rem;
     }
 
-    .profile-info h4 {
-      font-size: 0.95rem;
-      color: var(--text-main);
-      font-weight: 700;
-    }
+    .profile-info h4 { font-size: 0.95rem; color: var(--text-main); font-weight: 700; }
+    .profile-info p { font-size: 0.78rem; color: var(--primary-pink); font-weight: 600; }
 
-    .profile-info p {
-      font-size: 0.78rem;
-      color: var(--primary-pink);
-      font-weight: 600;
-    }
-
-    .nav-menu {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .nav-menu { display: flex; flex-direction: column; gap: 8px; }
 
     .nav-item {
       display: flex;
@@ -162,25 +140,16 @@
       font-size: 0.92rem;
       font-weight: 700;
       color: var(--text-main);
-      text-decoration: none;
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
-    .nav-item.active {
+    .nav-item.active, .nav-item:hover {
       background: var(--light-pink);
       color: var(--primary-pink);
     }
 
-    .nav-item:hover {
-      background: var(--bg-pink);
-    }
-
-    .sidebar-footer {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .sidebar-footer { display: flex; flex-direction: column; gap: 10px; }
 
     .btn-add-sidebar {
       background: var(--primary-pink);
@@ -198,29 +167,23 @@
       box-shadow: 0 4px 12px rgba(233, 59, 103, 0.25);
     }
 
-    .sidebar-actions {
-      display: flex;
-      justify-content: space-between;
-      padding: 0 4px;
-    }
-
+    .sidebar-actions { display: flex; justify-content: space-between; padding: 0 4px; }
     .btn-link-action {
-      background: none;
-      border: none;
+      background: none; border: none;
       color: var(--primary-pink);
-      font-size: 0.82rem;
-      font-weight: 700;
+      font-size: 0.82rem; font-weight: 700;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      display: flex; align-items: center; gap: 4px;
     }
 
-    /* MAIN CONTAINER */
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 16px;
+    /* CONTAINER & PAGES */
+    .container { max-width: 600px; margin: 0 auto; padding: 16px; }
+    .page-section { display: none; }
+    .page-section.active { display: block; animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* HERO BANNER */
@@ -244,7 +207,6 @@
       padding: 4px 14px;
       font-size: 0.78rem;
       font-weight: 700;
-      color: var(--text-main);
       margin-bottom: 14px;
     }
 
@@ -257,20 +219,8 @@
       margin-bottom: 12px;
     }
 
-    .hero-desc {
-      font-size: 0.82rem;
-      color: var(--text-sub);
-      line-height: 1.5;
-    }
-
-    .hero-bunny {
-      position: absolute;
-      right: 15px;
-      bottom: -15px;
-      font-size: 5rem;
-      opacity: 0.15;
-      pointer-events: none;
-    }
+    .hero-desc { font-size: 0.82rem; color: var(--text-sub); line-height: 1.5; }
+    .hero-bunny { position: absolute; right: 15px; bottom: -15px; font-size: 5rem; opacity: 0.15; pointer-events: none; }
 
     /* STATS GRID */
     .stats-grid {
@@ -292,36 +242,20 @@
     }
 
     .stat-icon {
-      width: 44px;
-      height: 44px;
+      width: 44px; height: 44px;
       border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
     }
-
     .stat-icon.pink { background: #FFE0E9; color: var(--primary-pink); }
     .stat-icon.green { background: #E2F8EE; color: #20C997; }
     .stat-icon.yellow { background: #FFF4D9; color: #FFC107; }
     .stat-icon.rose { background: #FFE8EC; color: #E93B67; }
 
-    .stat-info .label {
-      font-size: 0.68rem;
-      font-weight: 800;
-      color: var(--text-sub);
-      letter-spacing: 0.5px;
-      margin-bottom: 2px;
-    }
+    .stat-info .label { font-size: 0.68rem; font-weight: 800; color: var(--text-sub); margin-bottom: 2px; }
+    .stat-info .value { font-size: 1.35rem; font-weight: 800; color: var(--text-main); }
 
-    .stat-info .value {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    /* SECTION TITLE */
+    /* SECTION HEADER */
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -334,141 +268,84 @@
       font-size: 1.2rem;
       font-weight: 700;
       color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      display: flex; align-items: center; gap: 6px;
     }
 
     .section-link {
       font-size: 0.8rem;
       font-weight: 700;
       color: var(--primary-pink);
-      text-decoration: none;
       cursor: pointer;
     }
 
-    /* CARD ITEM BUKU */
-    .book-card-item {
+    /* CARD ITEM BUKU & CATATAN */
+    .card-item {
       background: #FFF;
       border: 1.5px solid var(--border-pink);
       border-radius: 20px;
       padding: 16px;
       box-shadow: var(--shadow-card);
-      margin-bottom: 24px;
-      display: flex;
-      gap: 16px;
-      align-items: center;
+      margin-bottom: 16px;
+      position: relative;
     }
 
+    .book-item-layout { display: flex; gap: 16px; align-items: center; }
     .book-cover-placeholder {
-      width: 55px;
-      height: 70px;
+      width: 55px; height: 70px;
       background: var(--bg-pink);
       border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      color: var(--primary-pink);
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: var(--primary-pink); flex-shrink: 0;
     }
 
-    .book-details {
-      flex: 1;
-    }
+    .book-details { flex: 1; }
+    .book-details h4 { font-size: 0.98rem; font-weight: 800; color: var(--text-main); margin-bottom: 2px; }
+    .book-details p { font-size: 0.78rem; color: var(--text-sub); margin-bottom: 10px; }
 
-    .book-details h4 {
-      font-size: 0.98rem;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 2px;
-    }
+    .progress-bar { height: 8px; background: var(--light-pink); border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #FF7597, var(--primary-pink)); border-radius: 4px; }
+    .progress-meta { display: flex; justify-content: space-between; align-items: center; }
+    .progress-text { font-size: 0.75rem; font-weight: 700; color: var(--text-sub); }
 
-    .book-details p {
-      font-size: 0.78rem;
-      color: var(--text-sub);
-      margin-bottom: 10px;
-    }
-
-    .progress-bar {
-      height: 8px;
-      background: var(--light-pink);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 8px;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #FF7597, var(--primary-pink));
-      border-radius: 4px;
-    }
-
-    .progress-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .progress-text {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-sub);
-    }
-
-    .btn-update-chip {
+    .btn-action-chip {
       background: #FFF0F4;
       border: 1px solid var(--border-pink);
       color: var(--primary-pink);
       border-radius: 12px;
-      padding: 3px 10px;
+      padding: 4px 10px;
       font-size: 0.72rem;
       font-weight: 700;
       cursor: pointer;
     }
 
-    /* CARD CATATAN */
-    .note-card-item {
-      background: #FFF;
-      border: 1.5px solid var(--border-pink);
-      border-radius: 20px;
-      padding: 16px 18px;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 12px;
+    .btn-delete-chip {
+      color: #E55039;
+      background: #FFEAEA;
+      border-color: #FAD2D2;
+      margin-left: 6px;
     }
 
-    .note-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.75rem;
-      color: var(--text-sub);
-      margin-bottom: 6px;
-    }
+    /* NOTE & QUOTE CARDS */
+    .note-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-sub); margin-bottom: 6px; }
+    .note-book-tag { color: var(--primary-pink); font-weight: 700; }
+    .note-title { font-weight: 800; font-size: 0.98rem; color: var(--text-main); margin-bottom: 6px; }
+    .note-content { font-size: 0.86rem; color: var(--text-sub); line-height: 1.5; }
 
-    .note-book-tag {
-      color: var(--primary-pink);
+    .quote-text { font-style: italic; font-size: 1rem; color: var(--text-main); margin-bottom: 8px; line-height: 1.5; }
+    .quote-source { font-size: 0.85rem; font-weight: 700; color: var(--primary-pink); text-align: right; }
+
+    /* GENERAL BUTTON & FLOATING ADD */
+    .btn-primary-full {
+      width: 100%;
+      background: var(--primary-pink);
+      color: #FFF;
+      border: none;
+      padding: 12px;
+      border-radius: 16px;
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .note-title {
-      font-weight: 800;
-      font-size: 0.95rem;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-
-    .note-snippet {
-      font-size: 0.82rem;
-      color: var(--text-sub);
-      line-height: 1.45;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      cursor: pointer;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(233,59,103,0.2);
     }
 
     /* MODAL POPUP */
@@ -482,9 +359,7 @@
       align-items: center;
       padding: 16px;
     }
-
     .modal.active { display: flex; }
-
     .modal-content {
       background: #FFF;
       border-radius: 24px;
@@ -494,26 +369,9 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       border: 2px solid var(--border-pink);
     }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .modal-header h3 {
-      font-family: 'Fredoka', sans-serif;
-      color: var(--primary-pink);
-    }
-
-    .close-modal {
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-      color: var(--text-sub);
-      cursor: pointer;
-    }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .modal-header h3 { font-family: 'Fredoka', sans-serif; color: var(--primary-pink); }
+    .close-modal { background: none; border: none; font-size: 1.2rem; color: var(--text-sub); cursor: pointer; }
 
     .form-group { margin-bottom: 14px; }
     .form-group label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
@@ -526,35 +384,18 @@
       font-size: 0.9rem;
     }
     .form-control:focus { border-color: var(--primary-pink); }
-
-    .btn-submit {
-      width: 100%;
-      background: var(--primary-pink);
-      color: #FFF;
-      border: none;
-      padding: 12px;
-      border-radius: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 8px;
-    }
   </style>
 </head>
 <body>
 
   <!-- TOP NAVBAR -->
   <nav class="navbar">
-    <div class="nav-brand">
-      🎀 Lucky Vicky Journal
-    </div>
-    <button class="menu-toggle" onclick="toggleSidebar()">
-      <i class="fa-solid fa-bars"></i>
-    </button>
+    <div class="nav-brand">🎀 Lucky Vicky Journal</div>
+    <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
   </nav>
 
-  <!-- SIDEBAR OVERLAY & DRAWER -->
+  <!-- SIDEBAR DRAWER -->
   <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
-  
   <aside class="sidebar" id="sidebar">
     <div>
       <div class="profile-card">
@@ -566,25 +407,15 @@
       </div>
 
       <div class="nav-menu">
-        <div class="nav-item active" onclick="switchPage('dashboard')">
-          💖 Dashboard & Progress
-        </div>
-        <div class="nav-item" onclick="switchPage('library')">
-          📚 Perpustakaan Pink
-        </div>
-        <div class="nav-item" onclick="switchPage('notes')">
-          💌 Jurnal & Catatan
-        </div>
-        <div class="nav-item" onclick="switchPage('quotes')">
-          ✨ Kutipan Impian
-        </div>
+        <div class="nav-item active" id="nav-dashboard" onclick="switchPage('dashboard')">💖 Dashboard & Progress</div>
+        <div class="nav-item" id="nav-library" onclick="switchPage('library')">📚 Perpustakaan Pink</div>
+        <div class="nav-item" id="nav-notes" onclick="switchPage('notes')">💌 Jurnal & Catatan</div>
+        <div class="nav-item" id="nav-quotes" onclick="switchPage('quotes')">✨ Kutipan Impian</div>
       </div>
     </div>
 
     <div class="sidebar-footer">
-      <button class="btn-add-sidebar" onclick="openAddBookModal()">
-        🎀 Tambah Buku
-      </button>
+      <button class="btn-add-sidebar" onclick="toggleSidebar(); openModal('modal-add-book')">🎀 Tambah Buku</button>
       <div class="sidebar-actions">
         <button class="btn-link-action" onclick="exportData()"><i class="fa-solid fa-cloud-arrow-down"></i> Ekspor</button>
         <button class="btn-link-action" onclick="document.getElementById('import-file').click()"><i class="fa-solid fa-cloud-arrow-up"></i> Impor</button>
@@ -593,82 +424,80 @@
     </div>
   </aside>
 
-  <!-- MAIN CONTENT CONTAINER -->
-  <main class="container" id="main-content">
+  <!-- MAIN CONTAINER -->
+  <main class="container">
     
-    <!-- DASHBOARD VIEW -->
-    <div id="view-dashboard">
-      <!-- HERO BANNER -->
-      <section class="hero-banner">
+    <!-- 1. DASHBOARD VIEW -->
+    <section id="page-dashboard" class="page-section active">
+      <div class="hero-banner">
         <span class="hero-badge">✨ Lucky Vicky Reading Space ✨</span>
         <h2 class="hero-title">"Setiap lembar buku membuatku makin bersinar!" 🍓</h2>
         <p class="hero-desc">Catat semua petualangan membaca kamu dengan indah. Data tersimpan secara otomatis!</p>
         <div class="hero-bunny">🐰</div>
-      </section>
+      </div>
 
-      <!-- STATS GRID -->
-      <section class="stats-grid">
+      <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-icon pink"><i class="fa-solid fa-book-open"></i></div>
-          <div class="stat-info">
-            <div class="label">TOTAL KOLEKSI</div>
-            <div class="value" id="stat-total">0</div>
-          </div>
+          <div class="stat-info"><div class="label">TOTAL KOLEKSI</div><div class="value" id="stat-total">0</div></div>
         </div>
-
         <div class="stat-card">
           <div class="stat-icon green"><i class="fa-solid fa-sparkles"></i></div>
-          <div class="stat-info">
-            <div class="label">SELESAI DIBACA</div>
-            <div class="value" id="stat-completed">0</div>
-          </div>
+          <div class="stat-info"><div class="label">SELESAI DIBACA</div><div class="value" id="stat-completed">0</div></div>
         </div>
-
         <div class="stat-card">
           <div class="stat-icon yellow"><i class="fa-solid fa-file-lines"></i></div>
-          <div class="stat-info">
-            <div class="label">HALAMAN DIBACA</div>
-            <div class="value" id="stat-pages">0</div>
-          </div>
+          <div class="stat-info"><div class="label">HALAMAN DIBACA</div><div class="value" id="stat-pages">0</div></div>
         </div>
-
         <div class="stat-card">
           <div class="stat-icon rose"><i class="fa-solid fa-envelope-heart"></i></div>
-          <div class="stat-info">
-            <div class="label">KUTIPAN FAVORIT</div>
-            <div class="value" id="stat-quotes">0</div>
-          </div>
+          <div class="stat-info"><div class="label">KUTIPAN FAVORIT</div><div class="value" id="stat-quotes">0</div></div>
         </div>
-      </section>
+      </div>
 
-      <!-- CURRENT READING -->
-      <section>
-        <div class="section-header">
-          <div class="section-title">🍓 Sedang Dibaca Cantik</div>
-          <a class="section-link" onclick="switchPage('library')">Lihat Semua Perpustakaan →</a>
-        </div>
+      <div class="section-header">
+        <div class="section-title">🍓 Sedang Dibaca Cantik</div>
+        <a class="section-link" onclick="switchPage('library')">Lihat Semua Perpustakaan →</a>
+      </div>
+      <div id="reading-now-list"></div>
 
-        <div id="reading-now-list">
-          <!-- Dynamic Book Card -->
-        </div>
-      </section>
+      <div class="section-header" style="margin-top:20px;">
+        <div class="section-title">💌 Catatan Terbaru</div>
+        <a class="section-link" onclick="openModal('modal-add-note')">+ Tulis Catatan Baru</a>
+      </div>
+      <div id="recent-notes-list"></div>
+    </section>
 
-      <!-- RECENT NOTES -->
-      <section>
-        <div class="section-header">
-          <div class="section-title">💌 Catatan Terbaru</div>
-          <a class="section-link" onclick="openAddNoteModal()">+ Tulis Catatan Baru</a>
-        </div>
+    <!-- 2. PERPUSTAKAAN VIEW -->
+    <section id="page-library" class="page-section">
+      <div class="section-header">
+        <div class="section-title">📚 Perpustakaan Pink</div>
+        <button class="btn-action-chip" onclick="openModal('modal-add-book')">+ Tambah Buku</button>
+      </div>
+      <div id="full-book-list"></div>
+    </section>
 
-        <div id="recent-notes-list">
-          <!-- Dynamic Notes Card -->
-        </div>
-      </section>
-    </div>
+    <!-- 3. JURNAL & CATATAN VIEW -->
+    <section id="page-notes" class="page-section">
+      <div class="section-header">
+        <div class="section-title">💌 Jurnal & Catatan Baca</div>
+        <button class="btn-action-chip" onclick="openModal('modal-add-note')">+ Tulis Catatan</button>
+      </div>
+      <div id="full-notes-list"></div>
+    </section>
+
+    <!-- 4. QUOTES VIEW -->
+    <section id="page-quotes" class="page-section">
+      <div class="section-header">
+        <div class="section-title">✨ Kutipan Impian & Inspirasi</div>
+        <button class="btn-action-chip" onclick="openModal('modal-add-quote')">+ Tambah Quote</button>
+      </div>
+      <div id="full-quotes-list"></div>
+    </section>
 
   </main>
 
-  <!-- MODAL TAMBAH BUKU -->
+  <!-- MODAL: TAMBAH BUKU -->
   <div class="modal" id="modal-add-book">
     <div class="modal-content">
       <div class="modal-header">
@@ -676,30 +505,18 @@
         <button class="close-modal" onclick="closeModal('modal-add-book')"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <form onsubmit="saveBook(event)">
-        <div class="form-group">
-          <label>Judul Buku 📖</label>
-          <input type="text" id="input-book-title" class="form-control" required placeholder="Contoh: The Power of Positive Thinking">
-        </div>
-        <div class="form-group">
-          <label>Penulis ✍️</label>
-          <input type="text" id="input-book-author" class="form-control" required placeholder="Contoh: Norman Vincent Peale">
-        </div>
+        <div class="form-group"><label>Judul Buku 📖</label><input type="text" id="ib-title" class="form-control" required placeholder="Contoh: The Power of Positive Thinking"></div>
+        <div class="form-group"><label>Penulis ✍️</label><input type="text" id="ib-author" class="form-control" required placeholder="Contoh: Norman Vincent Peale"></div>
         <div style="display:flex; gap:10px;">
-          <div class="form-group" style="flex:1;">
-            <label>Hal. Dibaca 📍</label>
-            <input type="number" id="input-book-current" class="form-control" value="0" min="0">
-          </div>
-          <div class="form-group" style="flex:1;">
-            <label>Total Hal. 📚</label>
-            <input type="number" id="input-book-total" class="form-control" required placeholder="280">
-          </div>
+          <div class="form-group" style="flex:1;"><label>Hal. Dibaca 📍</label><input type="number" id="ib-current" class="form-control" value="0" min="0"></div>
+          <div class="form-group" style="flex:1;"><label>Total Hal. 📚</label><input type="number" id="ib-total" class="form-control" required placeholder="280"></div>
         </div>
-        <button type="submit" class="btn-submit">Simpan Buku 💖</button>
+        <button type="submit" class="btn-primary-full" style="margin-top:10px;">Simpan Buku 💖</button>
       </form>
     </div>
   </div>
 
-  <!-- MODAL TAMBAH CATATAN -->
+  <!-- MODAL: TAMBAH CATATAN -->
   <div class="modal" id="modal-add-note">
     <div class="modal-content">
       <div class="modal-header">
@@ -707,25 +524,30 @@
         <button class="close-modal" onclick="closeModal('modal-add-note')"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <form onsubmit="saveNote(event)">
-        <div class="form-group">
-          <label>Buku Terkait 📖</label>
-          <input type="text" id="input-note-book" class="form-control" placeholder="Nama buku">
-        </div>
-        <div class="form-group">
-          <label>Judul Catatan 🎀</label>
-          <input type="text" id="input-note-title" class="form-control" required placeholder="Contoh: Lucky Vicky Mindset Setiap Hari 🎀">
-        </div>
-        <div class="form-group">
-          <label>Isi Catatan ✨</label>
-          <textarea id="input-note-content" class="form-control" style="min-height:90px;" required placeholder="Tuliskan pemikiran manismu..."></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Simpan Catatan ✨</button>
+        <div class="form-group"><label>Buku Terkait 📖</label><input type="text" id="in-book" class="form-control" placeholder="Nama buku"></div>
+        <div class="form-group"><label>Judul Catatan 🎀</label><input type="text" id="in-title" class="form-control" required placeholder="Contoh: Lucky Vicky Mindset"></div>
+        <div class="form-group"><label>Isi Catatan ✨</label><textarea id="in-content" class="form-control" style="min-height:90px;" required placeholder="Tuliskan pemikiran manismu..."></textarea></div>
+        <button type="submit" class="btn-primary-full" style="margin-top:10px;">Simpan Catatan ✨</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: TAMBAH QUOTE -->
+  <div class="modal" id="modal-add-quote">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>✨ Tambah Kutipan Impian</h3>
+        <button class="close-modal" onclick="closeModal('modal-add-quote')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form onsubmit="saveQuote(event)">
+        <div class="form-group"><label>Kutipan / Quote 💬</label><textarea id="iq-text" class="form-control" style="min-height:80px;" required placeholder="Tulis quote favoritmu..."></textarea></div>
+        <div class="form-group"><label>Sumber / Tokoh 🖋️</label><input type="text" id="iq-source" class="form-control" required placeholder="Contoh: Jang Wonyoung"></div>
+        <button type="submit" class="btn-primary-full" style="margin-top:10px;">Simpan Quote 💖</button>
       </form>
     </div>
   </div>
 
   <script>
-    // State Data Aplikasi
     let appData = {
       books: [
         { id: 1, title: 'The Power of Positive Thinking', author: 'Norman Vincent Peale', current: 150, total: 280 }
@@ -733,10 +555,11 @@
       notes: [
         { id: 1, book: 'The Power of Positive Thinking', title: 'Lucky Vicky Mindset Setiap Hari 🎀', content: 'Ketika sesuatu yang tak terduga terjadi, aku selalu berpikir: "Ini pasti keberuntungan bagiku!" Mengubah perspektif membuat hari-hariku jauh lebih bersinar...', date: '31 Okt' }
       ],
-      quotes: []
+      quotes: [
+        { id: 1, text: 'Setiap lembar buku membuatku makin bersinar dan penuh percaya diri.', source: 'Lucky Vicky' }
+      ]
     };
 
-    // Load Data awal dari LocalStorage
     document.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('lucky_vicky_journal_db');
       if (saved) {
@@ -750,40 +573,33 @@
       renderAll();
     }
 
-    // Navigation Sidebar Drawer
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('sidebar-overlay').classList.toggle('active');
     }
 
-    function switchPage(page) {
+    function switchPage(pageId) {
       toggleSidebar();
-      alert('Pindah ke tampilan: ' + page + ' ✨');
+      document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+      
+      document.getElementById('page-' + pageId).classList.add('active');
+      document.getElementById('nav-' + pageId).classList.add('active');
+      window.scrollTo(0,0);
     }
 
-    // Modal Control
-    function openAddBookModal() {
-      toggleSidebar();
-      document.getElementById('modal-add-book').classList.add('active');
-    }
+    function openModal(id) { document.getElementById(id).classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
-    function openAddNoteModal() {
-      document.getElementById('modal-add-note').classList.add('active');
-    }
-
-    function closeModal(id) {
-      document.getElementById(id).classList.remove('active');
-    }
-
-    // Save Handlers
     function saveBook(e) {
       e.preventDefault();
-      const title = document.getElementById('input-book-title').value;
-      const author = document.getElementById('input-book-author').value;
-      const current = parseInt(document.getElementById('input-book-current').value) || 0;
-      const total = parseInt(document.getElementById('input-book-total').value) || 1;
-
-      appData.books.unshift({ id: Date.now(), title, author, current, total });
+      appData.books.unshift({
+        id: Date.now(),
+        title: document.getElementById('ib-title').value,
+        author: document.getElementById('ib-author').value,
+        current: parseInt(document.getElementById('ib-current').value) || 0,
+        total: parseInt(document.getElementById('ib-total').value) || 1
+      });
       saveToStorage();
       closeModal('modal-add-book');
       e.target.reset();
@@ -791,16 +607,28 @@
 
     function saveNote(e) {
       e.preventDefault();
-      const book = document.getElementById('input-note-book').value;
-      const title = document.getElementById('input-note-title').value;
-      const content = document.getElementById('input-note-content').value;
-      
       const today = new Date();
-      const dateStr = today.getDate() + ' ' + today.toLocaleString('id-ID', { month: 'short' });
-
-      appData.notes.unshift({ id: Date.now(), book, title, content, date: dateStr });
+      appData.notes.unshift({
+        id: Date.now(),
+        book: document.getElementById('in-book').value,
+        title: document.getElementById('in-title').value,
+        content: document.getElementById('in-content').value,
+        date: today.getDate() + ' ' + today.toLocaleString('id-ID', { month: 'short' })
+      });
       saveToStorage();
       closeModal('modal-add-note');
+      e.target.reset();
+    }
+
+    function saveQuote(e) {
+      e.preventDefault();
+      appData.quotes.unshift({
+        id: Date.now(),
+        text: document.getElementById('iq-text').value,
+        source: document.getElementById('iq-source').value
+      });
+      saveToStorage();
+      closeModal('modal-add-quote');
       e.target.reset();
     }
 
@@ -817,71 +645,144 @@
       }
     }
 
-    // Main Render Function
+    function deleteBook(id) {
+      if(confirm('Hapus buku ini? 🥺')) {
+        appData.books = appData.books.filter(b => b.id !== id);
+        saveToStorage();
+      }
+    }
+
+    function deleteNote(id) {
+      if(confirm('Hapus catatan ini? 🥺')) {
+        appData.notes = appData.notes.filter(n => n.id !== id);
+        saveToStorage();
+      }
+    }
+
+    function deleteQuote(id) {
+      if(confirm('Hapus quote ini? 🥺')) {
+        appData.quotes = appData.quotes.filter(q => q.id !== id);
+        saveToStorage();
+      }
+    }
+
     function renderAll() {
-      // Stats Calculations
-      const totalBooks = appData.books.length;
-      const completedBooks = appData.books.filter(b => b.current >= b.total).length;
-      const totalPagesRead = appData.books.reduce((acc, b) => acc + (b.current || 0), 0);
-      const totalQuotes = appData.quotes ? appData.quotes.length : 0;
+      // Stats
+      document.getElementById('stat-total').innerText = appData.books.length;
+      document.getElementById('stat-completed').innerText = appData.books.filter(b => b.current >= b.total).length;
+      document.getElementById('stat-pages').innerText = appData.books.reduce((acc, b) => acc + (b.current || 0), 0);
+      document.getElementById('stat-quotes').innerText = appData.quotes.length;
 
-      document.getElementById('stat-total').innerText = totalBooks;
-      document.getElementById('stat-completed').innerText = completedBooks;
-      document.getElementById('stat-pages').innerText = totalPagesRead;
-      document.getElementById('stat-quotes').innerText = totalQuotes;
-
-      // Render Sedang Dibaca
-      const readingContainer = document.getElementById('reading-now-list');
-      readingContainer.innerHTML = '';
-      
+      // Dashboard: Sedang Dibaca
+      const readNow = document.getElementById('reading-now-list');
+      readNow.innerHTML = '';
       const readingBooks = appData.books.filter(b => b.current < b.total);
       if(readingBooks.length === 0) {
-        readingContainer.innerHTML = '<p style="text-align:center; color:var(--text-sub); font-size:0.85rem; padding:15px;">Belum ada buku yang sedang dibaca ✨</p>';
+        readNow.innerHTML = '<p style="text-align:center; color:var(--text-sub); font-size:0.85rem; padding:10px;">Belum ada buku yang sedang dibaca ✨</p>';
       } else {
-        readingBooks.slice(0, 2).forEach(book => {
-          const percent = Math.min(100, Math.round((book.current / book.total) * 100));
-          readingContainer.innerHTML += `
-            <div class="book-card-item">
+        readingBooks.slice(0, 2).forEach(b => {
+          const pct = Math.min(100, Math.round((b.current / b.total) * 100));
+          readNow.innerHTML += `
+            <div class="card-item book-item-layout">
               <div class="book-cover-placeholder">📖</div>
               <div class="book-details">
-                <h4>${escapeHtml(book.title)}</h4>
-                <p>${escapeHtml(book.author)}</p>
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: ${percent}%;"></div>
-                </div>
+                <h4>${escapeHtml(b.title)}</h4>
+                <p>${escapeHtml(b.author)}</p>
+                <div class="progress-bar"><div class="progress-fill" style="width: ${pct}%;"></div></div>
                 <div class="progress-meta">
-                  <span class="progress-text">${book.current} / ${book.total} hlm (${percent}%)</span>
-                  <button class="btn-update-chip" onclick="updateProgress(${book.id})">Update ✨</button>
+                  <span class="progress-text">${b.current} / ${b.total} hlm (${pct}%)</span>
+                  <div>
+                    <button class="btn-action-chip" onclick="updateProgress(${b.id})">Update ✨</button>
+                    <button class="btn-action-chip btn-delete-chip" onclick="deleteBook(${b.id})"><i class="fa-solid fa-trash"></i></button>
+                  </div>
                 </div>
               </div>
-            </div>
-          `;
+            </div>`;
         });
       }
 
-      // Render Catatan Terbaru
-      const notesContainer = document.getElementById('recent-notes-list');
-      notesContainer.innerHTML = '';
-      
+      // Dashboard: Catatan Terbaru
+      const recentNotes = document.getElementById('recent-notes-list');
+      recentNotes.innerHTML = '';
       if(appData.notes.length === 0) {
-        notesContainer.innerHTML = '<p style="text-align:center; color:var(--text-sub); font-size:0.85rem; padding:15px;">Belum ada catatan tersimpan 💌</p>';
+        recentNotes.innerHTML = '<p style="text-align:center; color:var(--text-sub); font-size:0.85rem; padding:10px;">Belum ada catatan 💌</p>';
       } else {
-        appData.notes.slice(0, 3).forEach(note => {
-          notesContainer.innerHTML += `
-            <div class="note-card-item">
+        appData.notes.slice(0, 2).forEach(n => {
+          recentNotes.innerHTML += `
+            <div class="card-item">
               <div class="note-meta">
-                <span class="note-book-tag">📚 ${escapeHtml(note.book || 'Jurnal Umum')}</span>
-                <span>${note.date}</span>
+                <span class="note-book-tag">📚 ${escapeHtml(n.book || 'Jurnal Umum')}</span>
+                <span>${n.date}</span>
               </div>
-              <div class="note-title">${escapeHtml(note.title)}</div>
-              <div class="note-snippet">${escapeHtml(note.content)}</div>
-            </div>
-          `;
+              <div class="note-title">${escapeHtml(n.title)}</div>
+              <div class="note-content">${escapeHtml(n.content)}</div>
+            </div>`;
+        });
+      }
+
+      // Full Library List
+      const fullLib = document.getElementById('full-book-list');
+      fullLib.innerHTML = '';
+      if(appData.books.length === 0) {
+        fullLib.innerHTML = '<p style="text-align:center; color:var(--text-sub); padding:20px;">Belum ada koleksi buku 📚</p>';
+      } else {
+        appData.books.forEach(b => {
+          const pct = Math.min(100, Math.round((b.current / b.total) * 100));
+          fullLib.innerHTML += `
+            <div class="card-item book-item-layout">
+              <div class="book-cover-placeholder">📖</div>
+              <div class="book-details">
+                <h4>${escapeHtml(b.title)}</h4>
+                <p>${escapeHtml(b.author)}</p>
+                <div class="progress-bar"><div class="progress-fill" style="width: ${pct}%;"></div></div>
+                <div class="progress-meta">
+                  <span class="progress-text">${b.current} / ${b.total} hlm (${pct}%)</span>
+                  <div>
+                    <button class="btn-action-chip" onclick="updateProgress(${b.id})">Update</button>
+                    <button class="btn-action-chip btn-delete-chip" onclick="deleteBook(${b.id})"><i class="fa-solid fa-trash"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+        });
+      }
+
+      // Full Notes List
+      const fullNotes = document.getElementById('full-notes-list');
+      fullNotes.innerHTML = '';
+      if(appData.notes.length === 0) {
+        fullNotes.innerHTML = '<p style="text-align:center; color:var(--text-sub); padding:20px;">Belum ada catatan 💌</p>';
+      } else {
+        appData.notes.forEach(n => {
+          fullNotes.innerHTML += `
+            <div class="card-item">
+              <div class="note-meta">
+                <span class="note-book-tag">📚 ${escapeHtml(n.book || 'Jurnal Umum')}</span>
+                <span>${n.date} <button onclick="deleteNote(${n.id})" style="border:none; background:none; color:#E55039; cursor:pointer; margin-left:8px;"><i class="fa-solid fa-trash"></i></button></span>
+              </div>
+              <div class="note-title">${escapeHtml(n.title)}</div>
+              <div class="note-content">${escapeHtml(n.content)}</div>
+            </div>`;
+        });
+      }
+
+      // Full Quotes List
+      const fullQuotes = document.getElementById('full-quotes-list');
+      fullQuotes.innerHTML = '';
+      if(appData.quotes.length === 0) {
+        fullQuotes.innerHTML = '<p style="text-align:center; color:var(--text-sub); padding:20px;">Belum ada quote ✨</p>';
+      } else {
+        appData.quotes.forEach(q => {
+          fullQuotes.innerHTML += `
+            <div class="card-item" style="position:relative;">
+              <button onclick="deleteQuote(${q.id})" style="position:absolute; top:12px; right:12px; border:none; background:none; color:#E55039; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
+              <div class="quote-text">"${escapeHtml(q.text)}"</div>
+              <div class="quote-source">— ${escapeHtml(q.source)}</div>
+            </div>`;
         });
       }
     }
 
-    // Export Import JSON
     function exportData() {
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appData));
       const a = document.createElement('a');
