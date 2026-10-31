@@ -1,263 +1,419 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎀 Lucky Vicky Journal ✨</title>
-  
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Wonyoung's Reading Diary ✨</title>
+    <!-- Google Fonts: Playfair Display & Quicksand -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff0f5;
+            --card-bg: #ffffff;
+            --primary-color: #d47a96;
+            --accent-color: #f8b1c1;
+            --text-color: #5c4033;
+            --light-text: #8c7365;
+            --border-color: #f3d1dc;
+            --shadow: 0 8px 25px rgba(212, 122, 150, 0.12);
+        }
 
-  <style>
-    :root {
-      --bg-pink: #FFF0F4;
-      --card-white: #FFFFFF;
-      --primary-pink: #E93B67;
-      --primary-hover: #D02B55;
-      --light-pink: #FFE5EC;
-      --border-pink: #FFD0DC;
-      --text-main: #6B1D38;
-      --text-sub: #A36579;
-      --shadow-card: 0 8px 24px rgba(233, 59, 103, 0.08);
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 30px 15px;
+            background-image: radial-gradient(#f8b1c1 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+        }
 
-    body {
-      background-color: var(--bg-pink);
-      background-image: radial-gradient(#F7B2C4 1px, transparent 1px);
-      background-size: 18px 18px;
-      color: var(--text-main);
-      min-height: 100vh;
-      padding-bottom: 60px;
-    }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-    /* TOP NAVBAR */
-    .navbar {
-      background: #FFF;
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 90;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-    }
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
 
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Fredoka', cursive;
-      font-size: 1.35rem;
-      color: var(--primary-pink);
-      font-weight: 700;
-    }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            color: #b55d7c;
+            font-size: 2.4rem;
+            margin-bottom: 8px;
+        }
 
-    .menu-toggle {
-      font-size: 1.4rem;
-      color: var(--primary-pink);
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
+        header p {
+            color: var(--light-text);
+            font-size: 1.05rem;
+            font-style: italic;
+        }
 
-    /* SIDEBAR DRAWER */
-    .sidebar-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.25);
-      z-index: 99;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    .sidebar-overlay.active { opacity: 1; pointer-events: auto; }
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
 
-    .sidebar {
-      position: fixed;
-      top: 0; left: -300px;
-      width: 280px; height: 100%;
-      background: #FFF;
-      z-index: 100;
-      transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 24px 18px;
-      box-shadow: 5px 0 25px rgba(0,0,0,0.1);
-      overflow-y: auto;
-    }
-    .sidebar.active { left: 0; }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #b55d7c;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    .profile-card {
-      background: var(--bg-pink);
-      border: 1.5px solid var(--border-pink);
-      border-radius: 18px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
 
-    .profile-avatar {
-      width: 42px; height: 42px;
-      background: #FFE0E9;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-    }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
 
-    .profile-info h4 { font-size: 0.95rem; color: var(--text-main); font-weight: 700; }
-    .profile-info p { font-size: 0.75rem; color: var(--primary-pink); font-weight: 600; }
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
 
-    .nav-menu { display: flex; flex-direction: column; gap: 6px; }
+        label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
 
-    .nav-item {
-      display: flex; align-items: center; gap: 12px;
-      padding: 11px 14px; border-radius: 14px;
-      font-size: 0.88rem; font-weight: 700;
-      color: var(--text-main); cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .nav-item.active, .nav-item:hover {
-      background: var(--light-pink);
-      color: var(--primary-pink);
-    }
+        input, select, textarea {
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95krem;
+            background-color: #fffafc;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
 
-    .sidebar-footer { display: flex; flex-direction: column; gap: 8px; margin-top: 15px; }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px rgba(212, 122, 150, 0.2);
+            background-color: #fff;
+        }
 
-    .btn-primary-full {
-      width: 100%; background: var(--primary-pink); color: #FFF; border: none;
-      padding: 10px; border-radius: 16px; font-weight: 700; font-size: 0.85rem; cursor: pointer;
-      box-shadow: 0 4px 12px rgba(233,59,103,0.2);
-    }
-    .btn-secondary-full {
-      width: 100%; background: #20C997; color: #FFF; border: none;
-      padding: 10px; border-radius: 16px; font-weight: 700; font-size: 0.85rem; cursor: pointer;
-      box-shadow: 0 4px 12px rgba(32,201,151,0.2);
-    }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
 
-    .sidebar-actions { display: flex; justify-content: space-between; padding: 0 4px; margin-top: 4px; }
-    .btn-link-action {
-      background: none; border: none; color: var(--primary-pink);
-      font-size: 0.78rem; font-weight: 700; cursor: pointer;
-      display: flex; align-items: center; gap: 4px;
-    }
+        button {
+            background: linear-gradient(135deg, #e89cb5, #d47a96);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-family: 'Quicksand', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 122, 150, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
 
-    /* CONTAINER & PAGES */
-    .container { max-width: 600px; margin: 0 auto; padding: 16px; }
-    .page-section { display: none; }
-    .page-section.active { display: block; animation: fadeIn 0.3s ease; }
+        button:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #df8ca8, #c56a87);
+            box-shadow: 0 6px 20px rgba(212, 122, 150, 0.4);
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .reading-list {
+            display: grid;
+            gap: 20px;
+        }
 
-    /* HERO BANNER */
-    .hero-banner {
-      background: linear-gradient(135deg, #FFF5F7, #FFE5EC);
-      border: 2px solid #FFD0DC;
-      border-radius: 24px; padding: 24px 20px; text-align: center;
-      position: relative; overflow: hidden; margin-bottom: 20px; box-shadow: var(--shadow-card);
-    }
-    .hero-badge {
-      display: inline-block; background: #FFF; border: 1px solid var(--border-pink);
-      border-radius: 16px; padding: 4px 14px; font-size: 0.78rem; font-weight: 700; margin-bottom: 14px;
-    }
-    .hero-title {
-      font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--text-main);
-      font-weight: 700; line-height: 1.35; margin-bottom: 12px;
-    }
-    .hero-desc { font-size: 0.82rem; color: var(--text-sub); line-height: 1.5; }
-    .hero-bunny { position: absolute; right: 15px; bottom: -15px; font-size: 5rem; opacity: 0.15; pointer-events: none; }
+        .reading-item {
+            background: #fff9fb;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
 
-    /* STATS GRID */
-    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
-    .stat-card {
-      background: #FFF; border: 1.5px solid var(--border-pink); border-radius: 20px;
-      padding: 14px 16px; display: flex; align-items: center; gap: 14px; box-shadow: var(--shadow-card);
-    }
-    .stat-icon {
-      width: 44px; height: 44px; border-radius: 14px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
-    }
-    .stat-icon.pink { background: #FFE0E9; color: var(--primary-pink); }
-    .stat-icon.green { background: #E2F8EE; color: #20C997; }
-    .stat-icon.yellow { background: #FFF4D9; color: #FFC107; }
-    .stat-icon.rose { background: #FFE8EC; color: #E93B67; }
-    .stat-info .label { font-size: 0.68rem; font-weight: 800; color: var(--text-sub); margin-bottom: 2px; }
-    .stat-info .value { font-size: 1.35rem; font-weight: 800; color: var(--text-main); }
+        .reading-item:hover {
+            transform: translateY(-3px);
+        }
 
-    /* SECTION HEADER */
-    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-    .section-title {
-      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--text-main);
-      display: flex; align-items: center; gap: 6px;
-    }
-    .section-link { font-size: 0.8rem; font-weight: 700; color: var(--primary-pink); cursor: pointer; }
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 10px;
+        }
 
-    /* CARDS */
-    .card-item {
-      background: #FFF; border: 1.5px solid var(--border-pink); border-radius: 20px;
-      padding: 16px; box-shadow: var(--shadow-card); margin-bottom: 16px; position: relative;
-    }
-    .book-item-layout { display: flex; gap: 16px; align-items: flex-start; }
-    .book-cover-placeholder {
-      width: 55px; height: 70px; background: var(--bg-pink); border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--primary-pink); flex-shrink: 0;
-      position: relative;
-    }
-    .favorite-badge {
-      position: absolute; top: -6px; right: -6px; background: #FFF; border-radius: 50%;
-      width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem; border: 1px solid var(--border-pink); cursor: pointer;
-    }
+        .item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: #b55d7c;
+        }
 
-    .book-details { flex: 1; }
-    .book-top-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px; }
-    .book-details h4 { font-size: 0.98rem; font-weight: 800; color: var(--text-main); }
-    .book-details p { font-size: 0.78rem; color: var(--text-sub); margin-bottom: 8px; }
+        .badge {
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-    /* VIBE TAG */
-    .vibe-tag {
-      display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.68rem; font-weight: 700; margin-bottom: 6px;
-    }
-    .vibe-masterpiece { background: #FFD1DC; color: #880E4F; }
-    .vibe-amazing { background: #E2F8EE; color: #20C997; }
-    .vibe-good { background: #FFF4D9; color: #D4AC0D; }
-    .vibe-boring { background: #F1F2F6; color: #57606F; }
-    .vibe-bad { background: #FFEAEA; color: #E55039; }
+        .badge.journal {
+            background-color: #a3c1ad;
+        }
 
-    .book-meta-info {
-      font-size: 0.75rem; color: var(--text-sub); margin-top: 6px; display: flex; justify-content: space-between; align-items: center;
-    }
-    .star-rating { color: #FFC107; font-size: 0.8rem; }
-    .book-review {
-      font-size: 0.8rem; font-style: italic; color: var(--text-main); background: var(--bg-pink);
-      padding: 6px 10px; border-radius: 10px; margin-top: 6px; border-left: 3px solid var(--primary-pink);
-    }
+        .progress-box {
+            background: #fff;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px dashed var(--border-color);
+            margin: 12px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .progress-bar { height: 8px; background: var(--light-pink); border-radius: 4px; overflow: hidden; margin: 8px 0; }
-    .progress-fill { height: 100%; background: linear-gradient(90deg, #FF7597, var(--primary-pink)); border-radius: 4px; }
-    .progress-meta { display: flex; justify-content: space-between; align-items: center; }
-    .progress-text { font-size: 0.75rem; font-weight: 700; color: var(--text-sub); }
+        .progress-info {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
 
-    .btn-action-chip {
-      background: #FFF0F4; border: 1px solid var(--border-pink); color: var(--primary-pink);
+        .quick-update {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .quick-update input {
+            width: 75px;
+            padding: 6px 10px;
+            text-align: center;
+        }
+
+        .quick-update button {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+
+        .notes-section, .quote-section {
+            margin-top: 10px;
+            font-size: 0.92rem;
+            color: var(--light-text);
+            background: #fff;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .quote-section {
+            border-left-color: #e89cb5;
+            font-style: italic;
+        }
+
+        .item-actions {
+            margin-top: 15px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .btn-delete {
+            background: transparent;
+            color: #d9534f;
+            border: 1px solid #f5c6cb;
+            padding: 6px 12px;
+            box-shadow: none;
+        }
+
+        .btn-delete:hover {
+            background: #fdf2f2;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: var(--light-text);
+            padding: 30px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>✨ Wonyoung's Reading Diary ✨</h1>
+            <p>"Semua hal yang aku baca hari ini membawa aku pada versi diri yang lebih luar biasa." 🌸</p>
+        </header>
+
+        <!-- Form Tambah Bacaan -->
+        <div class="card">
+            <h2>🎀 Tambah Bacaan Baru</h2>
+            <form id="readingForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="title">Judul Buku / Jurnal</label>
+                        <input type="text" id="title" required placeholder="Contoh: The Psychology of Money">
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Kategori</label>
+                        <select id="type">
+                            <option value="Buku">📖 Buku</option>
+                            <option value="Jurnal">🔬 Jurnal Ilmiah</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPages">Total Halaman / Bab</label>
+                        <input type="number" id="totalPages" required placeholder="Contoh: 250">
+                    </div>
+                    <div class="form-group">
+                        <label for="currentPage">Halaman Saat Ini</label>
+                        <input type="number" id="currentPage" value="0" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="notes">Catatan / Refleksi Pribadi</label>
+                        <textarea id="notes" placeholder="Tulis rangkuman, poin penting, atau pemikiranmu di sini..."></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="quote">Favorite Quote 💖</label>
+                        <textarea id="quote" placeholder="Tulis kutipan favorit yang menginspirasi dari bacaan ini..."></textarea>
+                    </div>
+                </div>
+                <button type="submit">✨ Simpan ke Daftar Bacaan</button>
+            </form>
+        </div>
+
+        <!-- Daftar Bacaan Aktif -->
+        <div class="card">
+            <h2>📚 Daftar Bacaan & Progress</h2>
+            <div id="readingListContainer" class="reading-list">
+                <!-- Data akan dimasukkan lewat JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Ambil data dari localStorage atau buat array kosong
+        let readings = JSON.parse(localStorage.getItem('wonyoung_readings')) || [];
+
+        const form = document.getElementById('readingForm');
+        const container = document.getElementById('readingListContainer');
+
+        function saveAndRender() {
+            localStorage.setItem('wonyoung_readings', JSON.stringify(readings));
+            renderReadings();
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newItem = {
+                id: Date.now(),
+                title: document.getElementById('title').value,
+                type: document.getElementById('type').value,
+                totalPages: parseInt(document.getElementById('totalPages').value),
+                currentPage: parseInt(document.getElementById('currentPage').value),
+                notes: document.getElementById('notes').value,
+                quote: document.getElementById('quote').value
+            };
+
+            readings.unshift(newItem);
+            saveAndRender();
+            form.reset();
+        });
+
+        function updateProgress(id) {
+            const inputVal = document.getElementById(`input-page-${id}`).value;
+            const item = readings.find(r => r.id === id);
+            if (item && inputVal !== "") {
+                item.currentPage = Math.min(parseInt(inputVal), item.totalPages);
+                saveAndRender();
+            }
+        }
+
+        function deleteItem(id) {
+            readings = readings.filter(r => r.id !== id);
+            saveAndRender();
+        }
+
+        function renderReadings() {
+            if (readings.length === 0) {
+                container.innerHTML = `<div class="empty-state">Belum ada bacaan yang dicatat. Yuk, mulai isi hari ini dengan produktif! 🤍</div>`;
+                return;
+            }
+
+            container.innerHTML = '';
+            readings.forEach(item => {
+                const percentage = Math.round((item.currentPage / item.totalPages) * 100) || 0;
+                const isJournal = item.type === 'Jurnal';
+                
+                const div = document.createElement('div');
+                div.className = 'reading-item';
+                div.innerHTML = `
+                    <div class="item-header">
+                        <div>
+                            <span class="badge ${isJournal ? 'journal' : ''}">${item.type}</span>
+                            <div class="item-title" style="margin-top: 6px;">${item.title}</div>
+                        </div>
+                    </div>
+
+                    <div class="progress-box">
+                        <div class="progress-info">
+                            📍 Hal. <b>${item.currentPage}</b> dari ${item.totalPages} (${percentage}%)
+                        </div>
+                        <div class="quick-update">
+                            <input type="number" id="input-page-${item.id}" value="${item.currentPage}" min="0" max="${item.totalPages}">
+                            <button type="button" onclick="updateProgress(${item.id})">Update</button>
+                        </div>
+                    </div>
+
+                    ${item.notes ? `<div class="notes-section"><b>📝 Catatan:</b> ${item.notes}</div>` : ''}
+                    ${item.quote ? `<div class="quote-section" style="margin-top: 8px;"><b>✨ Quote:</b> "${item.quote}"</div>` : ''}
+
+                    <div class="item-actions">
+                        <button class="btn-delete" onclick="deleteItem(${item.id})">Hapus</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Jalankan saat pertama kali dibuka
+        renderReadings();
+    </script>
+</body>
+</html>
+  background: #FFF0F4; border: 1px solid var(--border-pink); color: var(--primary-pink);
       border-radius: 12px; padding: 4px 10px; font-size: 0.72rem; font-weight: 700; cursor: pointer;
     }
     .btn-delete-chip { color: #E55039; background: #FFEAEA; border-color: #FAD2D2; margin-left: 4px; }
