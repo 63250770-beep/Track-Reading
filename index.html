@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎀 Lucky Vicky Journal - Cloud Sync ✨</title>
+  <title>🎀 Lucky Vicky Journal ✨</title>
   
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,12 +72,11 @@
       font-size: 0.85rem;
       color: var(--text-sub);
       margin-bottom: 24px;
+      line-height: 1.5;
     }
 
-    /* APP WRAPPER */
-    #app-screen {
-      display: none;
-    }
+    /* APP SCREEN */
+    #app-screen { display: none; }
 
     /* TOP NAVBAR */
     .navbar {
@@ -121,11 +120,7 @@
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
-
-    .sidebar-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .sidebar-overlay.active { opacity: 1; pointer-events: auto; }
 
     .sidebar {
       position: fixed;
@@ -140,7 +135,6 @@
       padding: 24px 18px;
       box-shadow: 5px 0 25px rgba(0,0,0,0.1);
     }
-
     .sidebar.active { left: 0; }
 
     .profile-card {
@@ -162,24 +156,18 @@
       font-size: 1.2rem;
     }
 
-    .profile-info h4 { font-size: 0.9rem; color: var(--text-main); font-weight: 700; word-break: break-all; }
+    .profile-info h4 { font-size: 0.95rem; color: var(--text-main); font-weight: 700; }
     .profile-info p { font-size: 0.75rem; color: var(--primary-pink); font-weight: 600; }
 
     .nav-menu { display: flex; flex-direction: column; gap: 8px; }
 
     .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--text-main);
-      cursor: pointer;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px; border-radius: 14px;
+      font-size: 0.92rem; font-weight: 700;
+      color: var(--text-main); cursor: pointer;
       transition: all 0.2s ease;
     }
-
     .nav-item.active, .nav-item:hover {
       background: var(--light-pink);
       color: var(--primary-pink);
@@ -188,29 +176,16 @@
     .sidebar-footer { display: flex; flex-direction: column; gap: 10px; }
 
     .btn-add-sidebar {
-      background: var(--primary-pink);
-      color: #FFF;
-      border: none;
-      padding: 12px;
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      gap: 8px;
+      background: var(--primary-pink); color: #FFF; border: none;
+      padding: 12px; border-radius: 20px; font-weight: 700; font-size: 0.95rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
       box-shadow: 0 4px 12px rgba(233, 59, 103, 0.25);
     }
 
     .btn-logout {
-      background: #FFEAEA;
-      color: #E55039;
-      border: 1.5px solid #FAD2D2;
-      border-radius: 14px;
-      padding: 10px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center; gap: 6px;
+      background: #FFEAEA; color: #E55039; border: 1.5px solid #FAD2D2;
+      border-radius: 14px; padding: 10px; font-weight: 700; font-size: 0.85rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
     }
 
     /* CONTAINER & PAGES */
@@ -227,102 +202,55 @@
     .hero-banner {
       background: linear-gradient(135deg, #FFF5F7, #FFE5EC);
       border: 2px solid #FFD0DC;
-      border-radius: 24px;
-      padding: 24px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow-card);
+      border-radius: 24px; padding: 24px 20px; text-align: center;
+      position: relative; overflow: hidden; margin-bottom: 20px; box-shadow: var(--shadow-card);
     }
-
     .hero-badge {
-      display: inline-block;
-      background: #FFF;
-      border: 1px solid var(--border-pink);
-      border-radius: 16px;
-      padding: 4px 14px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      margin-bottom: 14px;
+      display: inline-block; background: #FFF; border: 1px solid var(--border-pink);
+      border-radius: 16px; padding: 4px 14px; font-size: 0.78rem; font-weight: 700; margin-bottom: 14px;
     }
-
     .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.45rem;
-      color: var(--text-main);
-      font-weight: 700;
-      line-height: 1.35;
-      margin-bottom: 12px;
+      font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--text-main);
+      font-weight: 700; line-height: 1.35; margin-bottom: 12px;
     }
-
     .hero-desc { font-size: 0.82rem; color: var(--text-sub); line-height: 1.5; }
     .hero-bunny { position: absolute; right: 15px; bottom: -15px; font-size: 5rem; opacity: 0.15; pointer-events: none; }
 
     /* STATS GRID */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
     .stat-card {
-      background: #FFF;
-      border: 1.5px solid var(--border-pink);
-      border-radius: 20px;
-      padding: 14px 16px;
-      display: flex; align-items: center; gap: 14px;
-      box-shadow: var(--shadow-card);
+      background: #FFF; border: 1.5px solid var(--border-pink); border-radius: 20px;
+      padding: 14px 16px; display: flex; align-items: center; gap: 14px; box-shadow: var(--shadow-card);
     }
-
     .stat-icon {
-      width: 44px; height: 44px;
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; flex-shrink: 0;
+      width: 44px; height: 44px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
     }
     .stat-icon.pink { background: #FFE0E9; color: var(--primary-pink); }
     .stat-icon.green { background: #E2F8EE; color: #20C997; }
     .stat-icon.yellow { background: #FFF4D9; color: #FFC107; }
     .stat-icon.rose { background: #FFE8EC; color: #E93B67; }
-
     .stat-info .label { font-size: 0.68rem; font-weight: 800; color: var(--text-sub); margin-bottom: 2px; }
     .stat-info .value { font-size: 1.35rem; font-weight: 800; color: var(--text-main); }
 
     /* SECTION HEADER */
-    .section-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 14px;
-    }
-
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
     .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; font-weight: 700; color: var(--text-main);
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--text-main);
       display: flex; align-items: center; gap: 6px;
     }
-
     .section-link { font-size: 0.8rem; font-weight: 700; color: var(--primary-pink); cursor: pointer; }
 
     /* CARDS */
     .card-item {
-      background: #FFF;
-      border: 1.5px solid var(--border-pink);
-      border-radius: 20px;
-      padding: 16px;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 16px;
-      position: relative;
+      background: #FFF; border: 1.5px solid var(--border-pink); border-radius: 20px;
+      padding: 16px; box-shadow: var(--shadow-card); margin-bottom: 16px; position: relative;
     }
-
     .book-item-layout { display: flex; gap: 16px; align-items: center; }
     .book-cover-placeholder {
-      width: 55px; height: 70px;
-      background: var(--bg-pink); border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; color: var(--primary-pink); flex-shrink: 0;
+      width: 55px; height: 70px; background: var(--bg-pink); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--primary-pink); flex-shrink: 0;
     }
-
     .book-details { flex: 1; }
     .book-details h4 { font-size: 0.98rem; font-weight: 800; color: var(--text-main); margin-bottom: 2px; }
     .book-details p { font-size: 0.78rem; color: var(--text-sub); margin-bottom: 10px; }
@@ -373,59 +301,26 @@
     }
     .form-control:focus { border-color: var(--primary-pink); }
   </style>
-
-  <!-- Firebase SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-    // TODO: Ganti dengan konfigurasi Firebase milikmu sendiri (Gratis di firebase.google.com)
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
-    window.firebaseAuth = auth;
-    window.firebaseDb = db;
-    window.firebaseFns = { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, doc, getDoc, setDoc };
-  </script>
 </head>
 <body>
 
-  <!-- 1. AUTH SCREEN (LOGIN / REGISTER) -->
+  <!-- 1. LOGIN / NAMA AKUN SCREEN -->
   <div id="auth-screen">
     <div class="auth-card">
       <h2 class="auth-title">🎀 Lucky Vicky Journal</h2>
-      <p class="auth-subtitle">Masuk atau Daftar akun agar progres bacaanmu tersimpan sendiri & tidak sama dengan pengguna lain! ✨</p>
+      <p class="auth-subtitle">Masukkan nama atau ID akun kamu (misal: <b>Fitria</b> atau <b>Teman</b>) biar progres bacaan kalian terpisah sendiri-sendiri! ✨</p>
       
-      <form onsubmit="handleAuth(event)">
+      <form onsubmit="loginUser(event)">
         <div class="form-group">
-          <label>Email 📧</label>
-          <input type="email" id="auth-email" class="form-control" required placeholder="emailkamu@gmail.com">
+          <label>Nama Pengguna / Akun 🌸</label>
+          <input type="text" id="input-username" class="form-control" required placeholder="Contoh: Fitria Wulan">
         </div>
-        <div class="form-group">
-          <label>Password 🔒</label>
-          <input type="password" id="auth-password" class="form-control" required placeholder="Minimal 6 karakter">
-        </div>
-        <button type="submit" class="btn-primary-full" id="auth-btn">Masuk (Log In) 💖</button>
+        <button type="submit" class="btn-primary-full">Masuk ke Journal 💖</button>
       </form>
-
-      <p style="margin-top: 15px; font-size: 0.82rem; color: var(--text-sub);">
-        Belum punya akun? <a style="color: var(--primary-pink); cursor: pointer; font-weight: 700;" onclick="toggleAuthMode()">Daftar di sini ✨</a>
-      </p>
     </div>
   </div>
 
-  <!-- 2. MAIN APP SCREEN (MUNCUL SETELAH LOGIN) -->
+  <!-- 2. MAIN APP SCREEN -->
   <div id="app-screen">
     <!-- TOP NAVBAR -->
     <nav class="navbar">
@@ -440,7 +335,7 @@
         <div class="profile-card">
           <div class="profile-avatar">🐰</div>
           <div class="profile-info">
-            <h4 id="user-email-display">user@email.com</h4>
+            <h4 id="display-username">Nama Akun</h4>
             <p>Lucky Vicky Mindset ✨</p>
           </div>
         </div>
@@ -455,7 +350,7 @@
 
       <div class="sidebar-footer">
         <button class="btn-add-sidebar" onclick="toggleSidebar(); openModal('modal-add-book')">🎀 Tambah Buku</button>
-        <button class="btn-logout" onclick="logoutUser()"><i class="fa-solid fa-right-from-bracket"></i> Keluar Akun</button>
+        <button class="btn-logout" onclick="logoutUser()"><i class="fa-solid fa-right-from-bracket"></i> Ganti Akun</button>
       </div>
     </aside>
 
@@ -466,7 +361,7 @@
         <div class="hero-banner">
           <span class="hero-badge">✨ Lucky Vicky Reading Space ✨</span>
           <h2 class="hero-title">"Setiap lembar buku membuatku makin bersinar!" 🍓</h2>
-          <p class="hero-desc">Progres aman tersimpan di Cloud khusus untuk akunmu!</p>
+          <p class="hero-desc">Progres aman tersimpan otomatis khusus untuk akunmu!</p>
           <div class="hero-bunny">🐰</div>
         </div>
 
@@ -571,74 +466,63 @@
   </div>
 
   <script>
-    let isRegisterMode = false;
-    let currentUser = null;
+    let currentUsername = localStorage.getItem('lucky_vicky_active_user') || null;
     let appData = { books: [], notes: [], quotes: [] };
 
-    setTimeout(() => {
-      if(window.firebaseAuth) {
-        window.firebaseFns.onAuthStateChanged(window.firebaseAuth, async (user) => {
-          if (user) {
-            currentUser = user;
-            document.getElementById('user-email-display').innerText = user.email;
-            document.getElementById('auth-screen').style.display = 'none';
-            document.getElementById('app-screen').style.display = 'block';
-            await loadUserData();
-          } else {
-            currentUser = null;
-            document.getElementById('auth-screen').style.display = 'flex';
-            document.getElementById('app-screen').style.display = 'none';
-          }
-        });
+    document.addEventListener('DOMContentLoaded', () => {
+      if (currentUsername) {
+        loadUserData(currentUsername);
+      } else {
+        document.getElementById('auth-screen').style.display = 'flex';
+        document.getElementById('app-screen').style.display = 'none';
       }
-    }, 1000);
+    });
 
-    function toggleAuthMode() {
-      isRegisterMode = !isRegisterMode;
-      const btn = document.getElementById('auth-btn');
-      btn.innerText = isRegisterMode ? 'Daftar Akun Baru (Sign Up) 🌸' : 'Masuk (Log In) 💖';
-    }
-
-    async function handleAuth(e) {
+    function loginUser(e) {
       e.preventDefault();
-      const email = document.getElementById('auth-email').value;
-      const pass = document.getElementById('auth-password').value;
-      try {
-        if(isRegisterMode) {
-          await window.firebaseFns.createUserWithEmailAndPassword(window.firebaseAuth, email, pass);
-          alert('Akun berhasil dibuat dan otomatis masuk! 🎉');
-        } else {
-          await window.firebaseFns.signInWithEmailAndPassword(window.firebaseAuth, email, pass);
-        }
-      } catch(err) {
-        alert('Gagal otentikasi: ' + err.message + '\n(Pastikan konfigurasi Firebase API key sudah diisi ya!)');
-      }
+      const username = document.getElementById('input-username').value.trim();
+      if(!username) return;
+      
+      currentUsername = username;
+      localStorage.setItem('lucky_vicky_active_user', username);
+      loadUserData(username);
     }
 
-    async function logoutUser() {
-      await window.firebaseFns.signOut(window.firebaseAuth);
+    function logoutUser() {
+      localStorage.removeItem('lucky_vicky_active_user');
+      currentUsername = null;
+      document.getElementById('auth-screen').style.display = 'flex';
+      document.getElementById('app-screen').style.display = 'none';
+      document.getElementById('input-username').value = '';
     }
 
-    async function loadUserData() {
-      if(!currentUser) return;
-      try {
-        const docRef = window.firebaseFns.doc(window.firebaseDb, "usersData", currentUser.uid);
-        const docSnap = await window.firebaseFns.getDoc(docRef);
-        if (docSnap.exists()) {
-          appData = docSnap.data();
-        } else {
+    function loadUserData(username) {
+      document.getElementById('display-username').innerText = username;
+      document.getElementById('auth-screen').style.display = 'none';
+      document.getElementById('app-screen').style.display = 'block';
+
+      const savedData = localStorage.getItem('lucky_vicky_data_' + username);
+      if (savedData) {
+        try {
+          appData = JSON.parse(savedData);
+        } catch(e) {
           appData = { books: [], notes: [], quotes: [] };
         }
-      } catch(e) { console.error(e); }
+      } else {
+        // Data default kalau akun baru pertama kali dibuat
+        appData = {
+          books: [{ id: 1, title: 'The Power of Positive Thinking', author: 'Norman Vincent Peale', current: 150, total: 280 }],
+          notes: [{ id: 1, book: 'The Power of Positive Thinking', title: 'Lucky Vicky Mindset 🎀', content: 'Semua hal terjadi untuk kebaikan kita!', date: '31 Okt' }],
+          quotes: [{ id: 1, text: 'Setiap lembar buku membuatku makin bersinar.', source: 'Lucky Vicky' }]
+        };
+        saveToLocalStorage();
+      }
       renderAll();
     }
 
-    async function saveToCloud() {
-      if(!currentUser) return;
-      try {
-        const docRef = window.firebaseFns.doc(window.firebaseDb, "usersData", currentUser.uid);
-        await window.firebaseFns.setDoc(docRef, appData);
-      } catch(e) { console.error(e); }
+    function saveToLocalStorage() {
+      if (!currentUsername) return;
+      localStorage.setItem('lucky_vicky_data_' + currentUsername, JSON.stringify(appData));
       renderAll();
     }
 
@@ -668,7 +552,7 @@
         current: parseInt(document.getElementById('ib-current').value) || 0,
         total: parseInt(document.getElementById('ib-total').value) || 1
       });
-      saveToCloud();
+      saveToLocalStorage();
       closeModal('modal-add-book');
       e.target.reset();
     }
@@ -683,7 +567,7 @@
         content: document.getElementById('in-content').value,
         date: today.getDate() + ' ' + today.toLocaleString('id-ID', { month: 'short' })
       });
-      saveToCloud();
+      saveToLocalStorage();
       closeModal('modal-add-note');
       e.target.reset();
     }
@@ -695,7 +579,7 @@
         text: document.getElementById('iq-text').value,
         source: document.getElementById('iq-source').value
       });
-      saveToCloud();
+      saveToLocalStorage();
       closeModal('modal-add-quote');
       e.target.reset();
     }
@@ -708,7 +592,7 @@
         const val = parseInt(res);
         if(!isNaN(val)) {
           book.current = Math.min(val, book.total);
-          saveToCloud();
+          saveToLocalStorage();
         }
       }
     }
@@ -716,21 +600,21 @@
     function deleteBook(id) {
       if(confirm('Hapus buku ini? 🥺')) {
         appData.books = appData.books.filter(b => b.id !== id);
-        saveToCloud();
+        saveToLocalStorage();
       }
     }
 
     function deleteNote(id) {
       if(confirm('Hapus catatan ini? 🥺')) {
         appData.notes = appData.notes.filter(n => n.id !== id);
-        saveToCloud();
+        saveToLocalStorage();
       }
     }
 
     function deleteQuote(id) {
       if(confirm('Hapus quote ini? 🥺')) {
         appData.quotes = appData.quotes.filter(q => q.id !== id);
-        saveToCloud();
+        saveToLocalStorage();
       }
     }
 
