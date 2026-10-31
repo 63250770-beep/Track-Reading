@@ -3,866 +3,909 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎀 Wony's Cozy Book Nook & Journal ✨</title>
+  <title>🎀 Lucky Vicky Journal ✨</title>
   
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      --bg-pink: #FFF0F5;
+      --bg-pink: #FFF0F4;
       --card-white: #FFFFFF;
-      --accent-pink: #FFB6C1;
-      --deep-pink: #FF69B4;
-      --hot-pink: #FF1493;
-      --soft-rose: #FFC0CB;
-      --text-color: #5C4033;
-      --subtext: #8B6B61;
-      --border-pink: #FFE4E1;
-      --shadow-pink: rgba(255, 105, 180, 0.2);
+      --primary-pink: #E93B67;
+      --primary-hover: #D02B55;
+      --light-pink: #FFE5EC;
+      --border-pink: #FFD0DC;
+      --text-main: #6B1D38;
+      --text-sub: #A36579;
+      --shadow-pink: rgba(233, 59, 103, 0.08);
+      --shadow-card: 0 8px 24px rgba(233, 59, 103, 0.08);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Quicksand', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
       background-color: var(--bg-pink);
-      background-image: radial-gradient(#FFC0CB 1.2px, transparent 1.2px);
-      background-size: 24px 24px;
-      color: var(--text-color);
+      background-image: radial-gradient(#F7B2C4 1px, transparent 1px);
+      background-size: 18px 18px;
+      color: var(--text-main);
       min-height: 100vh;
-      padding-bottom: 60px;
+      padding-bottom: 50px;
     }
 
-    /* HEADER STYLING */
-    .header {
-      background: linear-gradient(135deg, #FFFFFF, #FFE4E1, #FFF0F5);
-      padding: 2.5rem 1rem 2rem 1rem;
-      text-align: center;
-      border-bottom: 3px dashed var(--deep-pink);
-      box-shadow: 0 8px 20px var(--shadow-pink);
-      position: relative;
+    /* TOP NAVBAR */
+    .navbar {
+      background: #FFF;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
 
-    .header-title {
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-family: 'Fredoka', cursive;
-      font-size: 2.4rem;
-      color: var(--deep-pink);
-      margin-bottom: 0.3rem;
-      text-shadow: 2px 2px 0px #FFF;
-      letter-spacing: 0.5px;
-    }
-
-    .header-subtitle {
-      font-size: 1rem;
-      color: var(--subtext);
-      font-weight: 600;
-    }
-
-    .vicky-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #FFF;
-      border: 2px solid var(--accent-pink);
-      border-radius: 25px;
-      padding: 6px 18px;
-      margin-top: 12px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--deep-pink);
-      box-shadow: 3px 3px 0px var(--accent-pink);
-    }
-
-    /* LAYOUT CONTAINERS */
-    .main-wrapper {
-      max-width: 950px;
-      margin: 25px auto;
-      padding: 0 16px;
-    }
-
-    /* NAVIGATION TABS */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 28px;
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-      background: #FFF;
-      border: 2px solid var(--accent-pink);
-      padding: 10px 22px;
-      border-radius: 25px;
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--text-color);
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 4px 10px var(--shadow-pink);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .tab-btn.active, .tab-btn:hover {
-      background: var(--deep-pink);
-      color: #FFF;
-      border-color: var(--deep-pink);
-      transform: translateY(-3px);
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-      animation: fadeIn 0.4s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* CARDS */
-    .card {
-      background: var(--card-white);
-      border-radius: 22px;
-      padding: 24px;
-      border: 2px solid var(--border-pink);
-      box-shadow: 0 10px 25px var(--shadow-pink);
-      margin-bottom: 24px;
-      position: relative;
-    }
-
-    .card-title {
-      font-family: 'Fredoka', sans-serif;
-      color: var(--deep-pink);
       font-size: 1.35rem;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* DASHBOARD STATS */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-
-    .stat-card {
-      background: linear-gradient(135deg, #FFF0F5, #FFF);
-      border: 2px solid var(--accent-pink);
-      border-radius: 18px;
-      padding: 18px;
-      text-align: center;
-      box-shadow: 0 4px 12px var(--shadow-pink);
-      transition: transform 0.2s ease;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .stat-card i {
-      font-size: 1.8rem;
-      color: var(--deep-pink);
-      margin-bottom: 6px;
-    }
-
-    .stat-card h3 {
-      font-size: 1.7rem;
-      font-family: 'Fredoka', sans-serif;
-      color: var(--deep-pink);
-    }
-
-    .stat-card p {
-      font-size: 0.88rem;
-      color: var(--subtext);
+      color: var(--primary-pink);
       font-weight: 700;
     }
 
-    /* FORM STYLING */
-    .form-group {
-      margin-bottom: 16px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--text-color);
-      font-size: 0.92rem;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 12px 16px;
-      border: 2px solid var(--border-pink);
-      border-radius: 14px;
-      outline: none;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      background: #FFF;
-      color: var(--text-color);
-    }
-
-    .form-control:focus {
-      border-color: var(--deep-pink);
-      box-shadow: 0 0 8px var(--shadow-pink);
-    }
-
-    textarea.form-control {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .btn-submit {
-      background: var(--deep-pink);
-      color: #FFF;
-      border: none;
-      padding: 14px 28px;
-      border-radius: 25px;
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.05rem;
+    .menu-toggle {
+      font-size: 1.4rem;
+      color: var(--primary-pink);
       cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    /* SIDEBAR DRAWER */
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      box-shadow: 0 6px 15px var(--shadow-pink);
-      transition: all 0.3s ease;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
     }
 
-    .btn-submit:hover {
-      background: var(--hot-pink);
-      transform: translateY(-2px);
+    .sidebar-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    /* BOOKS GRID & CARDS */
-    .book-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 20px;
-    }
-
-    .book-card {
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100%;
       background: #FFF;
-      border: 2px solid var(--border-pink);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 8px 18px var(--shadow-pink);
+      z-index: 100;
+      transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
+      padding: 24px 18px;
+      box-shadow: 5px 0 25px rgba(0,0,0,0.1);
     }
 
-    .book-card .tag {
-      align-self: flex-start;
-      padding: 4px 12px;
-      border-radius: 14px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      margin-bottom: 12px;
+    .sidebar.active {
+      left: 0;
     }
 
-    .tag-unread { background: #FFE4E1; color: #D87093; }
-    .tag-reading { background: #FFFACD; color: #B8860B; }
-    .tag-completed { background: #E0EEE0; color: #2E8B57; }
+    .profile-card {
+      background: var(--bg-pink);
+      border: 1.5px solid var(--border-pink);
+      border-radius: 18px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
 
-    .book-title {
-      font-family: 'Fredoka', sans-serif;
+    .profile-avatar {
+      width: 42px;
+      height: 42px;
+      background: #FFE0E9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.2rem;
-      color: var(--text-color);
-      margin-bottom: 4px;
     }
 
-    .book-author {
-      font-size: 0.88rem;
-      color: var(--subtext);
-      margin-bottom: 14px;
+    .profile-info h4 {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .profile-info p {
+      font-size: 0.78rem;
+      color: var(--primary-pink);
       font-weight: 600;
     }
 
-    .progress-bar-bg {
-      background: var(--bg-pink);
-      height: 12px;
-      border-radius: 6px;
-      overflow: hidden;
-      margin-bottom: 8px;
-      border: 1px solid var(--accent-pink);
-    }
-
-    .progress-bar-fill {
-      background: linear-gradient(90deg, var(--accent-pink), var(--deep-pink));
-      height: 100%;
-      width: 0%;
-      transition: width 0.4s ease;
-    }
-
-    .progress-text {
-      font-size: 0.82rem;
-      color: var(--subtext);
-      text-align: right;
-      font-weight: 700;
-    }
-
-    .card-actions {
+    .nav-menu {
       display: flex;
-      gap: 10px;
-      margin-top: 18px;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    .btn-action {
-      flex: 1;
-      padding: 8px 0;
-      border: 1.5px solid var(--accent-pink);
-      background: #FFF;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      color: var(--text-color);
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 0.92rem;
       font-weight: 700;
+      color: var(--text-main);
+      text-decoration: none;
+      cursor: pointer;
       transition: all 0.2s ease;
     }
 
-    .btn-action:hover {
+    .nav-item.active {
+      background: var(--light-pink);
+      color: var(--primary-pink);
+    }
+
+    .nav-item:hover {
       background: var(--bg-pink);
-      color: var(--deep-pink);
     }
 
-    .btn-delete {
-      border-color: #FFA07A;
-      color: #CD5C5C;
+    .sidebar-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .btn-delete:hover {
-      background: #FFE4E1;
+    .btn-add-sidebar {
+      background: var(--primary-pink);
+      color: #FFF;
+      border: none;
+      padding: 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(233, 59, 103, 0.25);
     }
 
-    /* QUOTES STYLING */
-    .quote-card {
-      background: linear-gradient(135deg, #FFF, #FFF0F5);
-      border-left: 5px solid var(--deep-pink);
-      border-radius: 16px;
-      padding: 18px 20px;
-      margin-bottom: 16px;
-      box-shadow: 0 6px 15px var(--shadow-pink);
+    .sidebar-actions {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 4px;
+    }
+
+    .btn-link-action {
+      background: none;
+      border: none;
+      color: var(--primary-pink);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* HERO BANNER */
+    .hero-banner {
+      background: linear-gradient(135deg, #FFF5F7, #FFE5EC);
+      border: 2px solid #FFD0DC;
+      border-radius: 24px;
+      padding: 24px 20px;
+      text-align: center;
       position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-card);
     }
 
-    .quote-text {
-      font-size: 1.05rem;
-      font-style: italic;
-      color: var(--text-color);
-      margin-bottom: 10px;
+    .hero-badge {
+      display: inline-block;
+      background: #FFF;
+      border: 1px solid var(--border-pink);
+      border-radius: 16px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: var(--text-main);
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+
+    .hero-desc {
+      font-size: 0.82rem;
+      color: var(--text-sub);
       line-height: 1.5;
     }
 
-    .quote-source {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--deep-pink);
-      text-align: right;
+    .hero-bunny {
+      position: absolute;
+      right: 15px;
+      bottom: -15px;
+      font-size: 5rem;
+      opacity: 0.15;
+      pointer-events: none;
     }
 
-    /* JOURNAL STYLING */
-    .journal-card {
+    /* STATS GRID */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
       background: #FFF;
-      border-radius: 18px;
-      border: 2px solid var(--border-pink);
-      padding: 20px;
-      margin-bottom: 18px;
-      box-shadow: 0 6px 16px var(--shadow-pink);
+      border: 1.5px solid var(--border-pink);
+      border-radius: 20px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: var(--shadow-card);
     }
 
-    .journal-header {
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .stat-icon.pink { background: #FFE0E9; color: var(--primary-pink); }
+    .stat-icon.green { background: #E2F8EE; color: #20C997; }
+    .stat-icon.yellow { background: #FFF4D9; color: #FFC107; }
+    .stat-icon.rose { background: #FFE8EC; color: #E93B67; }
+
+    .stat-info .label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--text-sub);
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .stat-info .value {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    /* SECTION TITLE */
+    .section-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 8px;
+      align-items: center;
+      margin-bottom: 14px;
     }
 
-    .journal-date {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--deep-pink);
-    }
-
-    .journal-title {
-      font-family: 'Fredoka', sans-serif;
+    .section-title {
+      font-family: 'Playfair Display', serif;
       font-size: 1.2rem;
-      margin-bottom: 8px;
-      color: var(--text-color);
-    }
-
-    .journal-content {
-      font-size: 0.95rem;
-      color: var(--subtext);
-      line-height: 1.6;
-    }
-
-    /* BACKUP / SETTINGS BOX */
-    .settings-box {
-      display: flex;
-      gap: 12px;
-      margin-top: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn-secondary {
-      background: #FFF;
-      border: 2px solid var(--accent-pink);
-      padding: 10px 18px;
-      border-radius: 14px;
-      font-size: 0.88rem;
       font-weight: 700;
-      color: var(--text-color);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-link {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary-pink);
+      text-decoration: none;
       cursor: pointer;
-      transition: all 0.2s ease;
     }
 
-    .btn-secondary:hover {
+    /* CARD ITEM BUKU */
+    .book-card-item {
+      background: #FFF;
+      border: 1.5px solid var(--border-pink);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .book-cover-placeholder {
+      width: 55px;
+      height: 70px;
       background: var(--bg-pink);
-      color: var(--deep-pink);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--primary-pink);
+      flex-shrink: 0;
     }
 
-    @media (max-width: 600px) {
-      .header-title { font-size: 1.9rem; }
-      .tab-btn { padding: 8px 16px; font-size: 0.85rem; }
+    .book-details {
+      flex: 1;
+    }
+
+    .book-details h4 {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .book-details p {
+      font-size: 0.78rem;
+      color: var(--text-sub);
+      margin-bottom: 10px;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: var(--light-pink);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #FF7597, var(--primary-pink));
+      border-radius: 4px;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .progress-text {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-sub);
+    }
+
+    .btn-update-chip {
+      background: #FFF0F4;
+      border: 1px solid var(--border-pink);
+      color: var(--primary-pink);
+      border-radius: 12px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* CARD CATATAN */
+    .note-card-item {
+      background: #FFF;
+      border: 1.5px solid var(--border-pink);
+      border-radius: 20px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 12px;
+    }
+
+    .note-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      margin-bottom: 6px;
+    }
+
+    .note-book-tag {
+      color: var(--primary-pink);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .note-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .note-snippet {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      line-height: 1.45;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* MODAL POPUP */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.3);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .modal.active { display: flex; }
+
+    .modal-content {
+      background: #FFF;
+      border-radius: 24px;
+      padding: 24px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      border: 2px solid var(--border-pink);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .modal-header h3 {
+      font-family: 'Fredoka', sans-serif;
+      color: var(--primary-pink);
+    }
+
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--text-sub);
+      cursor: pointer;
+    }
+
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border-pink);
+      border-radius: 12px;
+      outline: none;
+      font-size: 0.9rem;
+    }
+    .form-control:focus { border-color: var(--primary-pink); }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--primary-pink);
+      color: #FFF;
+      border: none;
+      padding: 12px;
+      border-radius: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-title">🎀 Wony's Cozy Book Nook 🍓</div>
-    <div class="header-subtitle">Reading Tracker, Daily Journal & Aesthetic Quotes ✨</div>
-    <div class="vicky-badge">🐰 Lucky Vicky Mindset Active! 💖</div>
-  </header>
+  <!-- TOP NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      🎀 Lucky Vicky Journal
+    </div>
+    <button class="menu-toggle" onclick="toggleSidebar()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
 
-  <div class="main-wrapper">
+  <!-- SIDEBAR OVERLAY & DRAWER -->
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+  
+  <aside class="sidebar" id="sidebar">
+    <div>
+      <div class="profile-card">
+        <div class="profile-avatar">🐰</div>
+        <div class="profile-info">
+          <h4>Princess Princess 🌸</h4>
+          <p>Lucky Vicky Mindset ✨</p>
+        </div>
+      </div>
 
-    <!-- TAB NAVIGATION -->
-    <nav class="tabs">
-      <button class="tab-btn active" onclick="switchTab('dashboard', event)"><i class="fa-solid fa-house-heart"></i> Dashboard</button>
-      <button class="tab-btn" onclick="switchTab('books', event)"><i class="fa-solid fa-book-bookmark"></i> Perpustakaan</button>
-      <button class="tab-btn" onclick="switchTab('journal', event)"><i class="fa-solid fa-pen-nib"></i> Jurnal Baca</button>
-      <button class="tab-btn" onclick="switchTab('quotes', event)"><i class="fa-solid fa-quote-right"></i> Quotes ✨</button>
-    </nav>
+      <div class="nav-menu">
+        <div class="nav-item active" onclick="switchPage('dashboard')">
+          💖 Dashboard & Progress
+        </div>
+        <div class="nav-item" onclick="switchPage('library')">
+          📚 Perpustakaan Pink
+        </div>
+        <div class="nav-item" onclick="switchPage('notes')">
+          💌 Jurnal & Catatan
+        </div>
+        <div class="nav-item" onclick="switchPage('quotes')">
+          ✨ Kutipan Impian
+        </div>
+      </div>
+    </div>
 
-    <!-- TAB 1: DASHBOARD -->
-    <section id="dashboard" class="tab-content active">
-      <div class="stats-grid">
+    <div class="sidebar-footer">
+      <button class="btn-add-sidebar" onclick="openAddBookModal()">
+        🎀 Tambah Buku
+      </button>
+      <div class="sidebar-actions">
+        <button class="btn-link-action" onclick="exportData()"><i class="fa-solid fa-cloud-arrow-down"></i> Ekspor</button>
+        <button class="btn-link-action" onclick="document.getElementById('import-file').click()"><i class="fa-solid fa-cloud-arrow-up"></i> Impor</button>
+        <input type="file" id="import-file" style="display:none" onchange="importData(event)">
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="container" id="main-content">
+    
+    <!-- DASHBOARD VIEW -->
+    <div id="view-dashboard">
+      <!-- HERO BANNER -->
+      <section class="hero-banner">
+        <span class="hero-badge">✨ Lucky Vicky Reading Space ✨</span>
+        <h2 class="hero-title">"Setiap lembar buku membuatku makin bersinar!" 🍓</h2>
+        <p class="hero-desc">Catat semua petualangan membaca kamu dengan indah. Data tersimpan secara otomatis!</p>
+        <div class="hero-bunny">🐰</div>
+      </section>
+
+      <!-- STATS GRID -->
+      <section class="stats-grid">
         <div class="stat-card">
-          <i class="fa-solid fa-books"></i>
-          <h3 id="stat-total">0</h3>
-          <p>Total Buku</p>
+          <div class="stat-icon pink"><i class="fa-solid fa-book-open"></i></div>
+          <div class="stat-info">
+            <div class="label">TOTAL KOLEKSI</div>
+            <div class="value" id="stat-total">0</div>
+          </div>
         </div>
+
         <div class="stat-card">
-          <i class="fa-solid fa-book-open-reader"></i>
-          <h3 id="stat-reading">0</h3>
-          <p>Sedang Dibaca</p>
+          <div class="stat-icon green"><i class="fa-solid fa-sparkles"></i></div>
+          <div class="stat-info">
+            <div class="label">SELESAI DIBACA</div>
+            <div class="value" id="stat-completed">0</div>
+          </div>
         </div>
+
         <div class="stat-card">
-          <i class="fa-solid fa-circle-check"></i>
-          <h3 id="stat-completed">0</h3>
-          <p>Selesai Dibaca</p>
+          <div class="stat-icon yellow"><i class="fa-solid fa-file-lines"></i></div>
+          <div class="stat-info">
+            <div class="label">HALAMAN DIBACA</div>
+            <div class="value" id="stat-pages">0</div>
+          </div>
         </div>
+
         <div class="stat-card">
-          <i class="fa-solid fa-heart"></i>
-          <h3 id="stat-quotes">0</h3>
-          <p>Koleksi Quote</p>
+          <div class="stat-icon rose"><i class="fa-solid fa-envelope-heart"></i></div>
+          <div class="stat-info">
+            <div class="label">KUTIPAN FAVORIT</div>
+            <div class="value" id="stat-quotes">0</div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="card">
-        <div class="card-title">✨ Daily Motivation</div>
-        <p style="font-size: 0.98rem; line-height: 1.6; color: var(--subtext);">
-          "Setiap lembar buku yang kamu baca adalah investasi manis untuk masa depanmu. Tetap bersemangat dan nikmati setiap proses membaca dengan mindset Lucky Vicky! 🍓💖"
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-title">💾 Cadangan Data (Backup LocalStorage)</div>
-        <p style="font-size: 0.88rem; color: var(--subtext); margin-bottom: 12px;">Semua isi jurnal, buku, dan quote tersimpan otomatis di browser ini. Kamu bisa mengunduh file backup JSON untuk dipindahkan ke laptop / perangkat lain!</p>
-        <div class="settings-box">
-          <button class="btn-secondary" onclick="exportData()"><i class="fa-solid fa-download"></i> Unduh Data (JSON)</button>
-          <input type="file" id="import-file" style="display:none;" onchange="importData(event)">
-          <button class="btn-secondary" onclick="document.getElementById('import-file').click()"><i class="fa-solid fa-upload"></i> Impor Data</button>
+      <!-- CURRENT READING -->
+      <section>
+        <div class="section-header">
+          <div class="section-title">🍓 Sedang Dibaca Cantik</div>
+          <a class="section-link" onclick="switchPage('library')">Lihat Semua Perpustakaan →</a>
         </div>
+
+        <div id="reading-now-list">
+          <!-- Dynamic Book Card -->
+        </div>
+      </section>
+
+      <!-- RECENT NOTES -->
+      <section>
+        <div class="section-header">
+          <div class="section-title">💌 Catatan Terbaru</div>
+          <a class="section-link" onclick="openAddNoteModal()">+ Tulis Catatan Baru</a>
+        </div>
+
+        <div id="recent-notes-list">
+          <!-- Dynamic Notes Card -->
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- MODAL TAMBAH BUKU -->
+  <div class="modal" id="modal-add-book">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>🎀 Tambah Buku Baru</h3>
+        <button class="close-modal" onclick="closeModal('modal-add-book')"><i class="fa-solid fa-xmark"></i></button>
       </div>
-    </section>
+      <form onsubmit="saveBook(event)">
+        <div class="form-group">
+          <label>Judul Buku 📖</label>
+          <input type="text" id="input-book-title" class="form-control" required placeholder="Contoh: The Power of Positive Thinking">
+        </div>
+        <div class="form-group">
+          <label>Penulis ✍️</label>
+          <input type="text" id="input-book-author" class="form-control" required placeholder="Contoh: Norman Vincent Peale">
+        </div>
+        <div style="display:flex; gap:10px;">
+          <div class="form-group" style="flex:1;">
+            <label>Hal. Dibaca 📍</label>
+            <input type="number" id="input-book-current" class="form-control" value="0" min="0">
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label>Total Hal. 📚</label>
+            <input type="number" id="input-book-total" class="form-control" required placeholder="280">
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Simpan Buku 💖</button>
+      </form>
+    </div>
+  </div>
 
-    <!-- TAB 2: PERPUSTAKAAN (BOOKS) -->
-    <section id="books" class="tab-content">
-      <div class="card">
-        <div class="card-title">➕ Tambah Buku Baru 🎀</div>
-        <form id="book-form" onsubmit="addBook(event)">
-          <div class="form-group">
-            <label>Judul Buku 📖</label>
-            <input type="text" id="book-title" class="form-control" placeholder="Contoh: The Psychology of Money" required>
-          </div>
-          <div class="form-group">
-            <label>Penulis / Pengarang ✍️</label>
-            <input type="text" id="book-author" class="form-control" placeholder="Contoh: Morgan Housel" required>
-          </div>
-          <div style="display: flex; gap: 12px;">
-            <div class="form-group" style="flex: 1;">
-              <label>Halaman Saat Ini 📍</label>
-              <input type="number" id="book-current" class="form-control" value="0" min="0" required>
-            </div>
-            <div class="form-group" style="flex: 1;">
-              <label>Total Halaman 📚</label>
-              <input type="number" id="book-total" class="form-control" placeholder="300" min="1" required>
-            </div>
-          </div>
-          <button type="submit" class="btn-submit"><i class="fa-solid fa-heart"></i> Simpan Buku</button>
-        </form>
+  <!-- MODAL TAMBAH CATATAN -->
+  <div class="modal" id="modal-add-note">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>💌 Tulis Catatan Baru</h3>
+        <button class="close-modal" onclick="closeModal('modal-add-note')"><i class="fa-solid fa-xmark"></i></button>
       </div>
-
-      <div class="card-title" style="margin-top: 10px;">🎀 Daftar Bacaan</div>
-      <div id="book-list" class="book-grid"></div>
-    </section>
-
-    <!-- TAB 3: JURNAL BACA -->
-    <section id="journal" class="tab-content">
-      <div class="card">
-        <div class="card-title">✍️ Tulis Catatan / Jurnal 🍓</div>
-        <form id="journal-form" onsubmit="addJournal(event)">
-          <div class="form-group">
-            <label>Judul Catatan / Bab 🍓</label>
-            <input type="text" id="journal-title" class="form-control" placeholder="Contoh: Refleksi Bab 3 - Compounding Effect" required>
-          </div>
-          <div class="form-group">
-            <label>Buku Terkait (Opsional) 📖</label>
-            <input type="text" id="journal-book" class="form-control" placeholder="Nama buku">
-          </div>
-          <div class="form-group">
-            <label>Isi Catatan / Pemikiran ✨</label>
-            <textarea id="journal-content" class="form-control" placeholder="Tuliskan ide dan refleksi menarik kamu di sini..." required></textarea>
-          </div>
-          <button type="submit" class="btn-submit"><i class="fa-solid fa-sparkles"></i> Simpan Jurnal</button>
-        </form>
-      </div>
-
-      <div class="card-title" style="margin-top: 10px;">📜 Koleksi Jurnal</div>
-      <div id="journal-list"></div>
-    </section>
-
-    <!-- TAB 4: QUOTES -->
-    <section id="quotes" class="tab-content">
-      <div class="card">
-        <div class="card-title">💖 Simpan Kutipan Favorit ✨</div>
-        <form id="quote-form" onsubmit="addQuote(event)">
-          <div class="form-group">
-            <label>Kutipan / Quote 💬</label>
-            <textarea id="quote-text" class="form-control" placeholder="Contoh: Manusia memiliki dua kehidupan..." required></textarea>
-          </div>
-          <div class="form-group">
-            <label>Sumber / Penulis 🖋️</label>
-            <input type="text" id="quote-source" class="form-control" placeholder="Contoh: Confucius / Laut Bercerita" required>
-          </div>
-          <button type="submit" class="btn-submit"><i class="fa-solid fa-heart"></i> Simpan Quote</button>
-        </form>
-      </div>
-
-      <div class="card-title" style="margin-top: 10px;">⭐ Inspiring Quotes</div>
-      <div id="quote-list"></div>
-    </section>
-
+      <form onsubmit="saveNote(event)">
+        <div class="form-group">
+          <label>Buku Terkait 📖</label>
+          <input type="text" id="input-note-book" class="form-control" placeholder="Nama buku">
+        </div>
+        <div class="form-group">
+          <label>Judul Catatan 🎀</label>
+          <input type="text" id="input-note-title" class="form-control" required placeholder="Contoh: Lucky Vicky Mindset Setiap Hari 🎀">
+        </div>
+        <div class="form-group">
+          <label>Isi Catatan ✨</label>
+          <textarea id="input-note-content" class="form-control" style="min-height:90px;" required placeholder="Tuliskan pemikiran manismu..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Simpan Catatan ✨</button>
+      </form>
+    </div>
   </div>
 
   <script>
-    // System State Data
+    // State Data Aplikasi
     let appData = {
-      books: [],
-      journals: [],
+      books: [
+        { id: 1, title: 'The Power of Positive Thinking', author: 'Norman Vincent Peale', current: 150, total: 280 }
+      ],
+      notes: [
+        { id: 1, book: 'The Power of Positive Thinking', title: 'Lucky Vicky Mindset Setiap Hari 🎀', content: 'Ketika sesuatu yang tak terduga terjadi, aku selalu berpikir: "Ini pasti keberuntungan bagiku!" Mengubah perspektif membuat hari-hariku jauh lebih bersinar...', date: '31 Okt' }
+      ],
       quotes: []
     };
 
-    // Load LocalStorage saat halaman dibuka
+    // Load Data awal dari LocalStorage
     document.addEventListener('DOMContentLoaded', () => {
-      loadLocalStorage();
+      const saved = localStorage.getItem('lucky_vicky_journal_db');
+      if (saved) {
+        try { appData = JSON.parse(saved); } catch(e){}
+      }
       renderAll();
     });
 
-    // Swapping Tab Navigation
-    function switchTab(tabId, evt) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      
-      document.getElementById(tabId).classList.add('active');
-      if(evt) evt.currentTarget.classList.add('active');
-    }
-
-    // LocalStorage Operations
-    function saveLocalStorage() {
-      localStorage.setItem('wony_book_nook_data', JSON.stringify(appData));
+    function saveToStorage() {
+      localStorage.setItem('lucky_vicky_journal_db', JSON.stringify(appData));
       renderAll();
     }
 
-    function loadLocalStorage() {
-      const saved = localStorage.getItem('wony_book_nook_data');
-      if (saved) {
-        try {
-          appData = JSON.parse(saved);
-        } catch (e) {
-          console.error("Error parsing LocalStorage data", e);
+    // Navigation Sidebar Drawer
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('active');
+      document.getElementById('sidebar-overlay').classList.toggle('active');
+    }
+
+    function switchPage(page) {
+      toggleSidebar();
+      alert('Pindah ke tampilan: ' + page + ' ✨');
+    }
+
+    // Modal Control
+    function openAddBookModal() {
+      toggleSidebar();
+      document.getElementById('modal-add-book').classList.add('active');
+    }
+
+    function openAddNoteModal() {
+      document.getElementById('modal-add-note').classList.add('active');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    // Save Handlers
+    function saveBook(e) {
+      e.preventDefault();
+      const title = document.getElementById('input-book-title').value;
+      const author = document.getElementById('input-book-author').value;
+      const current = parseInt(document.getElementById('input-book-current').value) || 0;
+      const total = parseInt(document.getElementById('input-book-total').value) || 1;
+
+      appData.books.unshift({ id: Date.now(), title, author, current, total });
+      saveToStorage();
+      closeModal('modal-add-book');
+      e.target.reset();
+    }
+
+    function saveNote(e) {
+      e.preventDefault();
+      const book = document.getElementById('input-note-book').value;
+      const title = document.getElementById('input-note-title').value;
+      const content = document.getElementById('input-note-content').value;
+      
+      const today = new Date();
+      const dateStr = today.getDate() + ' ' + today.toLocaleString('id-ID', { month: 'short' });
+
+      appData.notes.unshift({ id: Date.now(), book, title, content, date: dateStr });
+      saveToStorage();
+      closeModal('modal-add-note');
+      e.target.reset();
+    }
+
+    function updateProgress(id) {
+      const book = appData.books.find(b => b.id === id);
+      if(!book) return;
+      const res = prompt(`Update halaman terbaru untuk "${book.title}":`, book.current);
+      if(res !== null) {
+        const val = parseInt(res);
+        if(!isNaN(val)) {
+          book.current = Math.min(val, book.total);
+          saveToStorage();
         }
       }
     }
 
     // Main Render Function
     function renderAll() {
-      renderStats();
-      renderBooks();
-      renderJournals();
-      renderQuotes();
-    }
+      // Stats Calculations
+      const totalBooks = appData.books.length;
+      const completedBooks = appData.books.filter(b => b.current >= b.total).length;
+      const totalPagesRead = appData.books.reduce((acc, b) => acc + (b.current || 0), 0);
+      const totalQuotes = appData.quotes ? appData.quotes.length : 0;
 
-    // Render Stats
-    function renderStats() {
-      const total = appData.books.length;
-      const reading = appData.books.filter(b => b.currentPages < b.totalPages && b.currentPages > 0).length;
-      const completed = appData.books.filter(b => b.currentPages >= b.totalPages).length;
+      document.getElementById('stat-total').innerText = totalBooks;
+      document.getElementById('stat-completed').innerText = completedBooks;
+      document.getElementById('stat-pages').innerText = totalPagesRead;
+      document.getElementById('stat-quotes').innerText = totalQuotes;
+
+      // Render Sedang Dibaca
+      const readingContainer = document.getElementById('reading-now-list');
+      readingContainer.innerHTML = '';
       
-      document.getElementById('stat-total').innerText = total;
-      document.getElementById('stat-reading').innerText = reading;
-      document.getElementById('stat-completed').innerText = completed;
-      document.getElementById('stat-quotes').innerText = appData.quotes.length;
-    }
-
-    // BOOKS CRUD
-    function addBook(e) {
-      e.preventDefault();
-      const title = document.getElementById('book-title').value.trim();
-      const author = document.getElementById('book-author').value.trim();
-      const currentPages = parseInt(document.getElementById('book-current').value) || 0;
-      const totalPages = parseInt(document.getElementById('book-total').value) || 1;
-
-      const newBook = {
-        id: Date.now(),
-        title,
-        author,
-        currentPages: Math.min(currentPages, totalPages),
-        totalPages
-      };
-
-      appData.books.unshift(newBook);
-      saveLocalStorage();
-      document.getElementById('book-form').reset();
-    }
-
-    function updateProgress(id) {
-      const book = appData.books.find(b => b.id === id);
-      if (!book) return;
-
-      const newPage = prompt(`Update halaman terbaru untuk "${book.title}":`, book.currentPages);
-      if (newPage !== null) {
-        const parsed = parseInt(newPage);
-        if (!isNaN(parsed) && parsed >= 0) {
-          book.currentPages = Math.min(parsed, book.totalPages);
-          saveLocalStorage();
-        }
-      }
-    }
-
-    function deleteBook(id) {
-      if (confirm('Yakin ingin menghapus buku ini? 🥺')) {
-        appData.books = appData.books.filter(b => b.id !== id);
-        saveLocalStorage();
-      }
-    }
-
-    function renderBooks() {
-      const container = document.getElementById('book-list');
-      container.innerHTML = '';
-
-      if (appData.books.length === 0) {
-        container.innerHTML = '<p style="color: var(--subtext); grid-column: 1/-1; text-align: center; padding: 20px;">Belum ada buku. Yuk tambah buku pertamamu! 🎀</p>';
-        return;
-      }
-
-      appData.books.forEach(book => {
-        const percent = Math.min(100, Math.round((book.currentPages / book.totalPages) * 100));
-        
-        let tagClass = 'tag-unread';
-        let tagLabel = 'Belum Dibaca 💤';
-
-        if (book.currentPages >= book.totalPages) {
-          tagClass = 'tag-completed';
-          tagLabel = 'Selesai 💖';
-        } else if (book.currentPages > 0) {
-          tagClass = 'tag-reading';
-          tagLabel = 'Sedang Dibaca 📖';
-        }
-
-        const html = `
-          <div class="book-card">
-            <div>
-              <span class="tag ${tagClass}">${tagLabel}</span>
-              <div class="book-title">${escapeHtml(book.title)}</div>
-              <div class="book-author">oleh ${escapeHtml(book.author)}</div>
-              <div class="progress-bar-bg">
-                <div class="progress-bar-fill" style="width: ${percent}%;"></div>
+      const readingBooks = appData.books.filter(b => b.current < b.total);
+      if(readingBooks.length === 0) {
+        readingContainer.innerHTML = '<p style="text-align:center; color:var(--text-sub); font-size:0.85rem; padding:15px;">Belum ada buku yang sedang dibaca ✨</p>';
+      } else {
+        readingBooks.slice(0, 2).forEach(book => {
+          const percent = Math.min(100, Math.round((book.current / book.total) * 100));
+          readingContainer.innerHTML += `
+            <div class="book-card-item">
+              <div class="book-cover-placeholder">📖</div>
+              <div class="book-details">
+                <h4>${escapeHtml(book.title)}</h4>
+                <p>${escapeHtml(book.author)}</p>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: ${percent}%;"></div>
+                </div>
+                <div class="progress-meta">
+                  <span class="progress-text">${book.current} / ${book.total} hlm (${percent}%)</span>
+                  <button class="btn-update-chip" onclick="updateProgress(${book.id})">Update ✨</button>
+                </div>
               </div>
-              <div class="progress-text">${book.currentPages} / ${book.totalPages} hal (${percent}%)</div>
             </div>
-            <div class="card-actions">
-              <button class="btn-action" onclick="updateProgress(${book.id})"><i class="fa-solid fa-pen"></i> Update</button>
-              <button class="btn-action btn-delete" onclick="deleteBook(${book.id})"><i class="fa-solid fa-trash"></i> Hapus</button>
+          `;
+        });
+      }
+
+      // Render Catatan Terbaru
+      const notesContainer = document.getElementById('recent-notes-list');
+      notesContainer.innerHTML = '';
+      
+      if(appData.notes.length === 0) {
+        notesContainer.innerHTML = '<p style="text-align:center; color:var(--text-sub); font-size:0.85rem; padding:15px;">Belum ada catatan tersimpan 💌</p>';
+      } else {
+        appData.notes.slice(0, 3).forEach(note => {
+          notesContainer.innerHTML += `
+            <div class="note-card-item">
+              <div class="note-meta">
+                <span class="note-book-tag">📚 ${escapeHtml(note.book || 'Jurnal Umum')}</span>
+                <span>${note.date}</span>
+              </div>
+              <div class="note-title">${escapeHtml(note.title)}</div>
+              <div class="note-snippet">${escapeHtml(note.content)}</div>
             </div>
-          </div>
-        `;
-        container.innerHTML += html;
-      });
-    }
-
-    // JOURNAL CRUD
-    function addJournal(e) {
-      e.preventDefault();
-      const title = document.getElementById('journal-title').value.trim();
-      const book = document.getElementById('journal-book').value.trim();
-      const content = document.getElementById('journal-content').value.trim();
-
-      const newJournal = {
-        id: Date.now(),
-        title,
-        book,
-        content,
-        date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })
-      };
-
-      appData.journals.unshift(newJournal);
-      saveLocalStorage();
-      document.getElementById('journal-form').reset();
-    }
-
-    function deleteJournal(id) {
-      if (confirm('Hapus catatan ini? 🥺')) {
-        appData.journals = appData.journals.filter(j => j.id !== id);
-        saveLocalStorage();
+          `;
+        });
       }
     }
 
-    function renderJournals() {
-      const container = document.getElementById('journal-list');
-      container.innerHTML = '';
-
-      if (appData.journals.length === 0) {
-        container.innerHTML = '<p style="color: var(--subtext); text-align: center; padding: 20px;">Belum ada catatan jurnal. ✨</p>';
-        return;
-      }
-
-      appData.journals.forEach(j => {
-        const html = `
-          <div class="journal-card">
-            <div class="journal-header">
-              <div class="journal-date">📅 ${j.date} ${j.book ? `• 📖 ${escapeHtml(j.book)}` : ''}</div>
-              <button onclick="deleteJournal(${j.id})" style="background:none; border:none; color:#CD5C5C; cursor:pointer; font-size:1.1rem;"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div class="journal-title">${escapeHtml(j.title)}</div>
-            <div class="journal-content">${escapeHtml(j.content).replace(/\n/g, '<br>')}</div>
-          </div>
-        `;
-        container.innerHTML += html;
-      });
-    }
-
-    // QUOTES CRUD
-    function addQuote(e) {
-      e.preventDefault();
-      const text = document.getElementById('quote-text').value.trim();
-      const source = document.getElementById('quote-source').value.trim();
-
-      const newQuote = {
-        id: Date.now(),
-        text,
-        source
-      };
-
-      appData.quotes.unshift(newQuote);
-      saveLocalStorage();
-      document.getElementById('quote-form').reset();
-    }
-
-    function deleteQuote(id) {
-      if (confirm('Hapus quote ini? 🥺')) {
-        appData.quotes = appData.quotes.filter(q => q.id !== id);
-        saveLocalStorage();
-      }
-    }
-
-    function renderQuotes() {
-      const container = document.getElementById('quote-list');
-      container.innerHTML = '';
-
-      if (appData.quotes.length === 0) {
-        container.innerHTML = '<p style="color: var(--subtext); text-align: center; padding: 20px;">Belum ada quote tersimpan. 🍓</p>';
-        return;
-      }
-
-      appData.quotes.forEach(q => {
-        const html = `
-          <div class="quote-card">
-            <button onclick="deleteQuote(${q.id})" style="position:absolute; top:12px; right:14px; background:none; border:none; color:#CD5C5C; cursor:pointer; font-size:1.1rem;"><i class="fa-solid fa-xmark"></i></button>
-            <div class="quote-text">"${escapeHtml(q.text)}"</div>
-            <div class="quote-source">— ${escapeHtml(q.source)}</div>
-          </div>
-        `;
-        container.innerHTML += html;
-      });
-    }
-
-    // BACKUP IMPORT & EXPORT
+    // Export Import JSON
     function exportData() {
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appData));
-      const downloadAnchor = document.createElement('a');
-      downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `wony_book_nook_backup_${new Date().toISOString().slice(0,10)}.json`);
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      downloadAnchor.remove();
+      const a = document.createElement('a');
+      a.href = dataStr;
+      a.download = `lucky_vicky_backup_${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
     }
 
-    function importData(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
+    function importData(e) {
+      const file = e.target.files[0];
+      if(!file) return;
       const reader = new FileReader();
-      reader.onload = function(e) {
+      reader.onload = function(evt) {
         try {
-          const importedData = JSON.parse(e.target.result);
-          if (importedData.books && importedData.journals && importedData.quotes) {
-            appData = importedData;
-            saveLocalStorage();
-            alert('Data berhasil diimpor! 🎉');
-          } else {
-            alert('Format file JSON tidak sesuai! 🥺');
-          }
-        } catch (err) {
-          alert('Gagal membaca file JSON! ❌');
-        }
+          appData = JSON.parse(evt.target.result);
+          saveToStorage();
+          alert('Data berhasil diimpor! 🎉');
+        } catch(err) { alert('Format file JSON tidak sesuai! 🥺'); }
       };
       reader.readAsText(file);
     }
 
-    // HTML Escape Helper
     function escapeHtml(str) {
+      if(!str) return '';
       return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     }
   </script>
