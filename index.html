@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎀 Wony's Cozy Book Nook ✨</title>
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-pink: #FFF0F5;
+      --card-white: #FFFFFF;
+      --accent-pink: #FFB6C1;
+      --deep-pink: #FF69B4;
+      --soft-rose: #FFC0CB;
+      --text-color: #5C4033;
+      --subtext: #8B6B61;
+      --border-pink: #FFE4E1;
+      --shadow-pink: rgba(255, 105, 180, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-pink);
+      background-image: radial-gradient(#FFC0CB 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: var(--text-color);
+      min-height: 100vh;
+      padding-bottom: 50px;
+    }
+
+    /* Container Header & Layout */
+    .header {
+      background: linear-gradient(135deg, #FFF, #FFE4E1);
+      padding: 2.5rem 1rem;
+      text-align: center;
+      border-bottom: 3px dashed var(--deep-pink);
+      box-shadow: 0 4px 15px var(--shadow-pink);
+      position: relative;
+    }
+
+    .header-title {
+      font-family: 'Fredoka', cursive;
+      font-size: 2.3rem;
+      color: var(--deep-pink);
+      margin-bottom: 0.3rem;
+      text-shadow: 2px 2px 0px #FFF;
+    }
+
+    .header-subtitle {
+      font-size: 0.95rem;
+      color: var(--subtext);
+      font-weight: 600;
+    }
+
+    .vicky-badge {
+      display: inline-block;
+      background: #FFF;
+      border: 2px solid var(--accent-pink);
+      border-radius: 20px;
+      padding: 4px 15px;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--deep-pink);
+      box-shadow: 2px 2px 0px var(--accent-pink);
+    }
+
+    .main-wrapper {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* Navigasi Tab */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: #FFF;
+      border: 2px solid var(--accent-pink);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 600;
+      color: var(--text-color);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 6px var(--shadow-pink);
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--deep-pink);
+      color: #FFF;
+      border-color: var(--deep-pink);
+      transform: translateY(-2px);
+    }
+
+    /* Section Control */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Global Card Style */
+    .card {
+      background: var(--card-white);
+      border-radius: 20px;
+      padding: 20px;
+      border: 2px solid var(--border-pink);
+      box-shadow: 0 8px 20px var(--shadow-pink);
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .card::before {
+      content: '🎀';
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      font-size: 1.2rem;
+    }
+
+    /* Dashboard & Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #FFF0F5, #FFF);
+      border: 2px solid var(--accent-pink);
+      border-radius: 15px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .stat-card i {
+      font-size: 1.8rem;
+      color: var(--deep-pink);
+      margin-bottom: 5px;
+    }
+
+    .stat-card h3 {
+      font-size: 1.6rem;
+      font-family: 'Fredoka', sans-serif;
+      color: var(--deep-pink);
+    }
+
+    .stat-card p {
+      font-size: 0.85rem;
+      color: var(--subtext);
+      font-weight: 600;
+    }
+
+    /* Form Inputs */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--text-color);
+      font-size: 0.9rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 15px;
+      border: 2px solid var(--border-pink);
+      border-radius: 12px;
+      outline: none;
+      font-size: 0.95rem;
+      transition: border-color 0.3s ease;
+      background: #FFF;
+    }
+
+    .form-control:focus {
+      border-color: var(--deep-pink);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .btn-submit {
+      background: var(--deep-pink);
+      color: #FFF;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 4px 10px var(--shadow-pink);
+      transition: background 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background: #ff4797;
+    }
+
+    /* Grid Buku & Cards */
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .book-card {
+      background: #FFF;
+      border: 2px solid var(--border-pink);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 6px 15px var(--shadow-pink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .book-card .tag {
+      align-self: flex-start;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .tag-unread { background: #FFE4E1; color: #D87093; }
+    .tag-reading { background: #FFFACD; color: #DAA520; }
+    .tag-completed { background: #E0EEE0; color: #2E8B57; }
+
+    .book-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.15rem;
+      color: var(--text-color);
+      margin-bottom: 4px;
+    }
+
+    .book-author {
+      font-size: 0.85rem;
+      color: var(--subtext);
+      margin-bottom: 12px;
+    }
+
+    .progress-bar-bg {
+      background: var(--bg-pink);
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 8px;
+      border: 1px solid var(--accent-pink);
+    }
+
+    .progress-bar-fill {
+      background: var(--deep-pink);
+      height: 100%;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .progress-text {
+      font-size: 0.8rem;
+      color: var(--subtext);
+      text-align: right;
+      font-weight: 600;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .btn-action {
+      flex: 1;
+      padding: 6px 0;
+      border: 1px solid var(--accent-pink);
+      background: #FFF;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--text-color);
+      font-weight: 600;
+    }
+
+    .btn-action:hover {
+      background: var(--bg-pink);
+      color: var(--deep-pink);
+    }
+
+    .btn-delete {
+      border-color: #FFA07A;
+      color: #CD5C5C;
+    }
+
+    .btn-delete:hover {
+      background: #FFE4E1;
+    }
+
+    /* Quotes Section */
+    .quote-card {
+      background: linear-gradient(135deg, #FFF, #FFF0F5);
+      border-left: 5px solid var(--deep-pink);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px var(--shadow-pink);
+      position: relative;
+    }
+
+    .quote-text {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-color);
+      margin-bottom: 8px;
+    }
+
+    .quote-source {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--deep-pink);
+      text-align: right;
+    }
+
+    /* Journal Entry */
+    .journal-card {
+      background: #FFF;
+      border-radius: 15px;
+      border: 2px solid var(--border-pink);
+      padding: 18px;
+      margin-bottom: 15px;
+      box-shadow: 0 5px 12px var(--shadow-pink);
+    }
+
+    .journal-date {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--deep-pink);
+      margin-bottom: 5px;
+    }
+
+    .journal-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .journal-content {
+      font-size: 0.9rem;
+      color: var(--subtext);
+      line-height: 1.5;
+    }
+
+    /* Backup / Settings */
+    .settings-box {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-secondary {
+      background: #FFF;
+      border: 2px solid var(--accent-pink);
+      padding: 8px 15px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-color);
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-pink);
+    }
+
+    @media (max-width: 600px) {
+      .header-title { font-size: 1.8rem; }
+      .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-title">🎀 Wony's Cozy Book Nook 🍓</div>
+    <div class="header-subtitle">Reading Tracker, Journal & Cute Quotes ✨</div>
+    <div class="vicky-badge">🐰 Lucky Vicky Mindset Active! 💖</div>
+  </header>
+
+  <div class="main-wrapper">
+
+    <!-- Navigasi Tab -->
+    <nav class="tabs">
+      <button class="tab-btn active" onclick="switchTab('dashboard')"><i class="fa-solid fa-house-heart"></i> Dashboard</button>
+      <button class="tab-btn" onclick="switchTab('books')"><i class="fa-solid fa-book-bookmark"></i> Perpustakaan</button>
+      <button class="tab-btn" onclick="switchTab('journal')"><i class="fa-solid fa-pen-nib"></i> Jurnal Baca</button>
+      <button class="tab-btn" onclick="switchTab('quotes')"><i class="fa-solid fa-quote-right"></i> Quotes ✨</button>
+    </nav>
+
+    <!-- TAB 1: DASHBOARD -->
+    <section id="dashboard" class="tab-content active">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <i class="fa-solid fa-books"></i>
+          <h3 id="stat-total">0</h3>
+          <p>Total Buku</p>
+        </div>
+        <div class="stat-card">
+          <i class="fa-solid fa-book-open-reader"></i>
+          <h3 id="stat-reading">0</h3>
+          <p>Sedang Dibaca</p>
+        </div>
+        <div class="stat-card">
+          <i class="fa-solid fa-circle-check"></i>
+          <h3 id="stat-completed">0</h3>
+          <p>Selesai Dibaca</p>
+        </div>
+        <div class="stat-card">
+          <i class="fa-solid fa-heart"></i>
+          <h3 id="stat-quotes">0</h3>
+          <p>Koleksi Quote</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 style="font-family: 'Fredoka', sans-serif; color: var(--deep-pink); margin-bottom: 10px;">✨ Daily Motivation</h2>
+        <p style="font-size: 0.95rem; line-height: 1.5; color: var(--subtext);">
+          "Setiap lembar buku yang kamu baca adalah investasi manis untuk masa depanmu. Tetap bersemangat dan nikmati setiap prosesnya! 🍓💖"
+        </p>
+      </div>
+
+      <div class="card">
+        <h2 style="font-family: 'Fredoka', sans-serif; color: var(--deep-pink); margin-bottom: 10px;">💾 Cadangan Data (Backup)</h2>
+        <p style="font-size: 0.85rem; color: var(--subtext); margin-bottom: 12px;">Data tersimpan otomatis di browser ini. Kamu bisa mengunduh file cadangan untuk berjaga-jaga.</p>
+        <div class="settings-box">
+          <button class="btn-secondary" onclick="exportData()"><i class="fa-solid fa-download"></i> Unduh Data (JSON)</button>
+          <input type="file" id="import-file" style="display:none;" onchange="importData(event)">
+          <button class="btn-secondary" onclick="document.getElementById('import-file').click()"><i class="fa-solid fa-upload"></i> Impor Data</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: PERPUSTAKAAN (BOOKS) -->
+    <section id="books" class="tab-content">
+      <div class="card">
+        <h2 style="font-family: 'Fredoka', sans-serif; color: var(--deep-pink); margin-bottom: 15px;">➕ Tambah Buku Baru</h2>
+        <form id="book-form" onsubmit="addBook(event)">
+          <div class="form-group">
+            <label>Judul Buku 📖</label>
+            <input type="text" id="book-title" class="form-control" placeholder="Contoh: The Psychology of Money" required>
+          </div>
+          <div class="form-group">
+            <label>Penulis / Pengarang ✍️</label>
+            <input type="text" id="book-author" class="form-control" placeholder="Contoh: Morgan Housel" required>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <div class="form-group" style="flex: 1;">
+              <label>Halaman Saat Ini 📍</label>
+              <input type="number" id="book-current" class="form-control" value="0" min="0" required>
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label>Total Halaman 📚</label>
+              <input type="number" id="book-total" class="form-control" placeholder="300" min="1" required>
+            </div>
+          </div>
+          <button type="submit" class="btn-submit"><i class="fa-solid fa-heart"></i> Simpan Buku</button>
+        </form>
+      </div>
+
+      <h2 style="font-family: 'Fredoka', sans-serif; color: var(--deep-pink); margin-bottom: 15px;">🎀 Daftar Bacaan</h2>
+      <div id="book-list" class="book-grid">
+        <!-- List buku dimasukkan via JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 3: JURNAL BACA -->
+    <section id="journal" class="tab-content">
+      <div class="card">
+        <h2 style="font-family: 'Fredoka', sans-serif; color: var(--deep-pink); margin-bottom: 15px;">✍️ Tulis Catatan / Jurnal</h2>
+        <form id="journal-form" onsubmit="addJournal(event)">
+          <div class="form-group">
+            <label>Judul Catatan / Bab 🍓</label>
+            <input type="text" id="journal-title" class="form-control" placeholder="Contoh: Insight Bab 3 - Compounding Effect" required>
+          </div>
+          <div class="form-group">
+            <label>Buku Terkait (Opsional) 📖</label>
+            <input type="text" id="journal-book" class="form-control" placeholder="Nama buku">
+          </div>
+          <div class="form-group">
+            <label>Isi Catatan / Refleksi ✨</label>
+            <textarea id="journal-content" class="form-control" placeholder="Tuliskan pemikiran manis kamu di sini..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit"><i class="fa-solid fa-sparkles"></i> Simpan Jurnal</button>
+        </form>
+      </div>
+
+      <h2 style="font-family: 'Fredoka', sans-serif; color: var(--deep-pink); margin-bottom: 15px;">📜 Koleksi Jurnal</h2>
+      <div id="journal-list">
+        <!-- List jurnal via JS -->
+      </div>
+    </section>
+
+    <!-- TAB 4: QUOTES -->
+    <section id="quotes" class="tab-content">
+      <div class="card">
+        <h2 style="font-family: 'Fredoka', sans-serif; color: var(--deep-pink); margin-bottom: 15px;">💖 Simpan Kutipan Favorit</h2>
+        <form id="quote-form" onsubmit="addQuote(event)">
+          <div class="form-group">
+            <label>Kutipan / Quote 💬</label>
+            <textarea id="quote-text" class="form-control" placeholder="Contoh: Manusia memiliki dua kehidupan..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Sumber / Penulis 🖋️</label>
+            <input type="text" id="quote-source" class="form-control" placeholder="Contoh: Confucius / Laut Bercerita" required>
+          </div>
+          <button type="submit" class="btn-submit"><i class="fa-solid fa-heart"></i> Simpan Quote</button>
+        </form>
+      </div>
+
+      <h2 style="font-family: 'Fredoka', sans-serif; color: var(--deep-pink); margin-bottom: 15px;">⭐ Inspiring Quotes</h2>
+      <div id="quote-list">
+        <!-- List quotes via JS -->
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // State Aplikasi
+    let appData = {
+      books: [],
+      journals: [],
+      quotes: []
+    };
+
+    // Load Data saat aplikasi pertama dinyalakan
+    document.addEventListener('DOMContentLoaded', () => {
+      loadLocalStorage();
+      renderAll();
+    });
+
+    // Pindah Tab Navigasi
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    // LocalStorage Functions
+    function saveLocalStorage() {
+      localStorage.setItem('wony_book_nook_data', JSON.stringify(appData));
+      renderAll();
+    }
+
+    function loadLocalStorage() {
+      const saved = localStorage.getItem('wony_book_nook_data');
+      if (saved) {
+        try {
+          appData = JSON.parse(saved);
+        } catch (e) {
+          console.error("Gagal memuat data", e);
+        }
+      }
+    }
+
+    // Render Semua Komponen
+    function renderAll() {
+      renderStats();
+      renderBooks();
+      renderJournals();
+      renderQuotes();
+    }
+
+    // Render Statistics
+    function renderStats() {
+      const total = appData.books.length;
+      const reading = appData.books.filter(b => b.currentPages < b.totalPages && b.currentPages > 0).length;
+      const completed = appData.books.filter(b => b.currentPages >= b.totalPages).length;
+      
+      document.getElementById('stat-total').innerText = total;
+      document.getElementById('stat-reading').innerText = reading;
+      document.getElementById('stat-completed').innerText = completed;
+      document.getElementById('stat-quotes').innerText = appData.quotes.length;
+    }
+
+    // PERPUSTAKAAN (BOOKS) LOGIC
+    function addBook(e) {
+      e.preventDefault();
+      const title = document.getElementById('book-title').value;
+      const author = document.getElementById('book-author').value;
+      const currentPages = parseInt(document.getElementById('book-current').value);
+      const totalPages = parseInt(document.getElementById('book-total').value);
+
+      const newBook = {
+        id: Date.now(),
+        title,
+        author,
+        currentPages,
+        totalPages
+      };
+
+      appData.books.unshift(newBook);
+      saveLocalStorage();
+      document.getElementById('book-form').reset();
+    }
+
+    function updateProgress(id) {
+      const book = appData.books.find(b => b.id === id);
+      if (!book) return;
+
+      const newPage = prompt(`Update halaman terbaru untuk "${book.title}":`, book.currentPages);
+      if (newPage !== null) {
+        const parsed = parseInt(newPage);
+        if (!isNaN(parsed) && parsed >= 0) {
+          book.currentPages = Math.min(parsed, book.totalPages);
+          saveLocalStorage();
+        }
+      }
+    }
+
+    function deleteBook(id) {
+      if (confirm('Yakin ingin menghapus buku ini? 🥺')) {
+        appData.books = appData.books.filter(b => b.id !== id);
+        saveLocalStorage();
+      }
+    }
+
+    function renderBooks() {
+      const container = document.getElementById('book-list');
+      container.innerHTML = '';
+
+      if (appData.books.length === 0) {
+        container.innerHTML = '<p style="color: var(--subtext); grid-column: 1/-1; text-align: center;">Belum ada buku. Yuk tambah buku pertamamu! 🎀</p>';
+        return;
+      }
+
+      appData.books.forEach(book => {
+        const percent = Math.round((book.currentPages / book.totalPages) * 100);
+        
+        let tagClass = 'tag-unread';
+        let tagLabel = 'Belum Dibaca 💤';
+
+        if (book.currentPages >= book.totalPages) {
+          tagClass = 'tag-completed';
+          tagLabel = 'Selesai 💖';
+        } else if (book.currentPages > 0) {
+          tagClass = 'tag-reading';
+          tagLabel = 'Sedang Dibaca 📖';
+        }
+
+        const html = `
+          <div class="book-card">
+            <div>
+              <span class="tag ${tagClass}">${tagLabel}</span>
+              <div class="book-title">${escapeHtml(book.title)}</div>
+              <div class="book-author">oleh ${escapeHtml(book.author)}</div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: ${percent}%;"></div>
+              </div>
+              <div class="progress-text">${book.currentPages} / ${book.totalPages} hal (${percent}%)</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-action" onclick="updateProgress(${book.id})"><i class="fa-solid fa-pen"></i> Update</button>
+              <button class="btn-action btn-delete" onclick="deleteBook(${book.id})"><i class="fa-solid fa-trash"></i> Hapus</button>
+            </div>
+          </div>
+        `;
+        container.innerHTML += html;
+      });
+    }
+
+    // JURNAL LOGIC
+    function addJournal(e) {
+      e.preventDefault();
+      const title = document.getElementById('journal-title').value;
+      const book = document.getElementById('journal-book').value;
+      const content = document.getElementById('journal-content').value;
+
+      const newJournal = {
+        id: Date.now(),
+        title,
+        book,
+        content,
+        date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })
+      };
+
+      appData.journals.unshift(newJournal);
+      saveLocalStorage();
+      document.getElementById('journal-form').reset();
+    }
+
+    function deleteJournal(id) {
+      if (confirm('Hapus catatan ini? 🥺')) {
+        appData.journals = appData.journals.filter(j => j.id !== id);
+        saveLocalStorage();
+      }
+    }
+
+    function renderJournals() {
+      const container = document.getElementById('journal-list');
+      container.innerHTML = '';
+
+      if (appData.journals.length === 0) {
+        container.innerHTML = '<p style="color: var(--subtext); text-align: center;">Belum ada catatan jurnal. ✨</p>';
+        return;
+      }
+
+      appData.journals.forEach(j => {
+        const html = `
+          <div class="journal-card">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div class="journal-date">📅 ${j.date} ${j.book ? `• 📖 ${escapeHtml(j.book)}` : ''}</div>
+              <button onclick="deleteJournal(${j.id})" style="background:none; border:none; color:#CD5C5C; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="journal-title">${escapeHtml(j.title)}</div>
+            <div class="journal-content">${escapeHtml(j.content).replace(/\n/g, '<br>')}</div>
+          </div>
+        `;
+        container.innerHTML += html;
+      });
+    }
+
+    // QUOTES LOGIC
+    function addQuote(e) {
+      e.preventDefault();
+      const text = document.getElementById('quote-text').value;
+      const source = document.getElementById('quote-source').value;
+
+      const newQuote = {
+        id: Date.now(),
+        text,
+        source
+      };
+
+      appData.quotes.unshift(newQuote);
+      saveLocalStorage();
+      document.getElementById('quote-form').reset();
+    }
+
+    function deleteQuote(id) {
+      if (confirm('Hapus quote ini? 🥺')) {
+        appData.quotes = appData.quotes.filter(q => q.id !== id);
+        saveLocalStorage();
+      }
+    }
+
+    function renderQuotes() {
+      const container = document.getElementById('quote-list');
+      container.innerHTML = '';
+
+      if (appData.quotes.length === 0) {
+        container.innerHTML = '<p style="color: var(--subtext); text-align: center;">Belum ada quote tersimpan. 🍓</p>';
+        return;
+      }
+
+      appData.quotes.forEach(q => {
+        const html = `
+          <div class="quote-card">
+            <button onclick="deleteQuote(${q.id})" style="position:absolute; top:10px; right:10px; background:none; border:none; color:#CD5C5C; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+            <div class="quote-text">"${escapeHtml(q.text)}"</div>
+            <div class="quote-source">— ${escapeHtml(q.source)}</div>
+          </div>
+        `;
+        container.innerHTML += html;
+      });
+    }
+
+    // Export & Import Backup
+    function exportData() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appData));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `wony_book_nook_backup_${new Date().toISOString().slice(0,10)}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const importedData = JSON.parse(e.target.result);
+          if (importedData.books && importedData.journals && importedData.quotes) {
+            appData = importedData;
+            saveLocalStorage();
+            alert('Data berhasil diimpor! 🎉');
+          } else {
+            alert('Format file JSON tidak valid! 🥺');
+          }
+        } catch (err) {
+          alert('Gagal membaca file JSON! ❌');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // Helper untuk keamanan teks
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
