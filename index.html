@@ -8,14 +8,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fff0f5;
+            --bg-color: #fff4f8;
             --card-bg: #ffffff;
             --primary-color: #d47a96;
-            --accent-color: #f8b1c1;
-            --text-color: #5c4033;
+            --primary-hover: #c26783;
+            --accent-book: #f8b1c1;
+            --accent-journal: #a3c1ad;
+            --text-color: #4a3b32;
             --light-text: #8c7365;
-            --border-color: #f3d1dc;
-            --shadow: 0 8px 25px rgba(212, 122, 150, 0.12);
+            --border-color: #fce4ec;
+            --input-bg: #fffbfd;
+            --shadow: 0 10px 30px rgba(212, 122, 150, 0.08);
+            --radius: 16px;
         }
 
         * {
@@ -28,38 +32,39 @@
             font-family: 'Quicksand', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            padding: 30px 15px;
-            background-image: radial-gradient(#f8b1c1 0.75px, transparent 0.75px);
-            background-size: 24px 24px;
+            padding: 40px 20px;
+            background-image: radial-gradient(#fcd5e3 0.8px, transparent 0.8px);
+            background-size: 28px 28px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 850px;
             margin: 0 auto;
         }
 
         header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
         header h1 {
             font-family: 'Playfair Display', serif;
             color: #b55d7c;
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         header p {
             color: var(--light-text);
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-style: italic;
         }
 
         .card {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 25px;
+            border-radius: var(--radius);
+            padding: 30px;
             box-shadow: var(--shadow);
             margin-bottom: 30px;
             border: 1px solid var(--border-color);
@@ -68,24 +73,26 @@
         h2 {
             font-family: 'Playfair Display', serif;
             color: #b55d7c;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            margin-bottom: 24px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 12px;
         }
 
+        /* Form Styling yang Rapi */
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 15px;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
 
         .form-group.full-width {
@@ -94,177 +101,244 @@
 
         label {
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--light-text);
+            letter-spacing: 0.3px;
         }
 
         input, select, textarea {
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
+            padding: 12px 16px;
+            border: 1.5px solid var(--border-color);
             border-radius: 12px;
             font-family: 'Quicksand', sans-serif;
-            font-size: 0.95krem;
-            background-color: #fffafc;
+            font-size: 0.95rem;
+            background-color: var(--input-bg);
             color: var(--text-color);
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
         }
 
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 8px rgba(212, 122, 150, 0.2);
+            box-shadow: 0 0 0 4px rgba(212, 122, 150, 0.12);
             background-color: #fff;
         }
 
         textarea {
             resize: vertical;
-            min-height: 80px;
+            min-height: 90px;
+            line-height: 1.5;
         }
 
-        button {
+        .btn-primary {
             background: linear-gradient(135deg, #e89cb5, #d47a96);
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 14px 28px;
             border-radius: 12px;
             font-weight: 700;
             font-family: 'Quicksand', sans-serif;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 122, 150, 0.3);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(212, 122, 150, 0.25);
+            width: 100%;
+            margin-top: 10px;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
         }
 
-        button:hover {
+        .btn-primary:hover {
             transform: translateY(-2px);
-            background: linear-gradient(135deg, #df8ca8, #c56a87);
-            box-shadow: 0 6px 20px rgba(212, 122, 150, 0.4);
+            background: linear-gradient(135deg, #df8ca8, #c26783);
+            box-shadow: 0 6px 20px rgba(212, 122, 150, 0.35);
         }
 
+        /* Daftar Bacaan Container */
         .reading-list {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             gap: 20px;
         }
 
         .reading-item {
-            background: #fff9fb;
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px;
-            position: relative;
-            transition: transform 0.2s ease;
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s ease;
         }
 
         .reading-item:hover {
-            transform: translateY(-3px);
+            border-color: #f5b8cc;
+            box-shadow: 0 6px 20px rgba(212, 122, 150, 0.08);
         }
 
-        .item-header {
+        .item-top-row {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 12px;
-            gap: 10px;
+            margin-bottom: 16px;
+            gap: 15px;
         }
 
         .item-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             color: #b55d7c;
+            line-height: 1.3;
         }
 
         .badge {
-            background-color: var(--accent-color);
+            background-color: var(--accent-book);
             color: #fff;
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
+            white-space: nowrap;
         }
 
         .badge.journal {
-            background-color: #a3c1ad;
+            background-color: var(--accent-journal);
         }
 
-        .progress-box {
-            background: #fff;
-            padding: 12px 15px;
+        /* Progress Bar Section */
+        .progress-container {
+            background: #fff8fb;
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            border: 1px dashed var(--border-color);
-            margin: 12px 0;
+            padding: 16px;
+            margin-bottom: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 15px;
         }
 
-        .progress-info {
+        .progress-text {
             font-weight: 600;
             font-size: 0.95rem;
+            color: var(--text-color);
         }
 
-        .quick-update {
+        .progress-text span {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .update-box {
             display: flex;
-            gap: 8px;
             align-items: center;
+            gap: 8px;
         }
 
-        .quick-update input {
-            width: 75px;
-            padding: 6px 10px;
+        .update-box input {
+            width: 80px;
+            padding: 8px;
             text-align: center;
+            font-weight: 600;
         }
 
-        .quick-update button {
-            padding: 6px 12px;
+        .btn-update {
+            background: #b55d7c;
+            color: white;
+            border: none;
+            padding: 9px 16px;
+            border-radius: 10px;
+            font-weight: 600;
             font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
         }
 
-        .notes-section, .quote-section {
-            margin-top: 10px;
+        .btn-update:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Detail Catatan & Quote Box */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .note-box, .quote-box {
+            background: #fffbfd;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 12px 16px;
+            border-radius: 0 10px 10px 0;
             font-size: 0.92rem;
             color: var(--light-text);
-            background: #fff;
-            padding: 10px 14px;
-            border-radius: 10px;
-            border-left: 3px solid var(--primary-color);
+            line-height: 1.5;
         }
 
-        .quote-section {
-            border-left-color: #e89cb5;
+        .quote-box {
+            border-left-color: #f8b1c1;
             font-style: italic;
         }
 
-        .item-actions {
-            margin-top: 15px;
+        .note-box strong, .quote-box strong {
+            color: var(--text-color);
+            font-style: normal;
+            display: inline-block;
+            margin-bottom: 2px;
+        }
+
+        .item-footer {
             display: flex;
             justify-content: flex-end;
-            gap: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border-color);
         }
 
         .btn-delete {
             background: transparent;
             color: #d9534f;
             border: 1px solid #f5c6cb;
-            padding: 6px 12px;
-            box-shadow: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
         .btn-delete:hover {
             background: #fdf2f2;
-            box-shadow: none;
-            transform: none;
+            border-color: #d9534f;
         }
 
         .empty-state {
             text-align: center;
             color: var(--light-text);
-            padding: 30px;
+            padding: 40px;
             font-style: italic;
+            background: #fff;
+            border-radius: var(--radius);
+            border: 1px dashed var(--border-color);
+        }
+
+        /* Responsif untuk HP */
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .progress-container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+            .update-box {
+                justify-content: space-between;
+            }
+            .update-box input {
+                flex-grow: 1;
+            }
         }
     </style>
 </head>
@@ -281,9 +355,9 @@
             <h2>🎀 Tambah Bacaan Baru</h2>
             <form id="readingForm">
                 <div class="form-grid">
-                    <div class="form-group">
-                        <label for="title">Judul Buku / Jurnal</label>
-                        <input type="text" id="title" required placeholder="Contoh: The Psychology of Money">
+                    <div class="form-group full-width">
+                        <label for="title">Judul Buku / Jurnal Ilmiah</label>
+                        <input type="text" id="title" required placeholder="Contoh: The Psychology of Money atau Jurnal Akuntansi Keuangan...">
                     </div>
                     <div class="form-group">
                         <label for="type">Kategori</label>
@@ -293,37 +367,36 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="totalPages">Total Halaman / Bab</label>
+                        <label for="totalPages">Total Halaman</label>
                         <input type="number" id="totalPages" required placeholder="Contoh: 250">
                     </div>
                     <div class="form-group">
-                        <label for="currentPage">Halaman Saat Ini</label>
-                        <input type="number" id="currentPage" value="0" required>
+                        <label for="currentPage">Halaman Saat Ini (Posisi Terakhir)</label>
+                        <input type="number" id="currentPage" value="0" required placeholder="Contoh: 45">
                     </div>
                     <div class="form-group full-width">
                         <label for="notes">Catatan / Refleksi Pribadi</label>
-                        <textarea id="notes" placeholder="Tulis rangkuman, poin penting, atau pemikiranmu di sini..."></textarea>
+                        <textarea id="notes" placeholder="Tulis poin penting, rangkuman, atau pemikiranmu di sini..."></textarea>
                     </div>
                     <div class="form-group full-width">
                         <label for="quote">Favorite Quote 💖</label>
-                        <textarea id="quote" placeholder="Tulis kutipan favorit yang menginspirasi dari bacaan ini..."></textarea>
+                        <textarea id="quote" placeholder="Tulis kalimat favorit atau kutipan yang menginspirasi..."></textarea>
                     </div>
                 </div>
-                <button type="submit">✨ Simpan ke Daftar Bacaan</button>
+                <button type="submit" class="btn-primary">✨ Simpan ke Daftar Bacaan</button>
             </form>
         </div>
 
         <!-- Daftar Bacaan Aktif -->
-        <div class="card">
-            <h2>📚 Daftar Bacaan & Progress</h2>
-            <div id="readingListContainer" class="reading-list">
+        <div class="card" style="border: none; background: transparent; padding: 0; box-shadow: none;">
+            <h2 style="background: var(--card-bg); padding: 20px 30px; border-radius: var(--radius); border-bottom: none; box-shadow: var(--shadow);">📚 Daftar Bacaan & Progress</h2>
+            <div id="readingListContainer" class="reading-list" style="margin-top: 20px;">
                 <!-- Data akan dimasukkan lewat JavaScript -->
             </div>
         </div>
     </div>
 
     <script>
-        // Ambil data dari localStorage atau buat array kosong
         let readings = JSON.parse(localStorage.getItem('wonyoung_readings')) || [];
 
         const form = document.getElementById('readingForm');
@@ -332,6 +405,90 @@
         function saveAndRender() {
             localStorage.setItem('wonyoung_readings', JSON.stringify(readings));
             renderReadings();
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newItem = {
+                id: Date.now(),
+                title: document.getElementById('title').value,
+                type: document.getElementById('type').value,
+                totalPages: parseInt(document.getElementById('totalPages').value),
+                currentPage: parseInt(document.getElementById('currentPage').value),
+                notes: document.getElementById('notes').value,
+                quote: document.getElementById('quote').value
+            };
+
+            readings.unshift(newItem);
+            saveAndRender();
+            form.reset();
+        });
+
+        function updateProgress(id) {
+            const inputVal = document.getElementById(`input-page-${id}`).value;
+            const item = readings.find(r => r.id === id);
+            if (item && inputVal !== "") {
+                item.currentPage = Math.min(parseInt(inputVal), item.totalPages);
+                saveAndRender();
+            }
+        }
+
+        function deleteItem(id) {
+            if(confirm("Yakin ingin menghapus bacaan ini?")) {
+                readings = readings.filter(r => r.id !== id);
+                saveAndRender();
+            }
+        }
+
+        function renderReadings() {
+            if (readings.length === 0) {
+                container.innerHTML = `<div class="empty-state">Belum ada bacaan yang dicatat. Yuk, mulai isi hari ini dengan produktif! 🤍</div>`;
+                return;
+            }
+
+            container.innerHTML = '';
+            readings.forEach(item => {
+                const percentage = Math.min(Math.round((item.currentPage / item.totalPages) * 100), 100) || 0;
+                const isJournal = item.type === 'Jurnal';
+                
+                const div = document.createElement('div');
+                div.className = 'reading-item';
+                div.innerHTML = `
+                    <div class="item-top-row">
+                        <div class="item-title">${item.title}</div>
+                        <span class="badge ${isJournal ? 'journal' : ''}">${item.type}</span>
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-text">
+                            Posisi Baca: <span>Hal. ${item.currentPage}</span> dari ${item.totalPages} 
+                            <span style="color: var(--light-text); font-weight: 500;">(${percentage}%)</span>
+                        </div>
+                        <div class="update-box">
+                            <input type="number" id="input-page-${item.id}" value="${item.currentPage}" min="0" max="${item.totalPages}">
+                            <button type="button" class="btn-update" onclick="updateProgress(${item.id})">Update Hal</button>
+                        </div>
+                    </div>
+
+                    <div class="details-grid">
+                        ${item.notes ? `<div class="note-box"><strong>📝 Catatan:</strong><br>${item.notes}</div>` : ''}
+                        ${item.quote ? `<div class="quote-box"><strong>✨ Favorite Quote:</strong><br>"${item.quote}"</div>` : ''}
+                    </div>
+
+                    <div class="item-footer">
+                        <button class="btn-delete" onclick="deleteItem(${item.id})">Hapus Bacaan</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        renderReadings();
+    </script>
+</body>
+</html>
+          renderReadings();
         }
 
         form.addEventListener('submit', function(e) {
